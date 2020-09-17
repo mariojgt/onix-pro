@@ -1,0 +1,45 @@
+{
+    "name": "mariojgt/onix",
+    "description": "A laravel page buidler out of the box",
+    "keywords": [
+        "laravel",
+        "permission",
+        "permissions",
+        "roles",
+        "acl",
+        "rbac",
+        "security"
+    ],
+    "type": "laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mariojgt",
+            "email": "mariojgt2@gmail.com"
+        }
+    ],
+    "require":{
+        "php": "^7.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mariojgt\\Onix\\": "src"
+        }
+    },
+
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan route:list"
+        ]
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mariojgt\\Onix\\OnixProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

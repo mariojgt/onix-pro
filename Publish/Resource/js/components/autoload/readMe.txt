@@ -1,0 +1,1 @@
+inside this folder all the componentes will me autoload you can you the <componenteName-autoload></componenteName-autoload>
