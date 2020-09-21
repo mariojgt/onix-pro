@@ -9,6 +9,8 @@ window.Vue = require('vue');
 
 window.grapesjs = require('grapesjs');
 
+window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
+
 //import grapesjs_preset from 'grapesjs-preset-webpage-ca';
 
 //reusable componentes

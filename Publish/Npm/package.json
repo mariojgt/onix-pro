@@ -22,6 +22,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^22.0.0",
         "grapesjs": "^0.16.22"
     }
 }

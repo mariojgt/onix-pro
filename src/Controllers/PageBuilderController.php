@@ -9,6 +9,11 @@ class PageBuilderController extends Controller
 {
    public function index()
    {
-       return view('onix::builder.index');
+       return view('onix::builder.jsGrape');
+   }
+
+   public function ckEditor()
+   {
+       return view('onix::builder.ckEditor');
    }
 }
