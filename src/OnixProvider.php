@@ -1,5 +1,4 @@
 <?php
-
 namespace Mariojgt\Onix;
 
 use Illuminate\Support\ServiceProvider;
