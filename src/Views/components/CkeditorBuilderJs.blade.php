@@ -5,7 +5,17 @@
 {{-- in here we start the editor with our setup --}}
 <script>
     ClassicEditor
-    .create( document.querySelector( '#editor' ) )
+    .create( document.querySelector( '#editor' ), {
+        image: {
+			upload: {
+                panel: {
+                    items: [
+                        'insertImageViaUrl',
+                    ]
+                }
+            }
+		}
+    } )
     .then( editor => {
         console.log( editor );
     } )
