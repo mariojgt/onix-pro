@@ -22005,8 +22005,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./extra */ "./resources/vendor/Onix/js/extra.js");
 
-window.grapesjs = __webpack_require__(/*! grapesjs */ "./node_modules/grapesjs/dist/grapes.min.js");
 window.ClassicEditor = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+window.grapesjs = __webpack_require__(/*! grapesjs */ "./node_modules/grapesjs/dist/grapes.min.js");
 
 /***/ }),
 

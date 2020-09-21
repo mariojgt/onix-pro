@@ -1,4 +1,4 @@
 {{-- start the editor using the id --}}
-<div id="gjs">
+<div id="onix-grape">
     {{ $slot }}
 </div>
