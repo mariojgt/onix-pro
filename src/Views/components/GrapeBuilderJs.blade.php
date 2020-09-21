@@ -8,7 +8,6 @@
 
 {{-- in here we start the editor with our setup --}}
 <script>
-    var data = "{{ $objectId }}";
 
     const editor = grapesjs.init({
         // Indicate where to init the editor. You can also pass an HTMLElement
@@ -20,7 +19,10 @@
         height: '1000px',
         width: 'auto',
         // Disable the storage manager for the moment
-        storageManager: { type: 'simple-storage' },
+        storageManager: {
+            type: 'simple-storage',
+            stepsBeforeSave: 3,
+        },
         plugins: ['gjs-preset-webpage', 'onixPlugins'], // define in here you plugins
         pluginsOpts: {
             'gjs-preset-webpage': {
@@ -28,5 +30,72 @@
             }
         }
     });
+
+    // Here our `simple-storage` implementation
+    const SimpleStorage = {};
+
+    // varaible that you can pass in the laravel componente
+    var saveUrl = "{{ $saveUrl ?? '/onix/save_post/4' }}";// the url you want to save or load
+    var loadUrl = "{{ $loadUrl ?? '/onix/load_post/4' }}";// the url you want to save or load
+    var data = "{{ $objectId ?? '' }}";
+
+    editor.StorageManager.add('simple-storage', {
+        /**
+         * Load the data
+         * @param  {Array} keys Array containing values to load, eg, ['gjs-components', 'gjs-style', ...]
+         * @param  {Function} clb Callback function to call when the load is ended
+         * @param  {Function} clbErr Callback function to call in case of errors
+         */
+        load(keys, clb, clbErr) {
+
+            // load the data from the url you need
+            axios.get(loadUrl, {
+            })
+            .then(function (response) {
+                console.log(response);
+                //result = response.data;
+            })
+            .catch(function (error) {
+            })
+
+            const result = {};
+
+            keys.forEach(key => {
+                const value = SimpleStorage[key];
+                if (value) {
+                    result[key] = value;
+                }
+            });
+
+            // Might be called inside some async method
+            clb(result);
+        },
+
+        /**
+         * Store the data
+         * @param  {Object} data Data object to store
+         * @param  {Function} clb Callback function to call when the load is ended
+         * @param  {Function} clbErr Callback function to call in case of errors
+         */
+        store(data, clb, clbErr) {
+            for (let key in data) {
+                SimpleStorage[key] = data[key];
+            }
+            // Might be called inside some async method
+            clb();
+
+            // use axig to save the html data
+            axios({
+                method:'post',
+                url: saveUrl,
+                data: {
+                    data:data
+                }
+            })
+        }
+    });
+
+    // trigger the load url
+    editor.load(res => console.log('Load callback'));
 
 </script>
