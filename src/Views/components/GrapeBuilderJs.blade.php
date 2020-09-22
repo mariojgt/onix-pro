@@ -35,9 +35,8 @@
     const SimpleStorage = {};
 
     // varaible that you can pass in the laravel componente
-    var saveUrl = "{{ $saveUrl ?? '/onix/save_post/4' }}";// the url you want to save or load
-    var loadUrl = "{{ $loadUrl ?? '/onix/load_post/4' }}";// the url you want to save or load
-    var data = "{{ $objectId ?? '' }}";
+    var saveUrl = "{{ $saveUrl ?? '/onix/save_post/4' }}";// the url you want to save note they come from the component
+    var loadUrl = "{{ $loadUrl ?? '/onix/load_post/4' }}";// the url you want to load note they come from the component
 
     editor.StorageManager.add('simple-storage', {
         /**
@@ -52,23 +51,23 @@
             axios.get(loadUrl, {
             })
             .then(function (response) {
-                console.log(response);
-                //result = response.data;
+                // Get the data
+                keys = response.data.data;
+                // create the contant that will hold the temp page
+                const result = {};
+                // do the loop and get the object content
+                for (const [key, value] of Object.entries(keys)) {
+                    if (value) {
+                        result[key] = value;
+                    }
+                }
+                // Might be called inside some async method
+                // save the data
+                clb(result);
+
             })
             .catch(function (error) {
             })
-
-            const result = {};
-
-            keys.forEach(key => {
-                const value = SimpleStorage[key];
-                if (value) {
-                    result[key] = value;
-                }
-            });
-
-            // Might be called inside some async method
-            clb(result);
         },
 
         /**
@@ -84,18 +83,28 @@
             // Might be called inside some async method
             clb();
 
-            // use axig to save the html data
+            // use axios to save the html data
             axios({
-                method:'post',
-                url: saveUrl,
+                method:'post',// method to save the data
+                url: saveUrl,// the url you define in the component
                 data: {
-                    data:data
+                    data:data// the data you want to save
                 }
             })
         }
     });
 
-    // trigger the load url
+    // trigger the load url on start
     editor.load(res => console.log('Load callback'));
+
+    // load the content
+    function loadContent() {
+        editor.load(res => console.log('Load callback'));
+    }
+
+    // trigger the save content
+    function saveContent() {
+        editor.store(res => console.log('Store callback'));
+    }
 
 </script>
