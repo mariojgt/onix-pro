@@ -55,17 +55,17 @@ Route::get('blog/category/load/{id}', 'BlogCategoryController@builderLoad')->nam
 
 # The controller method to save or load.
 
+The way it works is you first save in the database them you get that content and using use Mariojgt\Onix\Helpers\OnixBuilder::savePageFile($pathToSave, $contents, $fileName) you will later use that view create with this function to render the html, and the content you saved in the database will be used to load in the grapeJs Builder.
+
 ```php
+use Mariojgt\Onix\Helpers\OnixBuilder;
+
 // This is a exempla that how you can load the html text
 public function builderLoad($id)
     {
         $blogCategory          = BlogCategory::find($id);
         return response()->json([
-            'meta'  => [
-                'status' => true,
-                'message'     => 'loaded'
-            ],
-            'data' => json_decode($blogCategory->content),
+            'data' => $blog->content,
         ]);
     }
 
@@ -77,6 +77,20 @@ public function builderSave(Request $request, $id)
         $blogCategory->content = json_encode(Request('data'));
         $blogCategory->save();
 
+    	// html content example
+	    $contents = "
+            @extends('auilayout::admin')
+                ".$conteToSave."
+            @section('content')
+            @endsection
+        ";
+    	// path to save the file
+        $pathToSave = resource_path('views/pages/');
+        // create the fileName
+        $fileName   = $blog->title.'.blade.php';
+	    // You need this to save the blade file because we need the file to render the content
+        OnixBuilder::savePageFile($pathToSave, $contents, $fileName);
+    
         return response()->json([
             'meta'  => [
                 'status'  => true,
@@ -84,5 +98,23 @@ public function builderSave(Request $request, $id)
             ]
         ]);
     }
+// example how to load that view once saved
+public function builderPreview($id)
+    {
+        $blog     = Blog::find($id);
+    	//where is pages you can replace to your path and you file name following laravel view struture
+        return view('pages.'.'onix_'.$blog->title);
+    }
+```
+
+# The function savePageFile
+
+By default will create a folder named pages in the resources/view/pages, inside this folder you will files called onix_file.balde.php, you will need those to render the html.
+
+```php
+//$pathToSave by default will be used resource_path('views/pages/')
+//$contents you html content
+//$fileName your file name
+OnixBuilder::savePageFile($contents, $fileName, $pathToSave)
 ```
 
