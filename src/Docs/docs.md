@@ -8,6 +8,8 @@
 - **pushLocationJs**::This variable is not required but i strong recommended to use this will inject the js code need for the grape js to work.
 - **saveUrl**: This is where your route that you want to save the html code.
 - **loadUrl**:This is where you define the route that you load your html page.
+- ***mainBackgroudColor***: This variable is not required but will change the editor color this is a variable exemple:\#f6081c
+- ***textColor***:this variable is not required bet will change the text color for the ditor
 
 by default each 3 changes will save the page, below there is a example that how you can use the code, just one note you will need to publish the package before use.
 
