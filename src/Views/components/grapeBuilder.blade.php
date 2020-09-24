@@ -36,13 +36,18 @@
     <x-onix::GrapeBuilderJs
         saveUrl="{{ $saveUrl ?? null }}"
         loadUrl="{{ $loadUrl ?? null }}"
-    />
+        plugin="{{ $plugin ?? 'onixPlugins' }}"
+    >
+    {{ $pluginJs ?? '' }}
+    </x-onix::GrapeBuilderJs>
 @else
     @push($pushLocationJs)
         <x-onix::GrapeBuilderJs
             saveUrl="{{ $saveUrl ?? null }}"
             loadUrl="{{ $loadUrl ?? null }}"
-            backgroundColor="{{ $backgroudColor ?? '#000000' }}"
-        />
+            plugin="{{ $plugin ?? 'onixPlugins' }}"
+        >
+        {{ $pluginJs ?? '' }}
+        </x-onix::GrapeBuilderJs>
     @endpush
 @endif

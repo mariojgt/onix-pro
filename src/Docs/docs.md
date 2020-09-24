@@ -10,6 +10,8 @@
 - **loadUrl**:This is where you define the route that you load your html page.
 - ***mainBackgroudColor***: This variable is not required but will change the editor color this is a variable exemple:\#f6081c
 - ***textColor***:this variable is not required bet will change the text color for the ditor
+- **:*plugin***: this varaible you will use to pass your custom plugin name
+- you have also a slot called pluginJs that you can you to pass the plugins script
 
 by default each 3 changes will save the page, below there is a example that how you can use the code, just one note you will need to publish the package before use.
 
@@ -19,7 +21,13 @@ by default each 3 changes will save the page, below there is a example that how 
     pushLocationJs="scripts"
     saveUrl="{{'/blog/category/save/'.$blogCategory->id}}"
     loadUrl="{{'/blog/category/load/'.$blogCategory->id}}"
->
+	:plugin="'homePlugins'"
+    >
+    {{ this slot is not required but the defult will be uses }}	
+    <x-slot name="pluginJs">
+        <script src="{{ asset('vendor/Onix/onixGrape/homePlugins.js') }}"></script>                                   
+    </x-slot>
+    
     {{-- set your style like boostrap or this case tailwind so the brower can render inside the componente --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </x-onix::grapeBuilder>

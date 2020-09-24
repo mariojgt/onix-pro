@@ -6,6 +6,9 @@
 {{-- need for this package custom plugins --}}
 <script src="{{ asset('vendor/Onix/onixGrape/onix_grape_plugins.js') }}"></script>
 
+{{-- the plugins will go here --}}
+ {{ $slot }}
+
 {{-- in here we start the editor with our setup --}}
 <script>
     const editor = grapesjs.init({
@@ -22,7 +25,7 @@
             type: 'simple-storage',
             stepsBeforeSave: 3,
         },
-        plugins: ['gjs-preset-webpage', 'onixPlugins'], // define in here you plugins
+        plugins: ['gjs-preset-webpage', '{{ $plugin }}'], // define in here you plugins
         pluginsOpts: {
             'gjs-preset-webpage': {
                 // options
