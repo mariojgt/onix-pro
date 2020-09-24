@@ -1,6 +1,7 @@
 
 function onixPlugins(editor) {
     editor.BlockManager.add('onix-block', {
+        category: 'Onix',
         label: 'boostrap-simple-header',
         attributes: { class: 'fa fa-quote-right' },
         content: `
@@ -31,6 +32,7 @@ function onixPlugins(editor) {
     );
 
     editor.BlockManager.add('onix-block-2', {
+        category: 'Onix',
         label: 'boostrap-simple-block',
         attributes: { class: 'fa fa-quote-right' },
         content: `
@@ -44,6 +46,7 @@ function onixPlugins(editor) {
     );
 
     editor.BlockManager.add('onix-block-3', {
+        category: 'Onix',
         label: 'boostrap-double-block',
         attributes: { class: 'fa fa-quote-right' },
         content: `
@@ -70,6 +73,7 @@ function onixPlugins(editor) {
     );
 
     editor.BlockManager.add('onix-block-4', {
+        category: 'Onix',
         label: 'boostrap-simple-footer',
         attributes: { class: 'fa fa-quote-right' },
         content: `
@@ -124,6 +128,7 @@ function onixPlugins(editor) {
     );
 
     editor.BlockManager.add('onix-block-5', {
+        category: 'Onix',
         label: 'boostrap-main',
         attributes: { class: 'fa fa-quote-right' },
         content: `

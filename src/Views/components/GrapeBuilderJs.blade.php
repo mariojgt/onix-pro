@@ -98,12 +98,15 @@
 
     // load the content
     function loadContent() {
-        editor.load(res => console.log('Load callback'));
+        // Load the data
+        editor.load();
     }
 
     // trigger the save content
     function saveContent() {
-        editor.store(res => console.log('Store callback'));
+        // Save the Data
+        editor.store();
+        alert("Page saved");
     }
 
 </script>
