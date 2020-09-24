@@ -8,7 +8,6 @@
 
 {{-- in here we start the editor with our setup --}}
 <script>
-
     const editor = grapesjs.init({
         // Indicate where to init the editor. You can also pass an HTMLElement
         container: '#onix-grape',
