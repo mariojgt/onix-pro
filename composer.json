@@ -3,12 +3,12 @@
     "description": "A laravel page buidler out of the box",
     "keywords": [
         "laravel",
-        "permission",
-        "permissions",
-        "roles",
-        "acl",
-        "rbac",
-        "security"
+        "grapejs",
+        "grape js",
+        "ck editor",
+        "laravel page builder",
+        "page builder",
+        "builder"
     ],
     "type": "laravel",
     "license": "MIT",
