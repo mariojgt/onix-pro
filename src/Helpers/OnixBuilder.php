@@ -2,11 +2,10 @@
 
 namespace Mariojgt\Onix\Helpers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Mariojgt\Onix\Helpers\HtmlFormater;
 use File;
 
-class OnixBuilder extends Controller
+class OnixBuilder
 {
     public static function savePageFile($content, $fileName, $path = null)
     {
@@ -24,8 +23,21 @@ class OnixBuilder extends Controller
             //make the folder
             File::makeDirectory($path, 0777, true, true);
         }
+            // Call the class to format html
+            $format         = new HtmlFormater();
+            $formatted_html = $format->HTML($content);
 
         // add the content to the file
-        File::put($path.'onix_'.$fileName, $content);
+        File::put($path.'onix_'.$fileName, $formatted_html);
+    }
+
+    public static function tidyHTML($buffer) {
+        // load our document into a DOM object
+        $dom = new DOMDocument();
+        // we want nice output
+        $dom->preserveWhiteSpace = false;
+        $dom->loadHTML($buffer);
+        $dom->formatOutput = true;
+        return($dom->saveHTML());
     }
 }
