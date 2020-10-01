@@ -9,12 +9,12 @@ class PageBuilderController extends Controller
 {
     public function index()
     {
-        return view('onix::builder.jsGrape');
+        return view('onix::builder.js-grape');
     }
 
     public function ckEditor()
     {
-        return view('onix::builder.ckEditor');
+        return view('onix::builder.ck-editor');
     }
     // example how to save
     public function save(Request $request, $id)

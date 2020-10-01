@@ -10,12 +10,12 @@ class OnixProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(\Illuminate\Routing\Router $router)
+    public function boot()
     {
         // load onix views
         $this->loadViewsFrom(__DIR__.'/views', 'onix');
         // load onix routes
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
     }
 
     /**

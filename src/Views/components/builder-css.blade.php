@@ -7,12 +7,12 @@
 
 /* Primary color for the background */
 .gjs-one-bg {
-  background-color: {{ $mainBackgroudColor }};
+  background-color: {{ $mainBackgroudColor ?? '#000000'}};
 }
 
 /* Secondary color for the text color */
 .gjs-two-color {
-  color: {{ $textColor }};
+  color: {{ $textColor ?? '#ffffff' }};
 }
 
 /* css need for the floating icon */
@@ -56,7 +56,7 @@
 	text-align:center;
     box-shadow: 2px 2px 3px #999;
     z-index: 999999999999999;
-	background-color:{{ $mainBackgroudColor }};
+	background-color:{{ $mainBackgroudColor ?? '#000000' }};
 }
 
 .my-float{
