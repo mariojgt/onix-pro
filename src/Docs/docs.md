@@ -18,7 +18,11 @@ by default each 3 changes will save the page, below there is a example that how 
 ```php+HTML
 <x-onix::grapeBuilder
     pushLocationCss="css"
-    pushLocationJs="scripts"
+    pushLocationJs="scripts"                      
+    {{-- not required --}}
+    imageLoadApi="{{ route('admin.page.builder.images') }}"
+    {{-- not required --}}
+    imageSaveApi="{{ route('page.builder.images.save') }}"
     saveUrl="{{'/blog/category/save/'.$blogCategory->id}}"
     loadUrl="{{'/blog/category/load/'.$blogCategory->id}}"
 	:plugin="'homePlugins'"

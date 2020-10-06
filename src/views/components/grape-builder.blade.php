@@ -37,6 +37,8 @@
         saveUrl="{{ $saveUrl ?? null }}"
         loadUrl="{{ $loadUrl ?? null }}"
         plugin="{{ $plugin ?? 'onixPlugins' }}"
+        imageLoadApi="{{ $imageLoadApi ?? '' }}"
+        imageSaveApi="{{ $imageSaveApi ?? '' }}"
     >
     {{ $pluginJs ?? '' }}
     </x-onix::grape-builder-js>
@@ -46,6 +48,8 @@
             saveUrl="{{ $saveUrl ?? null }}"
             loadUrl="{{ $loadUrl ?? null }}"
             plugin="{{ $plugin ?? 'onixPlugins' }}"
+            imageLoadApi="{{ $imageLoadApi ?? '' }}"
+            imageSaveApi="{{ $imageSaveApi ?? '' }}"
         >
         {{ $pluginJs ?? '' }}
         </x-onix::grape-builder-js>

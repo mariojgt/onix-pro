@@ -11,6 +11,7 @@
 
 {{-- in here we start the editor with our setup --}}
 <script>
+
     const editor = grapesjs.init({
         // Indicate where to init the editor. You can also pass an HTMLElement
         container: '#onix-grape',
@@ -30,7 +31,17 @@
             'gjs-preset-webpage': {
                 // options
             }
-        }
+        },
+        assetManager: {
+            // Upload endpoint, set `false` to disable upload, default `false`
+            upload: '{{ $imageSaveApi ?? '' }}',
+            // Custom headers to pass with the upload request
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            // The name used in POST to pass uploaded files, default: `'files'`
+            uploadName: 'files',
+        },
     });
 
     // Here our `simple-storage` implementation
@@ -111,5 +122,22 @@
         editor.store();
         alert("Page saved");
     }
+    // Function that load the images
+    function loadImages(url = '{{ $imageLoadApi ?? '' }}') {
+        // Get the Asset Manager module first
+        const am = editor.AssetManager;
 
+        // do the axios request
+        axios.get(url, {
+        })
+        .then(function (response) {
+            response.data.forEach(function(entry) {
+                am.add(entry);
+            });
+        })
+        .catch(function (error) {
+        })
+    }
+    // call the image loader
+    loadImages();
 </script>
