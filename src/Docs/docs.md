@@ -86,29 +86,33 @@ public function builderLoad($id)
 // This is a exemple that how can save 
 public function builderSave(Request $request, $id)
     {
-	    // model exemple
-        $blogCategory          = BlogCategory::find($id);
-        $blogCategory->content = json_encode(Request('data'));
-        $blogCategory->save();
+	    $page          = Page::find($id);
+        $page->content = json_encode(Request('data'));
+        $page->save();
 
-    	// html content example
-	    $contents = "
-            @extends('auilayout::admin')
-                ".$conteToSave."
-            @section('content')
-            @endsection
+        // prepare to get the html
+        $contentToSave = (array)json_decode($page->content);
+        // Get the style
+        $contentStyleToSave = $contentToSave['gjs-css'];// Get the css
+        // Get the html
+        $contentToSave = $contentToSave['gjs-html'];// get the html
+	    // Get the page ready
+        $contents = "
+            <style>".$contentStyleToSave."</style>
+                ".$contentToSave."
         ";
-    	// path to save the file
-        $pathToSave = resource_path('views/pages/');
+
+        // path to save the file
+        $pathToSave = resource_path('views/pages/pages/');
         // create the fileName
-        $fileName   = $blog->title.'.blade.php';
-	    // You need this to save the blade file because we need the file to render the content
-        OnixBuilder::savePageFile($pathToSave, $contents, $fileName);
-    
+        $fileName   = $page->slug.'.blade.php';
+	    // Save the page into a file
+        OnixBuilder::savePageFile($contents, $fileName, $pathToSave);
+
         return response()->json([
             'meta'  => [
                 'status'  => true,
-                'message' => 'saved'
+                'message' => 'Contend saved'
             ]
         ]);
     }
