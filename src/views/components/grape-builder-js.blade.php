@@ -145,8 +145,13 @@
         .catch(function (error) {
         })
     }
-    // call the image loader
+    // Load the files on start
     loadImages();
+
+    // Once finish the uplaod fecth the files
+    editor.on('asset:upload:end', () => {
+        loadImages();
+    });
 
 </script>
 
