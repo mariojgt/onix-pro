@@ -1,8 +1,8 @@
 
 {{-- need for the editor login --}}
 <script src="{{ asset('vendor/Onix/js/app.js') }}"></script>
-{{-- need for the editor plugins  --}}
-<script src="{{ asset('vendor/Onix/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js') }}"></script>
+{{-- need for the editor standard plugins  --}}
+{{-- <script src="{{ asset('vendor/Onix/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js') }}"></script> --}}
 {{-- need for this package custom plugins --}}
 <script src="{{ asset('vendor/Onix/onixGrape/onix_grape_plugins.js') }}"></script>
 
@@ -26,12 +26,14 @@
             type: 'simple-storage',
             stepsBeforeSave: 3,
         },
-        plugins: ['gjs-preset-webpage', '{{ $plugin }}'], // define in here you plugins
-        pluginsOpts: {
-            'gjs-preset-webpage': {
-                // options
-            }
-        },
+        plugins: ['{{ $plugin }}'], // define in here you plugins
+        // old example loading the standart
+        // plugins: ['gjs-preset-webpage', '{{ $plugin }}'],
+        // pluginsOpts: {
+        //     'gjs-preset-webpage': {
+        //         // options
+        //     }
+        // },
         assetManager: {
             // Upload endpoint, set `false` to disable upload, default `false`
             upload: '{{ $imageSaveApi ?? '' }}',
@@ -120,7 +122,7 @@
     function saveContent() {
         // Save the Data
         editor.store();
-        alert("Page saved");
+        console.log('Page saved');
     }
     // Function that load the images
     function loadImages(url = '{{ $imageLoadApi ?? '' }}') {
@@ -131,6 +133,7 @@
         axios.get(url, {
         })
         .then(function (response) {
+            // Do a foreach in the object so we can add the urls of the files
             response.data.forEach(function(entry) {
                 am.add(entry);
             });
