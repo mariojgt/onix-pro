@@ -34,6 +34,7 @@
         //         // options
         //     }
         // },
+        // Load the iamge or any media type
         assetManager: {
             // Upload endpoint, set `false` to disable upload, default `false`
             upload: '{{ $imageSaveApi ?? '' }}',
@@ -46,10 +47,12 @@
         },
     });
 
+
+    // This script have a base logic that how we can save or load the content
     // Here our `simple-storage` implementation
     const SimpleStorage = {};
 
-    // varaible that you can pass in the laravel componente
+    // Variable that you can Pass in the laravel componente
     var saveUrl = "{{ $saveUrl ?? '/onix/save_post/4' }}";// the url you want to save note they come from the component
     var loadUrl = "{{ $loadUrl ?? '/onix/load_post/4' }}";// the url you want to load note they come from the component
 
@@ -118,18 +121,19 @@
         editor.load();
     }
 
-    // trigger the save content
+    // Trigger the save content
     function saveContent() {
         // Save the Data
         editor.store();
         console.log('Page saved');
     }
-    // Function that load the images
+
+    // Asset manager Function that load the images
     function loadImages(url = '{{ $imageLoadApi ?? '' }}') {
         // Get the Asset Manager module first
         const am = editor.AssetManager;
 
-        // do the axios request
+        // Do the axios request
         axios.get(url, {
         })
         .then(function (response) {
@@ -143,4 +147,8 @@
     }
     // call the image loader
     loadImages();
+
 </script>
+
+{{-- Import some need commands --}}
+<script src="{{ asset('vendor/Onix/onixGrape/onix_base_commands.js') }}"></script>
