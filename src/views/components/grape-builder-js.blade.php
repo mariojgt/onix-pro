@@ -153,6 +153,10 @@
         loadImages();
     });
 
+    // example to remove some theme styles
+    //const styleManager = editor.StyleManager;
+    //const property = styleManager.removeProperty('typography', 'font-family');
+
 </script>
 
 {{-- Import some need commands --}}
