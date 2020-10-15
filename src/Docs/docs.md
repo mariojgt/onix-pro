@@ -136,3 +136,37 @@ By default will create a folder named pages in the resources/view/pages, inside 
 OnixBuilder::savePageFile($contents, $fileName, $pathToSave)
 ```
 
+
+
+# Ck editor
+
+to use the ck editor you need the following, note that you can define the url where to upload the images imageUploadUrl is not required
+
+```php+HTML
+ <textarea id="editor" name="content">{{ $blog->content }}</textarea>
+{{-- you can you a push in the componente if need to stack your css or js --}}
+ <x-onix::ckeditor-builder-js imageUploadUrl="/blog/image/upload" />
+```
+
+### Simple example how you can upload the image in your php function
+
+```php
+public function imageUpload(Request $request)
+    {
+        // Path to move the file
+        $path = public_path('builder_images');
+
+        // CHeck if the path exist
+        if (!Storage::exists($path)) {
+            Storage::makeDirectory($path, 0775, true); //creates directory
+        }
+
+        // Upload the file with the original name
+        Request('upload')->move($path, Request('upload')->getClientOriginalName());
+		// you need to return like this other wise ckeditor will not be able to process your image
+        return response()->json([
+            'url' => url('builder_images'.'/'.Request('upload')->getClientOriginalName()),
+        ]);
+    }
+```
+
