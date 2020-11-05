@@ -44,7 +44,7 @@
             },
             // The name used in POST to pass uploaded files, default: `'files'`
             uploadName: 'files',
-        },
+        }
     });
 
 
@@ -156,7 +156,14 @@
     // example to remove some theme styles
     //const styleManager = editor.StyleManager;
     //const property = styleManager.removeProperty('typography', 'font-family');
-
+    const deviceManager = editor.DeviceManager;
+    deviceManager.add('desktop2', '70%', {
+    height: '50%',
+    // At first, GrapesJS tries to localize the name by device id.
+    // In case is not found, the `name` property is used (or `id` if name is missing)
+    name: 'Desktop 2',
+    widthMedia: '810px', // the width that will be used for the CSS media
+    });
 </script>
 
 {{-- Import some need commands --}}
