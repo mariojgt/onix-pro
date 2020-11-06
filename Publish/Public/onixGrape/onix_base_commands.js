@@ -44,6 +44,14 @@ commands.add('hide-canvas', {
         } else {
             canvas[0].style.display = "none";
         }
+
+        // hide the bar canvas
+        var canvas = document.getElementsByClassName("gjs-pn-views");
+        if (canvas[0].style.display === "none") {
+            canvas[0].style.display = "block";
+        } else {
+            canvas[0].style.display = "none";
+        }
     }
 });
 
@@ -71,12 +79,14 @@ pn.getPanels().reset([{
         command: swv,
         context: swv,
         className: 'fa fa-square',
-    }, {
-        id: prv,
-        context: prv,
-        command: e => e.runCommand(prv),
-        className: 'fa fa-eye',
-    }, {
+    }
+    // ,{
+    //     id: prv,
+    //     context: prv,
+    //     command: e => e.runCommand(prv),
+    //     className: 'fa fa-eye',
+    // }
+    , {
         id: ful,
         command: ful,
         context: ful,
@@ -102,7 +112,7 @@ pn.getPanels().reset([{
         className: 'fa fa-trash',
         command: e => e.runCommand(cmdClear),
     }, {
-        id: 'hide-canvas',
+        id: 'hide_canvas',
         className: 'fa fa-eye',
         command: e => e.runCommand('hide-canvas'),
     }],
