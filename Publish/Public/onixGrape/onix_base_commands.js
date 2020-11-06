@@ -20,7 +20,7 @@ const commands = editor.Commands;
 
 /////////////////////////// editor hide /////////////////////////////////////////////
 // function that hide the editor
-function hideEnableEditor() {
+function hideEnableEditor(hideOptions = false) {
     // hinde the block canvas
     var canvas = document.getElementsByClassName("gjs-pn-views-container");
     if (canvas[0].style.display === "none") {
@@ -52,21 +52,34 @@ function hideEnableEditor() {
     } else {
         canvas[0].style.display = "none";
     }
+    // if true will hide the hole editor usable for the dragn and drop
+    if (hideOptions) {
+        // hide the bar canvas
+        var canvas = document.getElementsByClassName("gjs-pn-options");
+        if (canvas[0].style.display === "none") {
+            canvas[0].style.display = "block";
+        } else {
+            canvas[0].style.display = "none";
+        }
+    }
 }
 
 // hide the editor function
 commands.add('hide-canvas', {
     run(editor, sender) {
+        // run the comand that enable or disable the ditor
         hideEnableEditor();
     }
 });
-// on drag start
+// on page drag start
 document.addEventListener("dragstart", function(event) {
-    hideEnableEditor();
+    // Enable disable the editor componete to be mroe visiable
+    hideEnableEditor(true);
 });
-// on drag end
+// on page drag end
 document.addEventListener("dragend", function(event) {
-    hideEnableEditor();
+    // Enable disable the editor componete to be mroe visiable
+    hideEnableEditor(true);
 });
 /////////////////////////// editor hide end /////////////////////////////////////////////
 
