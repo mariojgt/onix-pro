@@ -18,43 +18,57 @@ const eConfig = editor.getConfig();
 // comand
 const commands = editor.Commands;
 
-// hide the canvs bar
+/////////////////////////// editor hide /////////////////////////////////////////////
+// function that hide the editor
+function hideEnableEditor() {
+    // hinde the block canvas
+    var canvas = document.getElementsByClassName("gjs-pn-views-container");
+    if (canvas[0].style.display === "none") {
+        canvas[0].style.display = "block";
+    } else {
+        canvas[0].style.display = "none";
+    }
+
+    // hide the bar canvas
+    var canvas = document.getElementsByClassName("gjs-pn-commands");
+    if (canvas[0].style.display === "none") {
+        canvas[0].style.display = "block";
+    } else {
+        canvas[0].style.display = "none";
+    }
+
+    // hide the bar canvas
+    var canvas = document.getElementsByClassName("gjs-pn-devices-c");
+    if (canvas[0].style.display === "none") {
+        canvas[0].style.display = "block";
+    } else {
+        canvas[0].style.display = "none";
+    }
+
+    // hide the bar canvas
+    var canvas = document.getElementsByClassName("gjs-pn-views");
+    if (canvas[0].style.display === "none") {
+        canvas[0].style.display = "block";
+    } else {
+        canvas[0].style.display = "none";
+    }
+}
+
+// hide the editor function
 commands.add('hide-canvas', {
     run(editor, sender) {
-        // hinde the block canvas
-        var canvas = document.getElementsByClassName("gjs-pn-views-container");
-        if (canvas[0].style.display === "none") {
-            canvas[0].style.display = "block";
-        } else {
-            canvas[0].style.display = "none";
-        }
-
-        // hide the bar canvas
-        var canvas = document.getElementsByClassName("gjs-pn-commands");
-        if (canvas[0].style.display === "none") {
-            canvas[0].style.display = "block";
-        } else {
-            canvas[0].style.display = "none";
-        }
-
-        // hide the bar canvas
-        var canvas = document.getElementsByClassName("gjs-pn-devices-c");
-        if (canvas[0].style.display === "none") {
-            canvas[0].style.display = "block";
-        } else {
-            canvas[0].style.display = "none";
-        }
-
-        // hide the bar canvas
-        var canvas = document.getElementsByClassName("gjs-pn-views");
-        if (canvas[0].style.display === "none") {
-            canvas[0].style.display = "block";
-        } else {
-            canvas[0].style.display = "none";
-        }
+        hideEnableEditor();
     }
 });
-
+// on drag start
+document.addEventListener("dragstart", function(event) {
+    hideEnableEditor();
+});
+// on drag end
+document.addEventListener("dragend", function(event) {
+    hideEnableEditor();
+});
+/////////////////////////// editor hide end /////////////////////////////////////////////
 
 // Commands
 const crc = 'create-comp';
