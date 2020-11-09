@@ -74,5 +74,14 @@ a.float:hover + div.label-container{
   visibility: visible;
   opacity: 1;
 }
+
+.editor-bar-hide {
+    /* top: 96%;
+	right: 85%; */
+	right: 0%;
+	position: fixed;
+
+}
+
 /*  end css need for the floating icon */
 </style>

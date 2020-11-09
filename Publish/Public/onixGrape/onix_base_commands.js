@@ -29,7 +29,7 @@ function hideEnableEditor(hideOptions = false) {
         canvas[0].style.display = "none";
     }
 
-    // hide the bar canvas
+    // Hide the bar canvas
     var canvas = document.getElementsByClassName("gjs-pn-commands");
     if (canvas[0].style.display === "none") {
         canvas[0].style.display = "block";
@@ -37,7 +37,7 @@ function hideEnableEditor(hideOptions = false) {
         canvas[0].style.display = "none";
     }
 
-    // hide the bar canvas
+    // Hide the bar canvas
     var canvas = document.getElementsByClassName("gjs-pn-devices-c");
     if (canvas[0].style.display === "none") {
         canvas[0].style.display = "block";
@@ -45,13 +45,14 @@ function hideEnableEditor(hideOptions = false) {
         canvas[0].style.display = "none";
     }
 
-    // hide the bar canvas
+    // Hide the bar canvas
     var canvas = document.getElementsByClassName("gjs-pn-views");
     if (canvas[0].style.display === "none") {
         canvas[0].style.display = "block";
     } else {
         canvas[0].style.display = "none";
     }
+
     // if true will hide the hole editor usable for the dragn and drop
     if (hideOptions) {
         // hide the bar canvas
@@ -61,6 +62,14 @@ function hideEnableEditor(hideOptions = false) {
         } else {
             canvas[0].style.display = "none";
         }
+    }
+
+    // rearange the editor top bar
+    var canvas = document.getElementsByClassName("gjs-pn-options");
+    if (canvas[0].classList[4] === "editor-bar-hide") {
+        canvas[0].classList.remove("editor-bar-hide");
+    } else {
+        canvas[0].classList.add("editor-bar-hide");
     }
 }
 
