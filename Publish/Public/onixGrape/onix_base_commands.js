@@ -64,7 +64,7 @@ function hideEnableEditor(hideOptions = false) {
         }
     }
 
-    // rearange the editor top bar
+    // Rearange the editor top bar
     var canvas = document.getElementsByClassName("gjs-pn-options");
     if (canvas[0].classList[4] === "editor-bar-hide") {
         canvas[0].classList.remove("editor-bar-hide");
@@ -73,6 +73,22 @@ function hideEnableEditor(hideOptions = false) {
     }
 }
 
+// On click will collapse the block elements in page
+document.addEventListener('click', function (event) {
+
+	// If the clicked element doesn't have the right selector, bail
+	if (!event.target.matches('.fa-th-large')) return;
+
+	// Don't follow the link
+	event.preventDefault();
+
+    var canvas = document.getElementsByClassName("gjs-blocks-c");
+    for (const [key, value] of Object.entries(canvas)) {
+        value.style.display = "none";
+    }
+}, false);
+
+
 // hide the editor function
 commands.add('hide-canvas', {
     run(editor, sender) {
@@ -80,6 +96,7 @@ commands.add('hide-canvas', {
         hideEnableEditor();
     }
 });
+
 // on page drag start
 document.addEventListener("dragstart", function(event) {
     // Enable disable the editor componete to be mroe visiable
