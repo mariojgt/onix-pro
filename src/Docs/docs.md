@@ -16,25 +16,34 @@
 by default each 3 changes will save the page, below there is a example that how you can use the code, just one note you will need to publish the package before use.
 
 ```php+HTML
-<x-onix::grapeBuilder
-    pushLocationCss="css"
-    pushLocationJs="scripts"                      
-    {{-- not required --}}
-    imageLoadApi="{{ route('admin.page.builder.images') }}"
-    {{-- not required --}}
-    imageSaveApi="{{ route('page.builder.images.save') }}"
-    saveUrl="{{'/blog/category/save/'.$blogCategory->id}}"
-    loadUrl="{{'/blog/category/load/'.$blogCategory->id}}"
-	:plugin="'homePlugins'"
-    >
-    {{ this slot is not required but the defult will be uses }}	
-    <x-slot name="pluginJs">
-        <script src="{{ asset('vendor/Onix/onixGrape/homePlugins.js') }}"></script>                                   
-    </x-slot>
-    
-    {{-- set your style like boostrap or this case tailwind so the brower can render inside the componente --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-</x-onix::grapeBuilder>
+		<x-onix::grape-builder
+            {{-- required --}}
+            pushLocationCss="css"
+            {{-- required --}}
+            pushLocationJs="scripts"
+            {{-- not required --}}
+            imageLoadApi="{{ route('admin.page.builder.images') }}"
+            {{-- not required --}}
+            imageSaveApi="{{ route('admin.page.builder.images.save') }}"
+            {{-- not required this is the place where you will save and load you url--}}
+            saveUrl="{{ '/page/save/'.$page->id }}"
+            {{-- not required this is the place where you will save and load you url--}}
+            loadUrl="{{ '/page/load/'.$page->id }}"
+            {{-- chagne the backgour not required --}}
+            mainBackgroudColor="{{ $mainBackgroudColor }}"
+            {{-- change the editor text color not required --}}
+            textColor="{{ $textColor }}"
+            {{-- select you plugin for this page or leave the onix as default --}}
+            :plugin="'youpluginname'"
+        >
+            <x-slot name="pluginJs">
+                <script src="{{ asset('youpluginname.js') }}"></script>
+            </x-slot>
+            <div class="container" >
+                {{-- set you style in here in here this is jsut a exemple --}}
+                {{ <link href="'.asset('mycss.css').'" rel="stylesheet"/> }}
+            </div>
+        </x-onix::grape-builder>
 ```
 
 ### Some javascript functions that you can use.
@@ -74,40 +83,29 @@ The way it works is you first save in the database them you get that content and
 ```php
 use Mariojgt\Onix\Helpers\OnixBuilder;
 
-// This is a exempla that how you can load the html text
-public function builderLoad($id)
-    {
-        $blogCategory          = BlogCategory::find($id);
-        return response()->json([
-            'data' => $blog->content,
-        ]);
-    }
-
-// This is a exemple that how can save 
 public function builderSave(Request $request, $id)
     {
-	    $page          = Page::find($id);
-        $page->content = json_encode(Request('data'));
+        // Clear the assets because they are called in page load
+        $dataToSave = [
+            'gjs-html'       => Request('data')['gjs-html'],
+            'gjs-assets'     => null,
+            'gjs-components' => Request('data')['gjs-components'],
+            'gjs-css'        => Request('data')['gjs-css'],
+            'gjs-styles'     => Request('data')['gjs-styles'],
+        ];
+
+        // Find the page and save the content
+        $page          = Page::findOrFail($id);
+        $page->content = json_encode($dataToSave);
         $page->save();
-
-        // prepare to get the html
-        $contentToSave = (array)json_decode($page->content);
-        // Get the style
-        $contentStyleToSave = $contentToSave['gjs-css'];// Get the css
-        // Get the html
-        $contentToSave = $contentToSave['gjs-html'];// get the html
-	    // Get the page ready
-        $contents = "
-            <style>".$contentStyleToSave."</style>
-                ".$contentToSave."
-        ";
-
-        // path to save the file
+    	
+	    // this part is not required is just a example if oyu want to generate a fisical page
+        // Path to save the file
         $pathToSave = resource_path('views/pages/pages/');
-        // create the fileName
+
+        // Create the fileName we need the same file name to load this page
         $fileName   = $page->slug.'.blade.php';
-	    // Save the page into a file
-        OnixBuilder::savePageFile($contents, $fileName, $pathToSave);
+        OnixBuilder::savePageFile($dataToSave['gjs-html'], $fileName, $pathToSave);
 
         return response()->json([
             'meta'  => [
@@ -116,12 +114,63 @@ public function builderSave(Request $request, $id)
             ]
         ]);
     }
-// example how to load that view once saved
-public function builderPreview($id)
+// how to load the page
+public function builderLoad($id)
     {
-        $blog     = Blog::find($id);
-    	//where is pages you can replace to your path and you file name following laravel view struture
-        return view('pages.'.'onix_'.$blog->title);
+        $page = Page::find($id);
+
+        return response()->json([
+            'data' => json_decode($page->content),
+        ]);
+    }
+
+// how load upload images using the grapejs editor
+// Image api here
+    public function imagePageBuilderLoader()
+    {
+        // Path where to save the image
+        $path = public_path('builder_images');
+        // If dont exist create one
+        if(!File::exists($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+        // get all the folder from the path
+        $files = File::allFiles($path);
+
+        $dataReturn = [];
+        // Return array with the image paths
+        foreach ($files as $key => $value) {
+            $dataReturn[] = url('builder_images/'.$value->getFilename());
+        }
+
+        return $dataReturn;
+    }
+
+// example how to save the images using the grape editor not that i am using image intervention
+public function imagePageBuilderSaver(Request $request)
+    {
+        // Path to move the file
+        $path = public_path('builder_images');
+        // Get the files
+        foreach (Request('files') as $key => $file) {
+            // Prepare the image to convert to a webp
+            // Turn image into object and ensure orientation is reset
+            $img  = Image::make($file->getRealPath())
+            ->orientate();
+
+            // Resize image, with no upsizing, at the same aspect ratio
+            $img->resize(intval(1400), intval(2000), function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            // Prepare the file to get the raw file name
+            $fileRaw = $file->getClientOriginalName();
+            $filename = pathinfo($fileRaw, PATHINFO_FILENAME);
+            $img->save($path.'/'.$filename.'.webp');
+        }
+
+        return true;
     }
 ```
 
