@@ -175,7 +175,7 @@ public function imagePageBuilderSaver(Request $request)
     }
 ```
 
-# The function savePageFile
+# The function savePageFile this is not required is just a extra if you want to generate a fisical page.
 
 By default will create a folder named pages in the resources/view/pages, inside this folder you will files called onix_file.balde.php, you will need those to render the html.
 
