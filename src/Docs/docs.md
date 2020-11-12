@@ -37,6 +37,7 @@ by default each 3 changes will save the page, below there is a example that how 
             :plugin="'youpluginname'"
         >
             <x-slot name="pluginJs">
+	    <!-- path to your js plugin -->
                 <script src="{{ asset('youpluginname.js') }}"></script>
             </x-slot>
             <div class="container" >
