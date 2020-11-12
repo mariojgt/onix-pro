@@ -89,7 +89,7 @@ public function builderSave(Request $request, $id)
         // Clear the assets because they are called in page load
         $dataToSave = [
             'gjs-html'       => Request('data')['gjs-html'],
-            'gjs-assets'     => null,
+            'gjs-assets'     => null, // don't need to be null is sometime this asses messsup with some components in the page builder
             'gjs-components' => Request('data')['gjs-components'],
             'gjs-css'        => Request('data')['gjs-css'],
             'gjs-styles'     => Request('data')['gjs-styles'],
