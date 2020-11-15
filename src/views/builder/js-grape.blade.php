@@ -6,12 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    {{-- pushh the css need for this plugisn to work you may dont need this if you using stack --}}
-    <x-onix::builder-css
-        mainBackgroudColor="{{ $mainBackgroudColor ?? '#000000' }}"
-        textColor="{{ $textColor ?? '#ffffff' }}"
-    />
-
     {{-- font-awesome cdn not need for the builder--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/brands.min.css" integrity="sha512-D0B6cFS+efdzUE/4wh5XF5599DtW7Q1bZOjAYGBfC0Lg9WjcrqPXZto020btDyrlDUrfYKsmzFvgf/9AB8J0Jw==" crossorigin="anonymous" />
@@ -53,6 +47,8 @@
     </x-onix::grape-builder>
 
 </body>
+
+@stack('css')
 
 <script
     src="https://code.jquery.com/jquery-3.5.1.min.js"
