@@ -37,7 +37,6 @@ by default each 3 changes will save the page, below there is a example that how 
             :plugin="'youpluginname'"
         >
             <x-slot name="pluginJs">
-	    <!-- path to your js plugin -->
                 <script src="{{ asset('youpluginname.js') }}"></script>
             </x-slot>
             <div class="container" >
@@ -89,7 +88,7 @@ public function builderSave(Request $request, $id)
         // Clear the assets because they are called in page load
         $dataToSave = [
             'gjs-html'       => Request('data')['gjs-html'],
-            'gjs-assets'     => null, // don't need to be null is sometime this asses messsup with some components in the page builder
+            'gjs-assets'     => null,
             'gjs-components' => Request('data')['gjs-components'],
             'gjs-css'        => Request('data')['gjs-css'],
             'gjs-styles'     => Request('data')['gjs-styles'],
@@ -175,7 +174,7 @@ public function imagePageBuilderSaver(Request $request)
     }
 ```
 
-# The function savePageFile this is not required is just a extra if you want to generate a fisical page.
+# The function savePageFile
 
 By default will create a folder named pages in the resources/view/pages, inside this folder you will files called onix_file.balde.php, you will need those to render the html.
 
