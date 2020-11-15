@@ -3,3 +3,8 @@ A page builder for laravel, this package use https://grapesjs.com/ to build the 
 
 # Requirements
 You may need to install jquery in the page you loading the component because this package don't come with jquery in the mix file for performace reasons.
+
+# how install
+1:composer require mariojgt/onix
+2:php artisan vendor:publish
+3:acess onix/grape you should have the example page.
