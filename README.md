@@ -6,9 +6,9 @@ You may need to install jquery in the page you loading the component because thi
 
 # how install
 
-1:composer require mariojgt/onix
+1: composer require mariojgt/onix
 
-2:php artisan vendor:publish
+2: php artisan vendor:publish
 
-3:acess onix/grape you should have the example page.
+3: acess onix/grape you should have the example page.
 
