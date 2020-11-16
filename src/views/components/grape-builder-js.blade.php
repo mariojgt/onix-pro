@@ -3,12 +3,13 @@
 <script src="{{ asset('vendor/Onix/js/app.js') }}"></script>
 {{-- need for the editor standard plugins  --}}
 {{-- <script src="{{ asset('vendor/Onix/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js') }}"></script> --}}
+<script src="{{ asset('vendor/Onix/grapesjs-plugin-ckeditor/dist/grapesjs-plugin-ckeditor.min.js') }}"></script>
 {{-- need for this package custom plugins --}}
 <script src="{{ asset('vendor/Onix/onixGrape/onix_grape_plugins.js') }}"></script>
+<script src="{{ asset('vendor/Onix/ckeditor/ckeditor.js') }}"></script>
 
 {{-- the plugins will go here --}}
  {{ $slot }}
-
 {{-- in here we start the editor with our setup --}}
 <script>
 
@@ -26,7 +27,7 @@
             type: 'simple-storage',
             stepsBeforeSave: 3,
         },
-        plugins: ['{{ $plugin }}'], // define in here you plugins
+        plugins: ['{{ $plugin }}', 'gjs-plugin-ckeditor'], // define in here you plugins
         // old example loading the standart
         // plugins: ['gjs-preset-webpage', '{{ $plugin }}'],
         // pluginsOpts: {

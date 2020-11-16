@@ -83,5 +83,10 @@ a.float:hover + div.label-container{
 
 }
 
+.move-box {
+    right: 20%;
+	position: fixed;
+}
+
 /*  end css need for the floating icon */
 </style>
