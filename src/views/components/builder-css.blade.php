@@ -16,7 +16,9 @@
 }
 
 .gjs-cv-canvas {
+	margin-top : 40px;
 	width: calc(100vw - 16%);
+	height: calc(100vh - 40px);
 }
 
 /* css need for the floating icon */
