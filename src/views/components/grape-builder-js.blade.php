@@ -20,7 +20,7 @@
         // As an alternative we could use: `components: '<h1>Hello World Component!</h1>'`,
         fromElement: true,
         // Size of the editor
-        height: '1000px',
+        height: '100vh',
         width: 'auto',
         // Disable the storage manager for the moment
         storageManager: {
@@ -28,6 +28,13 @@
             stepsBeforeSave: 3,
         },
         plugins: ['{{ $plugin }}', 'gjs-plugin-ckeditor'], // define in here you plugins
+        pluginsOpts: {
+            'gjs-plugin-ckeditor': {
+                toolbar: [
+                    { name: 'styles', items: [ 'Styles', 'Format' ]},
+                ]
+            }
+        },
         // old example loading the standart
         // plugins: ['gjs-preset-webpage', '{{ $plugin }}'],
         // pluginsOpts: {

@@ -5,7 +5,7 @@
 
 <style>
 
-/* Primary color for the background */
+/* Primary color for the background *
 .gjs-one-bg {
   background-color: {{ $mainBackgroudColor ?? '#000000'}};
 }
@@ -13,6 +13,10 @@
 /* Secondary color for the text color */
 .gjs-two-color {
   color: {{ $textColor ?? '#ffffff' }};
+}
+
+.gjs-cv-canvas {
+	width: calc(100vw - 16%);
 }
 
 /* css need for the floating icon */
