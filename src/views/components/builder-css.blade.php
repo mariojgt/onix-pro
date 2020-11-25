@@ -5,6 +5,70 @@
 
 <style>
 
+  #onix-grape iframe.gjs-frame {
+    width: 85%;
+    top: 40px;
+    margin: 0;
+    padding: 20px 0;
+    background-color: white;
+  }
+
+  iframe.gjs-frame .gjs-dashed {
+   
+  }
+
+      #gjs-sm-padding-top,
+      #gjs-sm-margin-top {
+        position: relative;
+      }
+
+      #gjs-sm-padding-top::before,
+      #gjs-sm-margin-top::before {
+        position: absolute;
+        bottom: calc(100% + 0.5rem);
+        left: 0;
+        font-weight: bold;
+      }
+
+      #gjs-sm-padding-top::before {
+        content: "Padding";
+      }
+
+      #gjs-sm-margin-top::before {
+        content: "Margin";
+      }
+
+      #gjs-sm-padding-top,
+      #gjs-sm-padding-right,
+      #gjs-sm-margin-top,
+      #gjs-sm-margin-right {
+        background-color: rgba(0, 0, 0, 0.1);
+        margin-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+      }
+
+      #gjs-sm-padding-top,
+      #gjs-sm-padding-bottom,
+      #gjs-sm-margin-top,
+      #gjs-sm-margin-bottom {
+        border-left: 1px solid rgba(0, 0, 0, 0.25);
+      }
+
+      #gjs-sm-padding-right,
+      #gjs-sm-padding-left,
+      #gjs-sm-margin-right,
+      #gjs-sm-margin-left {
+        border-right: 1px solid rgba(0, 0, 0, 0.25);
+      }
+
+      #gjs-sm-padding-bottom,
+      #gjs-sm-padding-left,
+      #gjs-sm-margin-bottom,
+      #gjs-sm-margin-left {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+      }
+
 /* Primary color for the background */
 .gjs-one-bg {
   background-color: {{ $mainBackgroudColor ?? '#000000'}};
