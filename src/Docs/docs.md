@@ -35,6 +35,8 @@ by default each 3 changes will save the page, below there is a example that how 
             textColor="{{ $textColor }}"
             {{-- select you plugin for this page or leave the onix as default --}}
             :plugin="'youpluginname'"
+	    {{-- load the css path not required but recomended --}}
+            cssPath="{{ asset(config('builder.css_source')) }}"
         >
             <x-slot name="pluginJs">
                 <script src="{{ asset('youpluginname.js') }}"></script>
