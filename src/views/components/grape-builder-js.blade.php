@@ -10,6 +10,7 @@
 
 {{-- the plugins will go here --}}
  {{ $slot }}
+
 {{-- in here we start the editor with our setup --}}
 <script>
 
@@ -45,6 +46,12 @@
             },
             // The name used in POST to pass uploaded files, default: `'files'`
             uploadName: 'files',
+        },
+        // Load the page css
+        canvas: {
+          styles: [
+            "{{ $cssPath }}"
+          ]
         }
     });
 
@@ -140,6 +147,7 @@
         .then(function (response) {
             // Do a foreach in the object so we can add the urls of the files
             response.data.forEach(function(entry) {
+                am.remove(entry);
                 am.add(entry);
             });
         })

@@ -39,6 +39,7 @@
         plugin="{{ $plugin ?? 'onixPlugins' }}"
         imageLoadApi="{{ $imageLoadApi ?? '' }}"
         imageSaveApi="{{ $imageSaveApi ?? '' }}"
+        cssPath="{{ $cssPath ?? '' }}"
     >
     {{ $pluginJs ?? '' }}
     </x-onix::grape-builder-js>
@@ -50,6 +51,7 @@
             plugin="{{ $plugin ?? 'onixPlugins' }}"
             imageLoadApi="{{ $imageLoadApi ?? '' }}"
             imageSaveApi="{{ $imageSaveApi ?? '' }}"
+            cssPath="{{ $cssPath ?? '' }}"
         >
         {{ $pluginJs ?? '' }}
         </x-onix::grape-builder-js>
