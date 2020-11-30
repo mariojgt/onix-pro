@@ -37,13 +37,14 @@
     textColor="#ffffff"
     {{-- select you plugin for this page or leave the onix as default --}}
     {{-- :plugin="'yourplugin'" --}}
+    {{-- load the css path --}}
+    cssPath="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 >
     {{-- example plugin load --}}
     {{-- <x-slot name="pluginJs">
         <script src="{{ asset('yourplugin.js') }}"></script>
     </x-slot> --}}
-    {{-- Set your style like boostrap or this case tailwind so the brower can render inside the componente --}}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
     </x-onix::grape-builder>
 
 </body>
