@@ -4,11 +4,19 @@
 <link href="{{ asset('vendor/Onix/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.css') }}" rel="stylesheet">
 
 <style>
+  #onix-grape {
+    height: 100% !important;
+  }
+  #onix-grape .gjs-cv-canvas .gjs-rte-toolbar {
+    top: 40px !important;
+    left: 5% !important;
+    position: fixed;
+  }
   #onix-grape iframe.gjs-frame {
     width: 85%;
     top: 40px;
     margin-left: 0;
-    padding: 20px 0;
+    padding: 70px 0 20px 0;
     background-color: white;
   }
   iframe.gjs-frame .gjs-dashed {
