@@ -44,8 +44,7 @@
     {{-- <x-slot name="pluginJs">
         <script src="{{ asset('yourplugin.js') }}"></script>
     </x-slot> --}}
-    
-    </x-onix::grape-builder>
+</x-onix::grape-builder>
 
 </body>
 
