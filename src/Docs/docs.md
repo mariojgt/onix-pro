@@ -100,7 +100,7 @@ public function builderSave(Request $request, $id)
         $page          = Page::findOrFail($id);
         $page->content = json_encode($dataToSave);
         $page->save();
-    	
+
 	    // this part is not required is just a example if oyu want to generate a fisical page
         // Path to save the file
         $pathToSave = resource_path('views/pages/pages/');
@@ -194,7 +194,7 @@ OnixBuilder::savePageFile($contents, $fileName, $pathToSave)
 to use the ck editor you need the following, note that you can define the url where to upload the images imageUploadUrl is not required
 
 ```php+HTML
- <textarea id="editor" name="content">{{ $blog->content }}</textarea>
+ <textarea class="editor" name="content">{{ $blog->content }}</textarea>
 {{-- you can you a push in the componente if need to stack your css or js --}}
  <x-onix::ckeditor-builder-js imageUploadUrl="/blog/image/upload" />
 ```

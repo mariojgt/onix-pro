@@ -6,7 +6,7 @@
 <script>
 
     ClassicEditor
-    .create( document.querySelector( '#editor' ), {
+    .create( document.querySelector( '.editor' ), {
         extraPlugins: [ MyCustomUploadAdapterPlugin ],
         image: {
 			upload: {
