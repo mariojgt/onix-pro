@@ -7,5 +7,6 @@ require('./extra');
 
 window.grapesjs = require('grapesjs');
 
-window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
+window.ClassicEditor = require('ckeditor5-build-classic-with-codeblock');
 
+//window.CodeBlock = require('@ckeditor/ckeditor5-code-block/src/codeblock');
