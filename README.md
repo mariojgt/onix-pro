@@ -3,5 +3,7 @@ A page builder for laravel, this package use https://grapesjs.com/ to build the 
 
 # How to Install
 1: composer require mariojgt/onix
+
 2: php artisan vendor:publish
+
 3: acess onix/grape you should have the exemple page
