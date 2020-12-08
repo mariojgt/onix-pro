@@ -14,7 +14,7 @@ ClassicEditor
             'bulletedList',
             'numberedList',
             'fontColor',
-            'highlight',
+            //'highlight',
             'fontBackgroundColor',
             '|',
             'indent',
@@ -27,11 +27,11 @@ ClassicEditor
             'insertTable',
             'undo',
             'redo',
-            'htmlEmbed',
+            //'htmlEmbed',
             'code',
-            'codeBlock',
-            'exportPdf',
-            'exportWord'
+            //'codeBlock',
+            //'exportPdf',
+            //'exportWord'
         ]
     },
     language: 'en',
