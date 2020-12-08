@@ -1,47 +1,86 @@
+{{-- you can you a push in the componente if need to stack your css or js --}}
+<script src="{{ asset('vendor/Onix/ckeditor5/build/ckeditor.js') }}"></script>
 
-{{-- need for the editor login --}}
-<script src="{{ asset('vendor/Onix/js/app.js') }}"></script>
-
-{{-- in here we start the editor with our setup --}}
 <script>
+ClassicEditor
+.create(document.querySelector('.editor'), {
+    toolbar: {
+        items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            'fontColor',
+            'highlight',
+            'fontBackgroundColor',
+            '|',
+            'indent',
+            'outdent',
+            'alignment',
+            'todoList',
+            '|',
+            'imageUpload',
+            'blockQuote',
+            'insertTable',
+            'undo',
+            'redo',
+            'htmlEmbed',
+            'code',
+            'codeBlock',
+            'exportPdf',
+            'exportWord'
+        ]
+    },
+    language: 'en',
+    heading: {
+        options: [
+            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading2' },
+            { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading2' },
+            { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading2' },
+            { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading2' },
+        ]
+    },
+    extraPlugins: [ MyCustomUploadAdapterPlugin ],
+    image: {
+        toolbar: [
+            'imageTextAlternative',
+            'imageStyle:full',
+            'imageStyle:side'
+        ]
+    },
+    table: {
+        contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells'
+        ]
+    },
+    licenseKey: '',
 
-    ClassicEditor
-    .create( document.querySelector( '.editor' ), {
-        heading: {
-            options: [
-                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading2' },
-                { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading2' },
-                { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading2' },
-                { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading2' },
-            ]
-        },
-        extraPlugins: [ MyCustomUploadAdapterPlugin ],
-        image: {
-			upload: {
-                panel: {
-                    items: [
-                        'insertImageViaUrl',
-                    ]
-                }
-            },
-		}
-    } )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+})
+.then(editor => {
+    window.editor = editor;
+})
+.catch(error => {
+    console.error('Oops, something went wrong!');
+    console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+    console.warn('Build id: jdyav5limoss-nv2el4mqcvx6');
+    console.error(error);
+});
+
 
 class MyUploadAdapter {
     constructor( loader ) {
         // The file loader instance to use during the upload.
         this.loader       = loader;
     }
-     // Prepares the data and sends the request.
-     _sendRequest( file, resolve ) {
+    // Prepares the data and sends the request.
+    _sendRequest( file, resolve ) {
         // Prepare the form data.
         const data         = new FormData();
         data.append( 'upload', file );
