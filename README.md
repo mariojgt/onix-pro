@@ -1,5 +1,3 @@
-<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/dt/laravel/ui" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/v/laravel/ui" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/l/laravel/ui" alt="License"></a>
 
 
