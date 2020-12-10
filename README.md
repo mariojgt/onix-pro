@@ -1,4 +1,4 @@
-<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/l/laravel/ui" alt="License"></a>
+<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/badge/license-MIT-orange" alt="License"></a>
 
 
 # onix
