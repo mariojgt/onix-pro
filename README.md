@@ -1,5 +1,7 @@
-[![License](https://poser.pugx.org/simplesoftwareio/simple-qrcode/license.svg)](https://packagist.org/packages/mariojgt/onix)
-[![Total Downloads](https://poser.pugx.org/simplesoftwareio/simple-qrcode/downloads.svg)](https://packagist.org/packages/mariojgt/onix)
+<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/dt/laravel/ui" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/v/laravel/ui" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/packagist/l/laravel/ui" alt="License"></a>
+
 
 # onix
 A page builder for laravel, this package use https://grapesjs.com/ to build the pages and https://ckeditor.com/ to create like a blog post for example, all the js and css is already compiled using npm buy will still can import the files to you project and update you self, the grape page builder there is a ONIX plugins with some simple boostrap pages and a example that how you can load and save you data using the api request.
