@@ -22,13 +22,13 @@ by default each 3 changes will save the page, below there is a example that how 
             {{-- required --}}
             pushLocationJs="scripts"
             {{-- not required --}}
-            imageLoadApi="{{ route('admin.page.builder.images') }}"
+            imageLoadApi="{{ route('admin.page.builder.images') }}" // Route you goin to load you images GET Method Recomended
             {{-- not required --}}
-            imageSaveApi="{{ route('admin.page.builder.images.save') }}"
+            imageSaveApi="{{ route('admin.page.builder.images.save') }}" // Place where you goin to save you image POST Method
             {{-- not required this is the place where you will save and load you url--}}
-            saveUrl="{{ '/page/save/'.$page->id }}"
+            saveUrl="{{ '/page/save/'.$page->id }}" // Thil will send all the grape js data to route 
             {{-- not required this is the place where you will save and load you url--}}
-            loadUrl="{{ '/page/load/'.$page->id }}"
+            loadUrl="{{ '/page/load/'.$page->id }}" // This return the data to grape js but the data need to be in the example format
             {{-- chagne the backgour not required --}}
             mainBackgroudColor="{{ $mainBackgroudColor }}"
             {{-- change the editor text color not required --}}
@@ -191,7 +191,7 @@ OnixBuilder::savePageFile($contents, $fileName, $pathToSave)
 
 # Ck editor
 
-to use the ck editor you need the following, note that you can define the url where to upload the images imageUploadUrl is not required
+To use the ck editor you need the following, note that you can define the url where to upload the images imageUploadUrl is not required
 
 ```php+HTML
  <textarea class="editor" name="content">{{ $blog->content }}</textarea>

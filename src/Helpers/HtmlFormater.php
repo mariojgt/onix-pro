@@ -1,15 +1,16 @@
 <?php
+
 namespace Mariojgt\Onix\Helpers;
 
 class HtmlFormater
 {
-    private $input = '';
-    private $output = '';
-    private $tabs = 0;
-    private $in_tag = FALSE;
-    private $in_comment = FALSE;
-    private $in_content = FALSE;
-    private $inline_tag = FALSE;
+    private $input       = '';
+    private $output      = '';
+    private $tabs        = 0;
+    private $in_tag      = FALSE;
+    private $in_comment  = FALSE;
+    private $in_content  = FALSE;
+    private $inline_tag  = FALSE;
     private $input_index = 0;
 
     public function HTML($input)
@@ -35,12 +36,12 @@ class HtmlFormater
                 if (preg_match('/[\r\n\t]/', $this->input[$this->input_index])) {
                     continue;
                 } elseif ($this->input[$this->input_index] == '<') {
-                    if ( ! $this->is_inline_tag()) {
+                    if (!$this->is_inline_tag()) {
                         $this->in_content = FALSE;
                     }
                     $this->parse_tag();
-                } elseif ( ! $this->in_content) {
-                    if ( ! $this->inline_tag) {
+                } elseif (!$this->in_content) {
+                    if (!$this->inline_tag) {
                         $this->output .= "\n" . str_repeat("\t", $this->tabs);
                     }
                     $this->in_content = TRUE;
@@ -93,15 +94,15 @@ class HtmlFormater
             $this->in_tag = TRUE;
             $this->inline_tag = FALSE;
             $this->decrement_tabs();
-            if ( ! $this->is_inline_tag() AND ! $this->is_tag_empty()) {
+            if (!$this->is_inline_tag() and !$this->is_tag_empty()) {
                 $this->output .= "\n" . str_repeat("\t", $this->tabs);
             }
         } else {
             $this->in_tag = TRUE;
-            if ( ! $this->in_content AND ! $this->inline_tag) {
+            if (!$this->in_content and !$this->inline_tag) {
                 $this->output .= "\n" . str_repeat("\t", $this->tabs);
             }
-            if ( ! $this->is_closed_tag()) {
+            if (!$this->is_closed_tag()) {
                 $this->tabs++;
             }
             if ($this->is_inline_tag()) {
@@ -113,9 +114,9 @@ class HtmlFormater
     private function is_end_tag()
     {
         for ($input_index = $this->input_index; $input_index < strlen($this->input); $input_index++) {
-            if ($this->input[$input_index] == '<' AND $this->input[$input_index + 1] == '/') {
+            if ($this->input[$input_index] == '<' and $this->input[$input_index + 1] == '/') {
                 return true;
-            } elseif ($this->input[$input_index] == '<' AND $this->input[$input_index + 1] == '!') {
+            } elseif ($this->input[$input_index] == '<' and $this->input[$input_index + 1] == '!') {
                 return true;
             } elseif ($this->input[$input_index] == '>') {
                 return false;
@@ -134,10 +135,12 @@ class HtmlFormater
 
     private function is_comment()
     {
-        if ($this->input[$this->input_index] == '<'
-        AND $this->input[$this->input_index + 1] == '!'
-        AND $this->input[$this->input_index + 2] == '-'
-        AND $this->input[$this->input_index + 3] == '-') {
+        if (
+            $this->input[$this->input_index] == '<'
+            and $this->input[$this->input_index + 1] == '!'
+            and $this->input[$this->input_index + 2] == '-'
+            and $this->input[$this->input_index + 3] == '-'
+        ) {
             return true;
         } else {
             return false;
@@ -146,9 +149,11 @@ class HtmlFormater
 
     private function is_end_comment()
     {
-        if ($this->input[$this->input_index] == '-'
-        AND $this->input[$this->input_index + 1] == '-'
-        AND $this->input[$this->input_index + 2] == '>') {
+        if (
+            $this->input[$this->input_index] == '-'
+            and $this->input[$this->input_index + 1] == '-'
+            and $this->input[$this->input_index + 2] == '>'
+        ) {
             return TRUE;
         } else {
             return FALSE;
@@ -161,10 +166,10 @@ class HtmlFormater
         $in_tag = FALSE;
 
         for ($input_index = $this->input_index - 1; $input_index >= 0; $input_index--) {
-            if ( ! $in_tag) {
+            if (!$in_tag) {
                 if ($this->input[$input_index] == '>') {
                     $in_tag = TRUE;
-                } elseif ( ! preg_match('/\s/', $this->input[$input_index])) {
+                } elseif (!preg_match('/\s/', $this->input[$input_index])) {
                     return FALSE;
                 }
             } else {
@@ -187,7 +192,7 @@ class HtmlFormater
         for ($input_index; $input_index < strlen($this->input); $input_index++) {
             if ($this->input[$input_index] == '<') {
                 continue;
-            } elseif ($this->input[$input_index] == '>' OR preg_match('/\s/', $this->input[$input_index])) {
+            } elseif ($this->input[$input_index] == '>' or preg_match('/\s/', $this->input[$input_index])) {
                 return $current_tag;
             } else {
                 $current_tag .= $this->input[$input_index];
@@ -231,9 +236,9 @@ class HtmlFormater
         $current_tag = '';
 
         for ($input_index = $this->input_index; $input_index < strlen($this->input); $input_index++) {
-            if ($this->input[$input_index] == '<' OR $this->input[$input_index] == '/') {
+            if ($this->input[$input_index] == '<' or $this->input[$input_index] == '/') {
                 continue;
-            } elseif (preg_match('/\s/', $this->input[$input_index]) OR $this->input[$input_index] == '>') {
+            } elseif (preg_match('/\s/', $this->input[$input_index]) or $this->input[$input_index] == '>') {
                 break;
             } else {
                 $current_tag .= $this->input[$input_index];
