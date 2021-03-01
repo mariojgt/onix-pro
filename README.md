@@ -9,4 +9,4 @@ A page builder for laravel, this package use https://grapesjs.com/ to build the 
 
 2: php artisan vendor:publish
 
-3: acess onix/grape you should have the exemple page
+3: acess onix/grape you should have the page example
