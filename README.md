@@ -13,3 +13,6 @@ A page builder for laravel, this package use https://grapesjs.com/ to build the 
 
 # Note
 Note that on vendor publish this package will move the npm file across make sure to backup your project files first, you can disable this action in the OnixProvider under the publish.
+
+# Next update
+Next update will add support for tailwind.
