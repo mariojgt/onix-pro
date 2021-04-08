@@ -7,6 +7,7 @@
 .gjs-one-bg {
   background-color: {{ $mainBackgroudColor ?? '#000000'}};
 }
+
 /* Secondary color for the text color */
 .gjs-two-color {
   color: {{ $textColor ?? '#ffffff' }};
@@ -73,5 +74,26 @@ a.float:hover + div.label-container{
     right: 20%;
 	position: fixed;
 }
+
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #fff;
+}
+
+.svg-icon circle {
+  stroke: #fff;
+  stroke-width: 1;
+}
+
 /*  end css need for the floating icon */
 </style>

@@ -1,10 +1,12 @@
 
 {{-- need for the editor login --}}
 <script src="{{ asset('vendor/Onix/js/app.js') }}"></script>
-{{-- need for the editor standard plugins  --}}
+
+{{-- Need for the editor standard plugins  --}}
 {{-- <script src="{{ asset('vendor/Onix/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js') }}"></script> --}}
 <script src="{{ asset('vendor/Onix/grapesjs-plugin-ckeditor/dist/grapesjs-plugin-ckeditor.min.js') }}"></script>
-{{-- need for this package custom plugins --}}
+
+{{-- Need for this package custom plugins --}}
 <script src="{{ asset('vendor/Onix/onixGrape/onix_grape_plugins.js') }}"></script>
 <script src="{{ asset('vendor/Onix/ckeditor/ckeditor.js') }}"></script>
 
@@ -81,7 +83,7 @@
                 keys = response.data.data;
                 // create the contant that will hold the temp page
                 const result = {};
-                // do the loop and get the object content
+                // The loop and get the object content
                 for (const [key, value] of Object.entries(keys)) {
                     if (value) {
                         result[key] = value;
