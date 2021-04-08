@@ -10,3 +10,6 @@ A page builder for laravel, this package use https://grapesjs.com/ to build the 
 2: php artisan vendor:publish
 
 3: acess onix/grape you should have the page example
+
+# Note
+Note that on vendor publish this package will move the npm file across make sure to backup your project files first, you can disable this action in the OnixProvider under the publish.
