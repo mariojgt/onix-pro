@@ -21,8 +21,14 @@ mix.js('resources/vendor/Onix/js/vue.js', 'public/vendor/Onix/js')
     .sourceMaps()
     .version();
 
+/* Grape js stuff */
 // Onix Grape js preset
 mix.js('resources/vendor/Onix/js/grape/onixPreset.js', 'public/vendor/Onix/js')
+    .sourceMaps()
+    .version();
+
+// Grape js code editor source https://github.com/ju99ernaut/grapesjs-component-code-editor
+mix.js('resources/vendor/Onix/js/codeEditor/grapeCodeEditor.js', 'public/vendor/Onix/js')
     .sourceMaps()
     .version();
 
@@ -30,6 +36,8 @@ mix.js('resources/vendor/Onix/js/grape/onixPreset.js', 'public/vendor/Onix/js')
 mix.js('resources/vendor/Onix/js/grapeCore.js', 'public/vendor/Onix/js')
     .sourceMaps()
     .version();
+
+/* Grape js stuff */
 
 // Tailwind
 const tailwindcss = require('tailwindcss')
