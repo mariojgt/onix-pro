@@ -27,7 +27,6 @@ class OnixProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/views', 'onix');
         // Load onix routes
         $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
-        $this->loadRoutesFrom(__DIR__ . '/Routes/auth.php');
         // Load Migrations
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }

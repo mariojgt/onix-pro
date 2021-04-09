@@ -21,8 +21,18 @@ mix.js('resources/vendor/Onix/js/vue.js', 'public/vendor/Onix/js')
     .sourceMaps()
     .version();
 
-const tailwindcss = require('tailwindcss')
+// Onix Grape js preset
+mix.js('resources/vendor/Onix/js/grape/onixPreset.js', 'public/vendor/Onix/js')
+    .sourceMaps()
+    .version();
 
+// Grape js core js
+mix.js('resources/vendor/Onix/js/grapeCore.js', 'public/vendor/Onix/js')
+    .sourceMaps()
+    .version();
+
+// Tailwind
+const tailwindcss = require('tailwindcss')
 mix.sass('resources/vendor/Onix/sass/app.scss', 'public/vendor/Onix/css')
    .options({
       processCssUrls: false,
