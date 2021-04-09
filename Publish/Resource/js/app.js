@@ -1,8 +1,6 @@
 // Import vue  s
 import './extra';
 
-// Fontawesome
-//import '@fortawesome/fontawesome-free/js/all.js';
-
-// Components
-import './components/inputs';
+// Need to use outsite
+import 'grapesjs/dist/css/grapes.min.css';
+window.grapesjs = require("grapesjs");

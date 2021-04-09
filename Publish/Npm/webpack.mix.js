@@ -32,11 +32,6 @@ mix.js('resources/vendor/Onix/js/codeEditor/grapeCodeEditor.js', 'public/vendor/
     .sourceMaps()
     .version();
 
-// Grape js core js
-mix.js('resources/vendor/Onix/js/grapeCore.js', 'public/vendor/Onix/js')
-    .sourceMaps()
-    .version();
-
 /* Grape js stuff */
 
 // Tailwind

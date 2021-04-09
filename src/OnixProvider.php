@@ -59,8 +59,8 @@ class OnixProvider extends ServiceProvider
         ]);
 
         // Publish the public folder
-        $this->publishes([
-            __DIR__ . '/../Publish/Config/' => config_path('')
-        ]);
+        // $this->publishes([
+        //     __DIR__ . '/../Publish/Config/' => config_path('')
+        // ]);
     }
 }

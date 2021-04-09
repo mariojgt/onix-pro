@@ -29,4 +29,16 @@ class OnixContoller extends Controller
               ]
         ]);
     }
+
+    public function imageLoad()
+    {
+        return response()->json([
+            'image' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
+        ]);
+    }
+
+    public function imageSave(Request $request)
+    {
+        dd(Request()->all());
+    }
 }

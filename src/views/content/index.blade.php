@@ -5,43 +5,74 @@
     </div>
 
     @push('js')
-        {{-- You only need those 2 script to be able to run grapejs --}}
-        {{-- Call grape js --}}
-        <script src="{{ asset('vendor/Onix/js/grapeCore.js') }}"></script>
+        {{-- Call main scripts you need this because is using the axios request --}}
+        <script src="{{ asset('vendor/Onix/js/app.js') }}"></script>
         {{-- Call the Onix plugin preset --}}
         <script src="{{ asset('vendor/Onix/js/onixPreset.js') }}"></script>
         {{-- Call Grape js code ditor plugin --}}
         <script src="{{ asset('vendor/Onix/js/grapeCodeEditor.js') }}"></script>
 
         <script>
-            // From here bellow is not recommende to add in th builder process
-            // Because you may have some extra setup you need to change
-            // Load the main css if you have any
-            var cssPath = "{{ asset('vendor/Onix/css/app.css') }}";
 
+            /*
+                CORE SYSTEM VARIABLES START
+            */
+                // Load the main css if you have any
+                var cssPath             = "{{ asset('vendor/Onix/css/app.css') }}";
+                // URL Image load asset manager
+                var imageAssetUrlLoader = "{{ $assetUrl ?? route('onix.image.load') }}";
+                // URL Image save asset manager
+                var imageAssetUrlSave = "{{ $assetUrl ?? route('onix.image.save') }}";
+                // RUN THAT WILL SAVE THE PAGE DATA
+                var saveUrl = "{{ route('onix.save') }}";
+                // URL THAT WILL LOAD THE PAGE DATA
+                var loadUrl = "{{ route('onix.load') }}";
+            /*
+                CORE SYSTEM VARIABLES END
+            */
+
+            // Crsf token need to upload images
+            var csrf = '{{ csrf_token() }}';
+
+            // EDITOR START
             var editor = grapesjs.init({
                 container: '#gjs',
                 height: '1000px',
                 showOffsets: 1,
                 noticeOnUnload: 0,
                 fromElement: true,
-                // Disable the storage manager for the moment
+                // YOUR CUSTOM STORAGE
                 storageManager: {
                     type: 'onix-storage-manager',
                     stepsBeforeSave: 3,
                 },
+                // CUSTOM PLUGINS CAN BE ADDED IN HERE
                 plugins: ['onix-preset', 'code-editor'],
                 pluginsOpts: {
                     'onix-preset': {},
                 },
-                // Canvas where you can preload css
+                // CANVAS WHERE YOU CAN PRELOAD CSS
                 canvas: {
                     styles: [
                         cssPath
                     ]
-                }
+                },
+                // YOUR CUSTOM IMAGE UPLOADER
+                assetManager: {
+                    // IN HERE I AM PASSING THE END POINT THAT WILL HANDLE THE UPLOAD
+                    upload: imageAssetUrlSave,
+                    // CUSTOM HEADER FOR LARAVEL
+                    headers: {
+                        'X-CSRF-TOKEN': csrf
+                    },
+                    // NAME OF THE FILES UPLOADED
+                    uploadName: 'files',
+                },
             });
 
+            /*
+                PLUGINS NEED FOR THE CODE EDITOR START
+            */
             //  Required for the code editor to work
             const pn = editor.Panels;
             const panelViews = pn.addPanel({
@@ -56,18 +87,16 @@
                 togglable: false, //do not close when button is clicked again
                 id: 'open-code'
             }]);
-
+            /*
+                PLUGINS NEED FOR THE CODE EDITOR END
+            */
 
             /*
-                ONIX CUSTOM STORATE START IN HERE
+                ONIX CUSTOM STORAGE START IN HERE
             */
             // This script have a base logic that how we can save or load the content
             // Here our `simple-storage` implementation
             const SimpleStorage = {};
-
-            // Variable that you can Pass in the laravel componente
-            var saveUrl = "{{ route('onix.save') }}"; // the url you want to save note they come from the component
-            var loadUrl = "{{ route('onix.load') }}"; // the url you want to load note they come from the component
 
             // Custon grape onix storage
             editor.StorageManager.add('onix-storage-manager', {
@@ -125,11 +154,39 @@
             });
 
             /*
-                ONIX CUSTOM STORATE ENDS IN HERE
+                ONIX CUSTOM STORAGE ENDS IN HERE
             */
 
             /*
-                Onix custom functions
+                ONIX CUSTOM ASSTET MANAGER
+            */
+            // Asset manager Function that load the images
+            function loadImages(url = imageAssetUrlLoader) {
+                // Get the Asset Manager module first
+                const am = editor.AssetManager;
+                // Do the axios request
+                axios.get(url, {})
+                    .then(function(response) {
+                        for (const [key, value] of Object.entries(response.data)) {
+                            am.add(value);
+                        }
+                    })
+                    .catch(function(error) {})
+            }
+
+            // Load the files on start
+            loadImages();
+
+            // Once finish the uplaod fecth the files
+            editor.on('asset:upload:end', () => {
+                loadImages();
+            });
+            /*
+                ONIX CUSTOM ASSTER MANAGER END
+            */
+
+            /*
+                ONIX CUSTOM FUNCTIONS
             */
             // trigger the load url on start
 
@@ -143,11 +200,11 @@
                 function saveOnixContent() {
                     // Save the Data
                     editor.store();
-                    console.log('Page saved');
                 }
             /*
-                End onix custom functions
+                END ONIX CUSTOM FUNCTIONS
             */
         </script>
     @endpush
+
 </x-onix::layout.main>
