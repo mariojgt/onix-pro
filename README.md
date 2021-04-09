@@ -1,15 +1,74 @@
-<a href="https://packagist.org/packages/mariojgt/onix"><img src="https://img.shields.io/badge/license-MIT-orange" alt="License"></a>
+![image info](https://raw.githubusercontent.com/mariojgt/onix/master/Publish/Public/image/onix.png)
 
+# Onix
+This Laravel packages contain a very simple structure for any kind of packages development for Laravel.
 
-# onix
-A page builder for laravel, this package use https://grapesjs.com/ to build the pages and https://ckeditor.com/ to create like a blog post for example, all the js and css is already compiled using npm buy will still can import the files to you project and update you self, the grape page builder there is a ONIX plugins with some simple boostrap pages and a example that how you can load and save you data using the api request.
+# Features
 
-# How to Install
-1: composer require mariojgt/onix
+- [ ] Clean and basic start point in Laravel package development.
+- [ ] Webpack setup with tailwind css ,sweetalert2 and vue3 basic setup.
+- [ ] Simple out of the box Laravel Authentication.
+- [ ] Example Laravel components, and layout structure.
+- [ ] Tailwind with npm presetup for runing with packages.
+- [ ] Republish command
+- [ ] Reusable laravel layout
+- [ ] Dynamic form
+- [ ] Lightweight
+- [ ] Dark|light mode out of the box
 
-2: php artisan vendor:publish
+# Installation
 
-3: acess onix/grape you should have the page example
+You have 2 options.
 
-# Note
-Note that on vendor publish this package will move the npm file across make sure to backup your project files first, you can disable this action in the OnixProvider under the publish.
+### First option via composer
+
+1. composer require mariojgt/onix
+2. php artsain vendor:publish --force  (select the package number)
+
+### Second Option gitclone (Recommended if you like to change and make to your own)
+
+1. git clone https://github.com/mariojgt/onix
+
+2. Setup you composer to use local VCS
+
+3. ```javascript
+   "repositories": [
+           {
+               "type" : "path",
+               "url": "packages/onix", // Path to your local folder package
+               "options": {
+                   "symlink": true
+               }
+           }
+       ],
+       "require": {
+           "php": "^7.3|^8.0", //Example
+           "fideloper/proxy": "^4.4",//Example
+           "fruitcake/laravel-cors": "^2.0",//Example
+           "guzzlehttp/guzzle": "^7.0.1",//Example
+           "laravel/framework": "^8.12",//Example
+           "laravel/tinker": "^2.5",//Example
+           "mariojgt/onix": "@dev"// Here is where you add the package reference
+       },
+   ```
+
+4. php artsain vendor:publish --force  (select the package number)
+
+## Command Republish
+
+The following commands
+
+```php
+php artisan republish:onix
+```
+
+Will move you changes in your resources like the js or css back to the packages useful to speed up development.
+
+# Packages info
+
+This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package onix.
+# Easy way to install
+
+```php
+php artisan install:onix
+```

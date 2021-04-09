@@ -1,8 +1,0 @@
-.DS_Store
-private/
-img/
-js/
-node_modules/
-.eslintrc
-*.log
-_index.html

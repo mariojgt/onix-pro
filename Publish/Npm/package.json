@@ -24,9 +24,9 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
-        "feather-icons": "^4.28.0",
-        "grapesjs": "^0.16.22",
+        "sweetalert2": "^9.17.2",
         "tailwindcss": "^2.0.1",
-        "toastify-js": "^1.9.3"
+        "toastify-js": "^1.9.3",
+        "vue": "^3.0.5"
     }
 }

@@ -1,11 +1,8 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+// Import vue  s
+import './extra';
 
-require('./extra');
+// Fontawesome
+import '@fortawesome/fontawesome-free/js/all.js';
 
-window.grapesjs = require('grapesjs');
-
-
+// Components
+import './components/inputs';

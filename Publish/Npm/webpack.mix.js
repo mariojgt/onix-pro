@@ -10,14 +10,20 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+// Normal js files
+mix.js('resources/vendor/Onix/js/app.js', 'public/vendor/Onix/js')
+    .sourceMaps()
+    .version();
 
-mix.js('resources/vendor/Onix/js/app.js', 'public/vendor/Onix/js');
-
-mix.sass('resources/vendor/Onix/sass/app.scss', 'public/vendor/Onix/css');
+// Vue js example
+mix.js('resources/vendor/Onix/js/vue.js', 'public/vendor/Onix/js')
+    .vue({version: 3})
+    .sourceMaps()
+    .version();
 
 const tailwindcss = require('tailwindcss')
 
-mix.sass('resources/vendor/Onix/sass/tailwind.scss', 'public/vendor/Onix/css')
+mix.sass('resources/vendor/Onix/sass/app.scss', 'public/vendor/Onix/css')
    .options({
       processCssUrls: false,
       postCss: [ tailwindcss('tailwind.config.js') ],

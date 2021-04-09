@@ -1,26 +1,19 @@
 {
     "name": "mariojgt/onix",
-    "description": "A laravel page buidler out of the box",
+    "description": "A Laravel Package Onix, a quick start for new laravel Packages",
     "keywords": [
-        "laravel",
-        "grapejs",
-        "grape js",
-        "ck editor",
-        "laravel page builder",
-        "page builder",
-        "builder"
+        "laravel"
     ],
     "type": "laravel",
     "license": "MIT",
     "authors": [
         {
-            "name": "mariojgt",
+            "name": "mario",
             "email": "mariojgt2@gmail.com"
         }
     ],
     "require":{
-        "php": "^7.3|^8.0",
-        "laravel/framework": "^8.12"
+        "php": "^7.3|^8.0"
     },
     "autoload": {
         "psr-4": {

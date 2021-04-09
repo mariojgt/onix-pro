@@ -1,16 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Mariojgt\Onix\Controllers\PageBuilderController;
+use Mariojgt\Onix\Controllers\HomeContoller;
+use Mariojgt\Onix\Controllers\DashboardController;
+use Mariojgt\Onix\Controllers\Auth\LoginController;
 
-// Setup controller
+// Standard
 Route::group([
-    'prefix'     => '',
     'middleware' => ['web']
 ], function () {
-    //load the standad view for example only
-    Route::get('/onix/grape', [PageBuilderController::class , 'index'])->name('onix.grape');
-    Route::get('/onix/ckeditor', [PageBuilderController::class , 'ckEditor'])->name('onix.ckeditor');
-    Route::post('/onix/save_page_example/{id}', [PageBuilderController::class , 'save'])->name('onix.save_page_example');
-    Route::get('/onix/load_post_example/{id}', [PageBuilderController::class , 'load'])->name('onix.load_post_example');
+    // example page not required to be login
+    Route::get('/onix/grape', [HomeContoller::class, 'index'])->name('onix/grape');
 });
