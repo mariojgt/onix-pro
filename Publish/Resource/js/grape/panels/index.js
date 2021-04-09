@@ -5,7 +5,8 @@ import {
     cmdDeviceMobile,
     cmdClear,
     cmdCanvasSave,
-    cmdCanvasLoad
+    cmdCanvasLoad,
+    cmdAutoLoadBlock
 } from './../consts';
 
 export default (editor, config) => {
@@ -73,6 +74,10 @@ export default (editor, config) => {
                 id: cmdCanvasLoad,
                 className: 'fa fa-spinner',
                 command: e => e.runCommand(cmdCanvasLoad),
+            }, {
+                id: cmdAutoLoadBlock,
+                className: 'fa fa-cube',
+                command: e => e.runCommand(cmdAutoLoadBlock),
             }
         ],
     }, {

@@ -15,6 +15,8 @@ Route::group([
     Route::get('/onix/load', [OnixContoller::class, 'load'])->name('onix.load');
     // Load Image example
     Route::get('/onix/image/imageload', [OnixContoller::class, 'imageLoad'])->name('onix.image.load');
-    // Save iamge example
+    // Save Image example
     Route::post('/onix/image/imagesave', [OnixContoller::class, 'imageSave'])->name('onix.image.save');
+    // Example load component realtime from api
+    Route::get('/onix/component-load', [OnixContoller::class, 'autoLoadComponent'])->name('onix.component.load');
 });

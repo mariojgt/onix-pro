@@ -41,4 +41,42 @@ class OnixContoller extends Controller
     {
         dd(Request()->all());
     }
+
+    public function autoLoadComponent()
+    {
+        return response()->json([
+            'data' => [
+                'name'     => 'autoload01',
+                'category' => 'Autoload',
+                'content'  => '<div class="inline-block mr-2 mt-2">
+                    <button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-500 hover:bg-red-600 hover:shadow-lg">Auto load example 01</button>
+                </div>',
+            ],
+            [
+                'name'     => 'autoload02',
+                'category' => 'Autoload',
+                'content'  => '<!-- This is an example component -->
+                <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+                  <div class="relative py-3 sm:max-w-xl sm:mx-auto  flex flex-col">
+                    <div class="p-3 mx-auto">
+                      <a href="" class="text-2xl uppercase font-bold text-indigo-900 ">Onix is cool</a>
+                    </div>
+                    <div class="w-30 h-30 border rounded-3xl border-indigo-900 shadow">
+                      <img src="https://img.icons8.com/plasticine/200/000000/user-male.png" />
+                    </div>
+                    <div class="mt-2 mx-auto">
+                      <p class="font-mono uppercase text-indigo-700">I am a autoload example</p>
+                    </div>
+                  </div>
+                  <div class=" mx-auto">
+                   <i><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="48" height="48"
+                viewBox="0 0 172 172"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#3498db"><path d="M46.58333,46.58333c0,-11.825 9.675,-21.5 21.5,-21.5h35.83333c11.825,0 21.5,9.675 21.5,21.5h14.33333c0,-19.70833 -16.125,-35.83333 -35.83333,-35.83333h-35.83333c-19.70833,0 -35.83333,16.125 -35.83333,35.83333v40.13333h14.33333z"></path><path d="M16.48333,78.83333l22.93333,30.1l22.93333,-30.1z"></path><g><path d="M125.41667,125.41667c0,11.825 -9.675,21.5 -21.5,21.5h-35.83333c-11.825,0 -21.5,-9.675 -21.5,-21.5h-14.33333c0,19.70833 16.125,35.83333 35.83333,35.83333h35.83333c19.70833,0 35.83333,-16.125 35.83333,-35.83333v-43h-14.33333z"></path><path d="M109.65,93.16667l22.93333,-30.1l22.93333,30.1z"></path></g></g></g></svg></i>
+                    </div>
+                  </div>
+                </div>',
+            ],
+        ]);
+    }
 }

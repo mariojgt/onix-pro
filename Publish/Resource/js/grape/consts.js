@@ -5,4 +5,5 @@ export const
   cmdDeviceMobile  = 'set-device-mobile',
   cmdClear         = 'canvas-clear',
   cmdCanvasSave    = 'canvas-save',
-  cmdCanvasLoad    = 'canvas-load';
+  cmdCanvasLoad    = 'canvas-load',
+  cmdAutoLoadBlock = 'canvas-block-autoload';

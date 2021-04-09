@@ -114,13 +114,13 @@ window.grapesjs.plugins.add('onix-preset', (editor, opts = {}) => {
   } = config;
 
   // Load grape js standard plugins
-  blocksBasicOpts && pluginBlocks(editor, blocksBasicOpts);
-  navbarOpts && pluginNavbar(editor, navbarOpts);
-  countdownOpts && pluginCountdown(editor, countdownOpts);
-  formsOpts && pluginForms(editor, formsOpts);
-  exportOpts && pluginExport(editor, exportOpts);
-  aviaryOpts && pluginAviary(editor, aviaryOpts);
-  filestackOpts && pluginFilestack(editor, filestackOpts);
+//   blocksBasicOpts && pluginBlocks(editor, blocksBasicOpts);
+//   navbarOpts && pluginNavbar(editor, navbarOpts);
+//   countdownOpts && pluginCountdown(editor, countdownOpts);
+//   formsOpts && pluginForms(editor, formsOpts);
+//   exportOpts && pluginExport(editor, exportOpts);
+//   aviaryOpts && pluginAviary(editor, aviaryOpts);
+//   filestackOpts && pluginFilestack(editor, filestackOpts);
 
   // Load components
   components(editor, config);

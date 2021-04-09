@@ -1,6 +1,7 @@
 import openImport from './openImport';
 import saveCommand from './saveCommand';
 import loadCommand from './loadCommand';
+import autoloadComponents from './autoloadComponents';
 
 import {
   cmdImport,
@@ -9,7 +10,8 @@ import {
   cmdDeviceMobile,
   cmdClear,
   cmdCanvasSave,
-  cmdCanvasLoad
+  cmdCanvasLoad,
+  cmdAutoLoadBlock
 } from './../consts';
 
 export default (editor, config) => {
@@ -27,4 +29,5 @@ export default (editor, config) => {
   // Onix Custom commands
   cm.add(cmdCanvasSave, saveCommand(editor, config));
   cm.add(cmdCanvasLoad, loadCommand(editor, config));
+  cm.add(cmdAutoLoadBlock, autoloadComponents(editor, config));
 }
