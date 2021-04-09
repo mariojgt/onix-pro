@@ -1,67 +1,8 @@
 <x-onix::layout.main>
 
+    <div id="gjs">
 
-    <div id="gjs" style="height:0px; overflow:hidden">
-        <div class="panel">
-          <h1 class="welcome">Welcome to</h1>
-          <div class="big-title">
-            <svg class="logo" viewBox="0 0 100 100">
-              <path d="M40 5l-12.9 7.4 -12.9 7.4c-1.4 0.8-2.7 2.3-3.7 3.9 -0.9 1.6-1.5 3.5-1.5 5.1v14.9 14.9c0 1.7 0.6 3.5 1.5 5.1 0.9 1.6 2.2 3.1 3.7 3.9l12.9 7.4 12.9 7.4c1.4 0.8 3.3 1.2 5.2 1.2 1.9 0 3.8-0.4 5.2-1.2l12.9-7.4 12.9-7.4c1.4-0.8 2.7-2.2 3.7-3.9 0.9-1.6 1.5-3.5 1.5-5.1v-14.9 -12.7c0-4.6-3.8-6-6.8-4.2l-28 16.2"/>
-            </svg>
-            <span>GrapesJS</span>
-          </div>
-          <div class="description">
-            This is a demo content from index.html. For the development, you shouldn't edit this file, instead you can
-            copy and rename it to _index.html, on next server start the new file will be served, and it will be ignored by git.
-          </div>
-        </div>
-        <style>
-          .panel {
-            width: 90%;
-            max-width: 700px;
-            border-radius: 3px;
-            padding: 30px 20px;
-            margin: 150px auto 0px;
-            background-color: #d983a6;
-            box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.25);
-            color:rgba(255,255,255,0.75);
-            font: caption;
-            font-weight: 100;
-          }
-
-          .welcome {
-            text-align: center;
-            font-weight: 100;
-            margin: 0px;
-          }
-
-          .logo {
-            width: 70px;
-            height: 70px;
-            vertical-align: middle;
-          }
-
-          .logo path {
-            pointer-events: none;
-            fill: none;
-            stroke-linecap: round;
-            stroke-width: 7;
-            stroke: #fff
-          }
-
-          .big-title {
-            text-align: center;
-            font-size: 3.5rem;
-            margin: 15px 0;
-          }
-
-          .description {
-            text-align: justify;
-            font-size: 1rem;
-            line-height: 1.5rem;
-          }
-        </style>
-      </div>
+    </div>
 
     @push('js')
         {{-- You only need those 2 script to be able to run grapejs --}}
@@ -69,7 +10,14 @@
         <script src="{{ asset('vendor/Onix/js/grapeCore.js') }}"></script>
         {{-- Call the Onix plugin preset --}}
         <script src="{{ asset('vendor/Onix/js/onixPreset.js') }}"></script>
+        {{-- Call Grape js code ditor plugin --}}
+        <script src="{{ asset('vendor/Onix/js/grapeCodeEditor.js') }}"></script>
+
         <script>
+            // From here bellow is not recommende to add in th builder process
+            // Because you may have some extra setup you need to change
+            // Load the main css if you have any
+            var cssPath = "{{ asset('vendor/Onix/css/app.css') }}";
 
             var editor = grapesjs.init({
                 container: '#gjs',
@@ -77,13 +25,129 @@
                 showOffsets: 1,
                 noticeOnUnload: 0,
                 fromElement: true,
-                storageManager: { autoload: 0 },
-                plugins: ['onix-preset'],
+                // Disable the storage manager for the moment
+                storageManager: {
+                    type: 'onix-storage-manager',
+                    stepsBeforeSave: 3,
+                },
+                plugins: ['onix-preset', 'code-editor'],
                 pluginsOpts: {
-                'onix-preset': {}
+                    'onix-preset': {},
+                },
+                // Canvas where you can preload css
+                canvas: {
+                    styles: [
+                        cssPath
+                    ]
                 }
             });
 
+            //  Required for the code editor to work
+            const pn = editor.Panels;
+            const panelViews = pn.addPanel({
+                id: 'views'
+            });
+            panelViews.get('buttons').add([{
+                attributes: {
+                    title: 'Open Code'
+                },
+                className: 'fa fa-file-code-o',
+                command: 'open-code',
+                togglable: false, //do not close when button is clicked again
+                id: 'open-code'
+            }]);
+
+
+            /*
+                ONIX CUSTOM STORATE START IN HERE
+            */
+            // This script have a base logic that how we can save or load the content
+            // Here our `simple-storage` implementation
+            const SimpleStorage = {};
+
+            // Variable that you can Pass in the laravel componente
+            var saveUrl = "{{ route('onix.save') }}"; // the url you want to save note they come from the component
+            var loadUrl = "{{ route('onix.load') }}"; // the url you want to load note they come from the component
+
+            // Custon grape onix storage
+            editor.StorageManager.add('onix-storage-manager', {
+
+                /**
+                * Load the data
+                * @param  {Array} keys Array containing values to load, eg, ['gjs-components', 'gjs-style', ...]
+                * @param  {Function} clb Callback function to call when the load is ended
+                * @param  {Function} clbErr Callback function to call in case of errors
+                */
+                load(keys, clb, clbErr) {
+                    // load the data from the url you need
+                    axios.get(loadUrl, {
+                    })
+                    .then(function (response) {
+                        // Get the data
+                        keys = response.data.data;
+                        // create the contant that will hold the temp page
+                        const result = {};
+                        // The loop and get the object content
+                        for (const [key, value] of Object.entries(keys)) {
+                            if (value) {
+                                result[key] = value;
+                            }
+                        }
+                        // Might be called inside some async method
+                        // save the data
+                        clb(result);
+                    })
+                    .catch(function (error) {
+                    })
+                },
+
+                /**
+                * Store the data
+                * @param  {Object} data Data object to store
+                * @param  {Function} clb Callback function to call when the load is ended
+                * @param  {Function} clbErr Callback function to call in case of errors
+                */
+                store(data, clb, clbErr) {
+                    for (let key in data) {
+                        SimpleStorage[key] = data[key];
+                    }
+                    // Might be called inside some async method
+                    clb();
+                    // use axios to save the html data
+                    axios({
+                        method:'post',// method to save the data
+                        url: saveUrl,// the url you define in the component
+                        data: {
+                            data:data// the data you want to save
+                        }
+                    })
+                }
+            });
+
+            /*
+                ONIX CUSTOM STORATE ENDS IN HERE
+            */
+
+            /*
+                Onix custom functions
+            */
+            // trigger the load url on start
+
+                editor.load(res => console.log('Page Loaded'));
+                // load the content
+                function loadOnixContent() {
+                    // Load the data
+                    editor.load();
+                }
+                // Trigger the save content
+                function saveOnixContent() {
+                    // Save the Data
+                    editor.store();
+                    console.log('Page saved');
+                }
+            /*
+                End onix custom functions
+            */
         </script>
     @endpush
 </x-onix::layout.main>

@@ -7,6 +7,10 @@ use Mariojgt\Onix\Controllers\OnixContoller;
 Route::group([
     'middleware' => ['web']
 ], function () {
-    // Example page not required to be login
+    // Onix controller
     Route::get('/onix/grape', [OnixContoller::class, 'index'])->name('onix/grape');
+    // Save the data example
+    Route::post('/onix/save', [OnixContoller::class, 'store'])->name('onix.save');
+    // Load data Example
+    Route::get('/onix/load', [OnixContoller::class, 'load'])->name('onix.load');
 });
