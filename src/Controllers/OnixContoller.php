@@ -45,7 +45,7 @@ class OnixContoller extends Controller
     public function autoLoadComponent()
     {
         return response()->json([
-            'data' => [
+            'data' => [[
                 'name'     => 'autoload01',
                 'category' => 'Autoload',
                 'content'  => '<div class="inline-block mr-2 mt-2">
@@ -77,6 +77,7 @@ class OnixContoller extends Controller
                   </div>
                 </div>',
             ],
+        ]
         ]);
     }
 }

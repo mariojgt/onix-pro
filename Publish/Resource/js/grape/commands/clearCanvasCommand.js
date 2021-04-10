@@ -3,21 +3,21 @@ export default (editor, config) => {
       run(editor) {
         Swal.fire({
             title             : 'Are you sure?',
-            text              : "This action may take a while, depends how many components you have.",
+            text              : "You will lose all your data!",
             icon              : 'warning',
             showCancelButton  : true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor : '#d33',
-            confirmButtonText : 'Yes, no problem!'
+            confirmButtonText : 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                    'Components Loaded!',
-                    'Your data components has been loaded.',
+                    'Data Deleted!',
+                    'Your data has been deleted.',
                     'success'
                 );
-                // Call the loading command
-                autoloadBlocks();
+                // Call the clear canvas command
+                editor.runCommand('core:canvas-clear');
             }
         });
       }

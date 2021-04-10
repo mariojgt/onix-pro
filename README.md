@@ -1,74 +1,38 @@
-![image info](https://raw.githubusercontent.com/mariojgt/onix/master/Publish/Public/image/onix.png)
+# Onix v2
 
-# Onix
-This Laravel packages contain a very simple structure for any kind of packages development for Laravel.
+### Getting started
 
-# Features
-
-- [ ] Clean and basic start point in Laravel package development.
-- [ ] Webpack setup with tailwind css ,sweetalert2 and vue3 basic setup.
-- [ ] Simple out of the box Laravel Authentication.
-- [ ] Example Laravel components, and layout structure.
-- [ ] Tailwind with npm presetup for runing with packages.
-- [ ] Republish command
-- [ ] Reusable laravel layout
-- [ ] Dynamic form
-- [ ] Lightweight
-- [ ] Dark|light mode out of the box
-
-# Installation
-
-You have 2 options.
-
-### First option via composer
+To install the package do the following.
 
 1. composer require mariojgt/onix
-2. php artsain vendor:publish --force  (select the package number)
+2. php artisan v:p  --force
+3. select the onixProvider and publish all the required assets
 
-### Second Option gitclone (Recommended if you like to change and make to your own)
+Notes: This package on publish will move across webpack, tailwind and package.json so make sure to backup your project files.
 
-1. git clone https://github.com/mariojgt/onix
+# Demo
 
-2. Setup you composer to use local VCS
+After the setup you can access the demo page on /onix/grape and you should be able to see the package demo.
 
-3. ```javascript
-   "repositories": [
-           {
-               "type" : "path",
-               "url": "packages/onix", // Path to your local folder package
-               "options": {
-                   "symlink": true
-               }
-           }
-       ],
-       "require": {
-           "php": "^7.3|^8.0", //Example
-           "fideloper/proxy": "^4.4",//Example
-           "fruitcake/laravel-cors": "^2.0",//Example
-           "guzzlehttp/guzzle": "^7.0.1",//Example
-           "laravel/framework": "^8.12",//Example
-           "laravel/tinker": "^2.5",//Example
-           "mariojgt/onix": "@dev"// Here is where you add the package reference
-       },
-   ```
+## How to use the pagebuilder
 
-4. php artsain vendor:publish --force  (select the package number)
+To use the builder you need to add the following in you blade file i recommend to use a blank blade file.
 
-## Command Republish
-
-The following commands
-
-```php
-php artisan republish:onix
+```html
+<x-onix::onix.main
+    cssPath="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" // Not Required
+    imageAssetUrlLoader="{{ route('onix.image.load') }}" // Not Required
+    imageAssetUrlSave="{{ route('onix.image.save') }}" // Not Required
+    saveUrl="{{ route('onix.save') }}" // Not Required
+    loadUrl="{{ route('onix.load') }}" // Not Required
+    autoLoadingUrl="{{ route('onix.component.load') }}" // Not Required
+/>
 ```
 
-Will move you changes in your resources like the js or css back to the packages useful to speed up development.
+1. css Path you can add you own css for example bootstrap or tailwind css by default onix use tailwind
+2. imageAssetUrlLoader route you can load the images
+3. imageAssetUrlSave route where you can upload images and save in the database
+4. saveUrl url where you want to save your url
+5. loadUrl exemple to load the pagebuilder
+6. autoLoadingUrl this is where you can autoload components from Api request
 
-# Packages info
-
-This package purpose is to give a fresh start for a new package so you can use those premade tools or just delete and use the package onix.
-# Easy way to install
-
-```php
-php artisan install:onix
-```

@@ -168,7 +168,7 @@
                 // Do the axios request
                 axios.get(url, {})
                     .then(function(response) {
-                        for (const [key, value] of Object.entries(response.data)) {
+                        for (const [key, value] of Object.entries(response.data.data)) {
                             am.add(value);
                         }
                     })
@@ -217,13 +217,13 @@
                 // The api request to get the new blocks
                 axios.get(autoLoadingUrl, {})
                 .then(function (response) {
-                    for (const [key, value] of Object.entries(response.data)) {
+                    for (const [key, value] of Object.entries(response.data.data)) {
                         // 'my-first-block' is the ID of the block
                         blockManager.add(value.name, {
-                            label: value.name,
-                            category: value.category,
+                            label     : value.name,
+                            category  : value.category,
                             attributes: { class: 'fa fa-link' },
-                            content: value.content,
+                            content   : value.content,
                         });
                     }
                 })
@@ -236,6 +236,7 @@
             */
 
         </script>
+
     @endpush
 
 </x-onix::layout.main>
