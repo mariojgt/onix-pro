@@ -1,8 +1,14 @@
 {
     "name": "mariojgt/onix",
-    "description": "A Laravel Package Onix, a quick start for new laravel Packages",
+    "description": "A laravel page buidler out of the box",
     "keywords": [
-        "laravel"
+        "laravel",
+        "grapejs",
+        "grape js",
+        "ck editor",
+        "laravel page builder",
+        "page builder",
+        "builder"
     ],
     "type": "laravel",
     "license": "MIT",
