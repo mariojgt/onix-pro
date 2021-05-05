@@ -14,11 +14,13 @@ class OnixContoller extends Controller
 
     public function store(Request $request)
     {
+        // Example how to save data
         dd(Request('data'));
     }
 
     public function load()
     {
+        // Example loading data
         return response()->json([
             "data" => [
                 "gjs-html"       => "<section class=\"min-h-screen flex items-center justify-center px-4 bg-white\"><div class=\"max-w-xl w-full rounded-lg shadow-lg p-4 flex md:flex-row flex-col\"><div class=\"flex-1\"><h3 class=\"font-semibold text-lg tracking-wide\">Hi there i am a server request loading.<\/h3><p class=\"text-gray-500 my-1\">\n The link will be available for 24 hours. Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nesciunt, sequi!\n <\/p><\/div><div class=\"md:px-2 mt-3 md:mt-0 items-center flex\"><button type=\"button\" class=\"bg-blue-500 text-white font-bold px-4 py-2 text-sm uppercase rounded tracking-wider focus:outline-none hover:bg-blue-600\"> Onix v2 Rocks<\/button><\/div><\/div><\/section>",
@@ -32,6 +34,7 @@ class OnixContoller extends Controller
 
     public function imageLoad()
     {
+        // Example image loading
         return response()->json([
             'image' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
         ]);
@@ -39,11 +42,13 @@ class OnixContoller extends Controller
 
     public function imageSave(Request $request)
     {
+        // Example image saving
         dd(Request()->all());
     }
 
     public function autoLoadComponent()
     {
+        // Example component loading
         return response()->json([
             'data' => [[
                 'name'     => 'autoload01',

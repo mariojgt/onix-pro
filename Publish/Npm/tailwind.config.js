@@ -1,15 +1,15 @@
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-    darkMode: 'class',
+    darkMode: "class",
     purge: [],
     theme: {
-      extend: {},
+        extend: {},
     },
     variants: {
         extend: {
-          textOpacity: ['dark']
-        }
+            textOpacity: ["dark"],
+        },
     },
     plugins: [],
-  }
+};
