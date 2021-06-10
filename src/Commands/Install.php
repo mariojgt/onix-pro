@@ -40,7 +40,7 @@ class Install extends Command
     {
         // Copy the need file to make the onix pacakge to run
         Artisan::call('vendor:publish', [
-            '--provider' => 'Mariojgt\Onix\SkeletonProvider',
+            '--provider' => 'Mariojgt\Onix\OnixProvider',
             '--force'    => true
         ]);
 
