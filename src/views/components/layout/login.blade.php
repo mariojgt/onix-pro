@@ -11,7 +11,7 @@
 <body>
     <div id="app" class="min-w-screen min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center px-5 py-5" >
         @if (Auth::check())
-            <x-onix::layout.navbar />
+            {{-- <x-onix::layout.navbar /> --}}
         @endif
         <div class="w-full mx-auto md:w-full md:max-w-md">
             <x-onix::layout.flash />
