@@ -2,8 +2,8 @@
 
 namespace Mariojgt\Onix\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class OnixContoller extends Controller
 {
@@ -27,37 +27,37 @@ class OnixContoller extends Controller
     }
 
     /**
-     * This is a example how you can load the grape js data from a server node i am seing as a json
+     * This is a example how you can load the grape js data from a server node i am seing as a json.
      *
      * @return [json]
      */
     public function load()
     {
         return response()->json([
-            "data" => [
-                "gjs-html"       => "<section class=\"min-h-screen flex items-center justify-center px-4 bg-white\"><div class=\"max-w-xl w-full rounded-lg shadow-lg p-4 flex md:flex-row flex-col\"><div class=\"flex-1\"><h3 class=\"font-semibold text-lg tracking-wide\">Hi there i am a get or post request that can be loading from a api.<\/h3><p class=\"text-gray-500 my-1\">\n The link will be available for 24 hours. Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nesciunt, sequi!\n <\/p><\/div><div class=\"md:px-2 mt-3 md:mt-0 items-center flex\"><button type=\"button\" class=\"bg-green-500 text-white font-bold px-4 py-2 text-sm uppercase rounded tracking-wider focus:outline-none hover:bg-blue-600\"> Onix v2 Rocks<\/button><\/div><\/div><\/section>",
-                "gjs-components" => "[{\"tagName\":\"section\",\"classes\":[\"min-h-screen\",\"flex\",\"items-center\",\"justify-center\",\"px-4\",\"bg-white\"],\"components\":[{\"classes\":[\"max-w-xl\",\"w-full\",\"rounded-lg\",\"shadow-lg\",\"p-4\",\"flex\",\"md:flex-row\",\"flex-col\"],\"components\":[{\"classes\":[\"flex-1\"],\"components\":[{\"tagName\":\"h3\",\"type\":\"text\",\"classes\":[\"font-semibold\",\"text-lg\",\"tracking-wide\"],\"components\":[{\"type\":\"textnode\",\"removable\":false,\"draggable\":false,\"highlightable\":0,\"copyable\":false,\"content\":\"Hi there i am a get or post request that can be loading from a api.\",\"_innertext\":false}]},{\"tagName\":\"p\",\"type\":\"text\",\"classes\":[\"text-gray-500\",\"my-1\"],\"components\":[{\"type\":\"textnode\",\"content\":\"\\n The link will be available for 24 hours. Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nesciunt, sequi!\\n \"}]}]},{\"classes\":[\"md:px-2\",\"mt-3\",\"md:mt-0\",\"items-center\",\"flex\"],\"components\":[{\"type\":\"button\",\"classes\":[\"bg-green-500\",\"text-white\",\"font-bold\",\"px-4\",\"py-2\",\"text-sm\",\"uppercase\",\"rounded\",\"tracking-wider\",\"focus:outline-none\",\"hover:bg-blue-600\"],\"attributes\":{\"type\":\"button\"},\"text\":\" Onix v2 Rocks\",\"components\":[{\"type\":\"textnode\",\"content\":\" Onix v2 Rocks\"}]}]}]}]}]",
-                "gjs-assets"     => "[]",
-                "gjs-css"        => "* { box-sizing: border-box; } body {margin: 0;}",
-                "gjs-styles"     => "[]"
-              ]
+            'data' => [
+                'gjs-html'       => "<section class=\"min-h-screen flex items-center justify-center px-4 bg-white\"><div class=\"max-w-xl w-full rounded-lg shadow-lg p-4 flex md:flex-row flex-col\"><div class=\"flex-1\"><h3 class=\"font-semibold text-lg tracking-wide\">Hi there i am a get or post request that can be loading from a api.<\/h3><p class=\"text-gray-500 my-1\">\n The link will be available for 24 hours. Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nesciunt, sequi!\n <\/p><\/div><div class=\"md:px-2 mt-3 md:mt-0 items-center flex\"><button type=\"button\" class=\"bg-green-500 text-white font-bold px-4 py-2 text-sm uppercase rounded tracking-wider focus:outline-none hover:bg-blue-600\"> Onix v2 Rocks<\/button><\/div><\/div><\/section>",
+                'gjs-components' => '[{"tagName":"section","classes":["min-h-screen","flex","items-center","justify-center","px-4","bg-white"],"components":[{"classes":["max-w-xl","w-full","rounded-lg","shadow-lg","p-4","flex","md:flex-row","flex-col"],"components":[{"classes":["flex-1"],"components":[{"tagName":"h3","type":"text","classes":["font-semibold","text-lg","tracking-wide"],"components":[{"type":"textnode","removable":false,"draggable":false,"highlightable":0,"copyable":false,"content":"Hi there i am a get or post request that can be loading from a api.","_innertext":false}]},{"tagName":"p","type":"text","classes":["text-gray-500","my-1"],"components":[{"type":"textnode","content":"\\n The link will be available for 24 hours. Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nesciunt, sequi!\\n "}]}]},{"classes":["md:px-2","mt-3","md:mt-0","items-center","flex"],"components":[{"type":"button","classes":["bg-green-500","text-white","font-bold","px-4","py-2","text-sm","uppercase","rounded","tracking-wider","focus:outline-none","hover:bg-blue-600"],"attributes":{"type":"button"},"text":" Onix v2 Rocks","components":[{"type":"textnode","content":" Onix v2 Rocks"}]}]}]}]}]',
+                'gjs-assets'     => '[]',
+                'gjs-css'        => '* { box-sizing: border-box; } body {margin: 0;}',
+                'gjs-styles'     => '[]',
+            ],
         ]);
     }
 
     /**
-     * Example image loading
+     * Example image loading.
      *
      * @return [json]
      */
     public function imageLoad()
     {
         return response()->json([
-            'image' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'
+            'image' => 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
         ]);
     }
 
     /**
-     * Example image saving from grape js to you media library
+     * Example image saving from grape js to you media library.
      *
      * @param Request $request
      *
@@ -70,7 +70,7 @@ class OnixContoller extends Controller
 
     /**
      * Example component loading, for example you can save pre made components for diferent pages and load them
-     * Like this
+     * Like this.
      *
      * @return [json]
      */
@@ -85,10 +85,10 @@ class OnixContoller extends Controller
                     <button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-500 hover:bg-red-600 hover:shadow-lg">Auto load example 01</button>
                 </div>',
             ],
-            [
-                'name'     => 'autoload02',
-                'category' => 'Autoload',
-                'content'  => '<!-- This is an example component -->
+                [
+                    'name'     => 'autoload02',
+                    'category' => 'Autoload',
+                    'content'  => '<!-- This is an example component -->
                 <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
                   <div class="relative py-3 sm:max-w-xl sm:mx-auto  flex flex-col">
                     <div class="p-3 mx-auto">
@@ -109,8 +109,8 @@ class OnixContoller extends Controller
                     </div>
                   </div>
                 </div>',
+                ],
             ],
-        ]
         ]);
     }
 }

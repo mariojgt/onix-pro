@@ -2,8 +2,8 @@
 
 namespace Mariojgt\Onix\Commands;
 
-use Illuminate\Console\Command;
 use Artisan;
+use Illuminate\Console\Command;
 
 class Install extends Command
 {
@@ -41,7 +41,7 @@ class Install extends Command
         // Copy the need file to make the onix pacakge to run
         Artisan::call('vendor:publish', [
             '--provider' => 'Mariojgt\Onix\OnixProvider',
-            '--force'    => true
+            '--force'    => true,
         ]);
 
         // Migrate

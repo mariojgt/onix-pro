@@ -3,7 +3,6 @@
 return [
     'demo_enable'         => true,   // If true users can see the demo
 
-
     /********************************************************************/
     // In here is where we load the javascript file compiled using webpack
     // The reason why is because you can complile you owm version so you can reference those files in here
