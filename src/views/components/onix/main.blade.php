@@ -5,16 +5,20 @@
     </div>
 
     @push('js')
-        {{-- Call main scripts you need this because is using the axios request --}}
-        <script src="{{ asset('vendor/Onix/js/app.js') }}"></script>
-        {{-- Call the Onix plugin preset --}}
-        <script src="{{ asset('vendor/Onix/js/onixPreset.js') }}"></script>
-        {{-- Call Grape js code ditor plugin --}}
-        <script src="{{ asset('vendor/Onix/js/grapeCodeEditor.js') }}"></script>
+    {{-- Note those files are requires they are the result of the webpack output files --}}
+    {{-- YOU CAN CHANGE THOSE FILES IN THE ONIX CONFIG --}}
 
-        <script>
+    {{-- Call main scripts you need this because is using the axios request --}}
+    <script src="{{ config('onix.onix_app_js') }}"></script>
+    {{-- Call the Onix plugin preset --}}
+    <script src="{{ config('onix.onix_onix_preset_js') }}"></script>
+    {{-- Call Grape js code ditor plugin --}}
+    <script src="{{ config('onix.grape_code_editor') }}"></script>
+
+    <script>
             /*
                 CORE SYSTEM VARIABLES START
+                MORE INFORMATION HOW THIS WORK CHECK THE Resource/vendor/onix/js
             */
                 // Load the main css if you have any
                 var cssPath             = "{{ $cssPath ?? asset('vendor/Onix/css/app.css') }}";
@@ -75,10 +79,11 @@
                 PLUGINS NEED FOR THE CODE EDITOR START
             */
             //  Required for the code editor to work
-            const pn = editor.Panels;
+            const pn         = editor.Panels;
             const panelViews = pn.addPanel({
                 id: 'views'
             });
+
             panelViews.get('buttons').add([{
                 attributes: {
                     title: 'Open Code'
@@ -222,7 +227,7 @@
                         blockManager.add(value.name, {
                             label     : value.name,
                             category  : value.category,
-                            attributes: { class: 'fa fa-link' },
+                            attributes: { class: 'fa fa-link' }, // You can assing a icon to the block
                             content   : value.content,
                         });
                     }
@@ -235,7 +240,7 @@
                 AUTOBLOCK LOADING END
             */
 
-        </script>
+    </script>
 
     @endpush
 

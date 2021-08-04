@@ -1,4 +1,4 @@
-// Import vue  s
+// Import some lib they are not required but is what i use to display messages and etc
 import './extra';
 
 // Need to use outsite

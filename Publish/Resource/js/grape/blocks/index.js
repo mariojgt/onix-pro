@@ -1,12 +1,13 @@
+// Example how you can load you blocks
 export default (editor, config) => {
-  const bm = editor.BlockManager;
-  //const toAdd = name => config.blocks.indexOf(name) >= 0;
+    const bm = editor.BlockManager;
+    //const toAdd = name => config.blocks.indexOf(name) >= 0;
 
-  bm.add('landing-page-v2').set({
-    label     : 'landing-page-v2',
-    category  : 'Tailwind',
-    attributes: { class: 'fa fa-cubes' },
-    content: `
+    bm.add("landing-page-v2").set({
+        label: "landing-page-v2",
+        category: "Tailwind",
+        attributes: { class: "fa fa-cubes" },
+        content: `
         <section class="bg-black ">
             <div class="container px-5 py-12 mx-auto lg:px-20">
                 <div class="flex flex-col flex-wrap pb-6 mb-12 text-white ">
@@ -246,14 +247,13 @@ export default (editor, config) => {
             </div>
         </section>
     `,
-  });
+    });
 
-
-  bm.add('blog-page').set({
-    label     : 'blog-page',
-    category  : 'Tailwind',
-    attributes: { class: 'fa fa-cubes' },
-    content: `
+    bm.add("blog-page").set({
+        label: "blog-page",
+        category: "Tailwind",
+        attributes: { class: "fa fa-cubes" },
+        content: `
         <div class="max-w-screen-lg mx-auto">
         <!-- header -->
         <header class="flex items-center justify-between py-2">
@@ -542,13 +542,13 @@ export default (editor, config) => {
         </footer>
     </div>
     `,
-  });
+    });
 
-  bm.add('footer').set({
-    label     : 'footer',
-    category  : 'Tailwind',
-    attributes: { class: 'fa fa-cubes' },
-    content: `
+    bm.add("footer").set({
+        label: "footer",
+        category: "Tailwind",
+        attributes: { class: "fa fa-cubes" },
+        content: `
         <footer class="bg-gray-800 pt-10 sm:mt-10 pt-10">
             <div class="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
                 <!-- Col-1 -->
@@ -698,14 +698,13 @@ export default (editor, config) => {
             </div>
         </footer>
     `,
-  });
+    });
 
-
-  bm.add('navbar').set({
-    label     : 'navbar',
-    category  : 'Tailwind',
-    attributes: { class: 'fa fa-cubes' },
-    content: `
+    bm.add("navbar").set({
+        label: "navbar",
+        category: "Tailwind",
+        attributes: { class: "fa fa-cubes" },
+        content: `
         <nav class="flex justify-between w-full bg-purple-500 text-white p-4">
             <a href="/"><span class="font-semibold text-xl tracking-tight">Title</span></a>
             <div class="md:items-center md:w-auto flex">
@@ -763,6 +762,5 @@ export default (editor, config) => {
             </ul>
         </nav>
     `,
-  });
-
-}
+    });
+};

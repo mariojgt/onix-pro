@@ -10,7 +10,7 @@ import pluginFilestack from 'grapesjs-plugin-filestack';
 import plugin from 'grapesjs-component-code-editor';
 import 'grapesjs-component-code-editor/dist/grapesjs-component-code-editor.min.css';
 
-// My custom based in the preset
+// ONIX custom presets based in the original preset
 import commands from './commands';
 import blocks from './blocks';
 import components from './components';
