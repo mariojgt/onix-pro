@@ -36,3 +36,6 @@ To use the builder you need to add the following in you blade file i recommend t
 5. loadUrl exemple to load the pagebuilder
 6. autoLoadingUrl this is where you can autoload components from Api request
 
+Release:
+
+2.0.3: Now the path of the javascript files is define in the config file.
