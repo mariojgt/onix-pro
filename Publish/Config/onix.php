@@ -8,9 +8,9 @@ return [
     // The reason why is because you can complile you owm version so you can reference those files in here
 
     // Call main scripts you need this because is using the axios request
-    'onix_app_js'         => asset('vendor/Onix/js/app.js'),
+    'onix_app_js'         => '/vendor/Onix/js/app.js',
     // Call the Onix plugin preset
-    'onix_onix_preset_js' => asset('vendor/Onix/js/onixPreset.js'),
+    'onix_onix_preset_js' => '/vendor/Onix/js/onixPreset.js',
     // Call Grape js code ditor plugin
-    'grape_code_editor'   => asset('vendor/Onix/js/grapeCodeEditor.js'),
+    'grape_code_editor'   => '/vendor/Onix/js/grapeCodeEditor.js',
 ];

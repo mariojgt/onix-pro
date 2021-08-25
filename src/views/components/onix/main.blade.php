@@ -9,11 +9,11 @@
     {{-- YOU CAN CHANGE THOSE FILES IN THE ONIX CONFIG --}}
 
     {{-- Call main scripts you need this because is using the axios request --}}
-    <script src="{{ config('onix.onix_app_js') }}"></script>
+    <script src="{{ $onix_app_js ?? config('onix.onix_app_js') }}"></script>
     {{-- Call the Onix plugin preset --}}
-    <script src="{{ config('onix.onix_onix_preset_js') }}"></script>
+    <script src="{{ $onix_onix_preset_js ?? config('onix.onix_onix_preset_js') }}"></script>
     {{-- Call Grape js code ditor plugin --}}
-    <script src="{{ config('onix.grape_code_editor') }}"></script>
+    <script src="{{ $grape_code_editor ?? config('onix.grape_code_editor') }}"></script>
 
     <script>
             /*
@@ -30,7 +30,7 @@
                 var saveUrl = "{{ $saveUrl ?? route('onix.save') }}";
                 // URL THAT WILL LOAD THE PAGE DATA
                 var loadUrl = "{{ $loadUrl ?? route('onix.load') }}";
-                // URL FOR THE AUTOBLOCK LOADING
+                // URL FOR THE DYNAMIC LOAD COMPONENTS LOADING
                 var autoLoadingUrl = "{{ $autoLoadingUrl ?? route('onix.component.load') }}"
             /*
                 CORE SYSTEM VARIABLES END

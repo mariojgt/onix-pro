@@ -45,7 +45,7 @@ class Install extends Command
         ]);
 
         // Migrate
-        Artisan::call('migrate');
+        //Artisan::call('migrate');
 
         $this->newLine();
         $this->info('The command was successful!');
