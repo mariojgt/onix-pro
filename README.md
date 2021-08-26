@@ -39,3 +39,5 @@ To use the builder you need to add the following in you blade file i recommend t
 Release:
 
 2.0.3: Now the path of the javascript files is define in the config file.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/B86iZFu4EIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
