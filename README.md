@@ -2,6 +2,9 @@
 
 ### Getting started
 
+# Quick start check the link below
+https://www.youtube.com/watch?v=B86iZFu4EIE
+
 To install the package do the following.
 
 1. composer require mariojgt/onix
@@ -40,4 +43,3 @@ Release:
 
 2.0.3: Now the path of the javascript files is define in the config file.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B86iZFu4EIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
