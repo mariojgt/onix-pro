@@ -14,6 +14,8 @@
     <script src="{{ $onix_onix_preset_js ?? config('onix.onix_onix_preset_js') }}"></script>
     {{-- Call Grape js code ditor plugin --}}
     <script src="{{ $grape_code_editor ?? config('onix.grape_code_editor') }}"></script>
+     {{-- Call grape js script editor --}}
+    <script src="{{ $grape_script_editor ?? config('onix.grape_script_editor') }}"></script>
 
     <script>
             /*
@@ -52,7 +54,7 @@
                     stepsBeforeSave: 3,
                 },
                 // CUSTOM PLUGINS CAN BE ADDED IN HERE
-                plugins: ['onix-preset', 'code-editor'],
+                plugins: ['onix-preset', 'code-editor', 'grapesjs-script-editor'],
                 pluginsOpts: {
                     'onix-preset': {},
                 },

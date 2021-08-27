@@ -6,11 +6,11 @@ import Split from 'split.js';
 
 export class CodeEditor {
     constructor(editor, opts) {
-        this.editor = editor;
-        this.$ = editor.$;
-        this.pfx = editor.getConfig('stylePrefix');
-        this.opts = opts;
-        this.canvas = this.findWithinEditor(`.${this.pfx}cv-canvas`);
+        this.editor     = editor;
+        this.$          = editor.$;
+        this.pfx        = editor.getConfig('stylePrefix');
+        this.opts       = opts;
+        this.canvas     = this.findWithinEditor(`.${this.pfx}cv-canvas`);
         this.panelViews = opts.appendTo ? this.$(opts.appendTo) :
             this.findWithinEditor(`.${this.pfx}pn-${opts.panelId}`);
         this.isShowing = true;

@@ -13,4 +13,6 @@ return [
     'onix_onix_preset_js' => '/vendor/Onix/js/onixPreset.js',
     // Call Grape js code ditor plugin
     'grape_code_editor'   => '/vendor/Onix/js/grapeCodeEditor.js',
+    // Call the script editor
+    'grape_script_editor'   => '/vendor/Onix/js/scriptEditor.js',
 ];
