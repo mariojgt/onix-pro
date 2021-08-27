@@ -43,5 +43,5 @@ Release:
 
 2.0.3: Now the path of the javascript files is define in the config file.
 2.0.4: minor bug fix
-2.0.5: New feture now you can add javascript code, and also onix-pro version in development with features such as generate a physical file and community pages and blocks share with rating system.
+2.0.5: New feature now you can add javascript code, and also onix-pro version in development with features such as be able to create a blade file and community pages and blocks share with rating system.
 
