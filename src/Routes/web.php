@@ -9,7 +9,7 @@ if (config('onix.demo_enable') == true) {
         'middleware' => ['web'],
     ], function () {
         // Onix controller
-        Route::get('/onix/grape', [OnixContoller::class, 'index'])->name('onix/grape');
+        Route::get('/onix/grape', [OnixContoller::class, 'index'])->name('onix.grape');
         // Save the data example
         Route::post('/onix/save', [OnixContoller::class, 'store'])->name('onix.save');
         // Load data Example
