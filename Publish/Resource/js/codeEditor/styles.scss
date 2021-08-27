@@ -1,50 +1,41 @@
-/* Class names prefixes */
-$prefix: 'gjs-' !default;
-
 .code-panel {
     text-align: left;
     font-size: 1rem;
     height: 100%;
-    overflow: hidden;
-}
+    display: flex;
+    flex-direction: column;
+  }
 
-.code-panel section {
+  .code-panel section {
     flex: 1;
-    height: 50%;
-}
+  }
 
-.code-panel section .codepanel-separator {
+  .code-panel section .codepanel-separator {
     display: flex;
     justify-content: space-between;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
-}
+  }
 
-.code-panel section .codepanel-label {
-    margin-top: 5px;
+  .code-panel section .codepanel-label {
     line-height: 20px;
     font-size: 13px;
     color: #aaa;
     user-select: none;
     text-transform: uppercase;
-}
+  }
 
-.cp-btn-container {
-    display: flex;
-    justify-content: space-evenly;
+  .code-panel section button {
+    background-color: #d6d6d6;
+  }
 
-    & .#{$prefix}btn-prim {
-        margin: 2.5px;
-    }
-}
-
-.gutter {
+  .gutter {
     cursor: ns-resize;
     position: relative;
     background-color: rgba(0, 0, 0, 0.2);
-}
+  }
 
-.gutter:after {
+  .gutter:after {
     content: '';
     display: block;
     height: 8px;
@@ -52,30 +43,26 @@ $prefix: 'gjs-' !default;
     position: absolute;
     top: -3px;
     z-index: 150;
-}
+  }
 
-.code-panel .CodeMirror {
-    height: 100%;
-}
+  .code-panel .CodeMirror {
+    height: calc(100% - 20px);
+  }
 
-.cp-delete-css {
-    margin-left: 70%;
-}
-
-.#{$prefix}pn-views {
+  .gjs-pn-views {
     border-left: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom: 0;
-}
+  }
 
-.#{$prefix}pn-views-container {
+  .gjs-pn-views-container {
     box-shadow: initial;
     border-top: 2px solid rgba(0, 0, 0, 0.2);
     top: 40px;
     padding-top: 0;
     height: calc(100% - 40px);
-}
+  }
 
-.#{$prefix}pn-views-container,
-.#{$prefix}cv-canvas {
+  .gjs-pn-views-container,
+  .gjs-cv-canvas {
     transition: width 0.3s ease-in-out;
-}
+  }

@@ -1,5 +1,5 @@
 //Original work Copyright (c) 2018, Duarte Henriques, https://github.com/portablemind/grapesjs-code-editor
-//Modified work Copyright (c) 2020, Brendon Ngirazi, 
+//Modified work Copyright (c) 2020, Brendon Ngirazi,
 //All rights reserved.
 
 import Split from 'split.js';
@@ -82,14 +82,15 @@ export class CodeEditor {
         this.opts.appendTo && $(this.opts.appendTo).append(this.codePanel);
         this.updateEditorContents();
 
-        this.codePanel.find('.cp-apply-html')
-            .on('click', this.updateHtml.bind(this));
+        this.findWithinEditor('.cp-apply-html')
+        .get(0)
+        .addEventListener('click', this.updateHtml.bind(this));
 
-        this.codePanel.find('.cp-apply-css')
-            .on('click', this.updateCss.bind(this));
-
-        this.opts.cleanCssBtn && this.codePanel.find('.cp-delete-css')
-            .on('click', this.deleteSelectedCss.bind(this));
+      if (!this.opts.inlineCss) {
+        this.findWithinEditor('.cp-apply-css')
+          .get(0)
+          .addEventListener('click', this.updateCss.bind(this));
+      }
 
         Split(sections, {
             direction: 'vertical',
@@ -125,24 +126,18 @@ export class CodeEditor {
     }
 
     updateHtml() {
-        const { editor, component } = this;
-        let htmlCode = this.htmlCodeEditor.getContent().trim();
+        const htmlCode = this.htmlCodeEditor.editor.getValue();
         if (!htmlCode || htmlCode === this.previousHtmlCode) return;
         this.previousHtmlCode = htmlCode;
+        const rootNode = this.editor.LayerManager.getRoot();
+        rootNode.components(htmlCode);
 
-        let idStyles = '';
-        this.cssCodeEditor
-            .getContent()
-            .split(/(?<=}\n)/g)
-            .forEach(rule => {
-                if (/^#/.test(rule))
-                    idStyles += rule;
-            });
+        console.log(this.senderBtn);
+        this.senderBtn.set('active', false);
+        console.log(this.senderBtn);
 
-        htmlCode += `<style>${idStyles}</style>`;
-
-        editor.select(component.replaceWith(htmlCode));
-    }
+        this.hideCodePanel();
+      }
 
     updateCss() {
         const cssCode = this.cssCodeEditor.getContent().trim();

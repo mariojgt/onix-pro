@@ -1,7 +1,5 @@
 import commands from './commands';
 
-
-
 window.grapesjs.plugins.add('code-editor', (editor, opts = {}) => {
     const options = {
         ...{
