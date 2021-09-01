@@ -1,7 +1,6 @@
 # Onix v2
 
 ### Getting started
-
 # Quick start check the link below
 https://www.youtube.com/watch?v=B86iZFu4EIE
 
@@ -44,4 +43,5 @@ Release:
 2.0.3: Now the path of the javascript files is define in the config file.
 2.0.4: minor bug fix
 2.0.5: New feature now you can add javascript code, and also onix-pro version in development with features such as be able to create a blade file and community pages and blocks share with rating system, more info please https://onixpro.net/ (in developent)
+2.0.6: code editor bug fix you may need to run (npm run watch) case using the old version, onixpro almost read for release, there still some ui usses and populating the store with some usefull components.
 
