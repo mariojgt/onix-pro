@@ -32,6 +32,11 @@ mix.js('resources/vendor/Onix/js/codeEditor/grapeCodeEditor.js', 'public/vendor/
     .sourceMaps()
     .version();
 
+// Grape js script editor https://github.com/Ju99ernaut/grapesjs-script-editor.git
+mix.js('resources/vendor/Onix/js/scriptEditor/src/scriptEditor.js', 'public/vendor/Onix/js')
+    .sourceMaps()
+    .version();
+
 /* Grape js stuff */
 
 // Tailwind
