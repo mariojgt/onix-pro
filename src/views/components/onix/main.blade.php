@@ -14,7 +14,7 @@
     <script src="{{ $onix_onix_preset_js ?? config('onix.onix_onix_preset_js') }}"></script>
     {{-- Call Grape js code ditor plugin --}}
     <script src="{{ $grape_code_editor ?? config('onix.grape_code_editor') }}"></script>
-     {{-- Call grape js script editor --}}
+    {{-- Call grape js script editor --}}
     <script src="{{ $grape_script_editor ?? config('onix.grape_script_editor') }}"></script>
 
     <script>
@@ -225,19 +225,94 @@
                 axios.get(autoLoadingUrl, {})
                 .then(function (response) {
                     for (const [key, value] of Object.entries(response.data.data)) {
-                        // 'my-first-block' is the ID of the block
-                        blockManager.add(value.name, {
+
+                        // This is our custom script (avoid using arrow functions)
+                        const script = value.script;
+                        // The component name to be loaded
+                        const componentName = string_to_slug(value.name);
+                        // Define a new custom component
+                        editor.Components.addType(componentName, {
+                            model: {
+                                defaults: {
+                                    script,
+                                    // Add some style, just to make the component visible
+                                    content: value.content,
+                                }
+                            }
+                        });
+
+                        // Create a block for the component, so we can drop it easily
+                        editor.Blocks.add('test-block', {
                             label     : value.name,
                             category  : value.category,
                             attributes: { class: 'fa fa-link' }, // You can assing a icon to the block
-                            content   : value.content,
+                            //content   : value.content,
+                            content: { type: componentName },
                         });
+
+                        // blockManager.add(value.name, {
+                        //     label     : value.name,
+                        //     category  : value.category,
+                        //     attributes: { class: 'fa fa-link' }, // You can assing a icon to the block
+                        //     content   : value.content,
+                        // });
                     }
                 })
                 .catch(function (error) {
                 });
 
+                // // This is our custom script (avoid using arrow functions)
+                // const script = function() {
+                //     alert('Hi');
+                //     // `this` is bound to the component element
+                //     console.log('the element', this);
+                // };
+
+                // // Define a new custom component
+                // editor.Components.addType('comp-with-js', {
+                //     model: {
+                //         defaults: {
+                //             script,
+                //             // Add some style, just to make the component visible
+                //             content: '<div class="my-block"> This is a simple block</div>',
+                //         }
+                //     }
+                // });
+
+                // // Create a block for the component, so we can drop it easily
+                // editor.Blocks.add('test-block', {
+                // label: 'Test block',
+                // attributes: { class: 'fa fa-text' },
+                // content: { type: 'comp-with-js' },
+                // });
+
+
             }
+
+            /**
+             * Fuction to slug the script
+             * @param mixed str
+             *
+             * @return [type]
+             */
+            function string_to_slug (str) {
+                str = str.replace(/^\s+|\s+$/g, ''); // trim
+                str = str.toLowerCase();
+
+                // remove accents, swap ñ for n, etc
+                var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+                var to   = "aaaaeeeeiiiioooouuuunc------";
+                for (var i=0, l=from.length ; i<l ; i++) {
+                    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+                }
+
+                str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+                    .replace(/-+/g, '-'); // collapse dashes
+
+                return str;
+            }
+
            /*
                 AUTOBLOCK LOADING END
             */
