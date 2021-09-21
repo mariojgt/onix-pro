@@ -109,6 +109,7 @@ class OnixContoller extends Controller
                     </div>
                   </div>
                 </div>',
+                    'script'   => "aler('i am onix');",
                 ],
             ],
         ]);
