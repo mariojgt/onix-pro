@@ -19,11 +19,13 @@
 
     <script>
         /*
-                CORE SYSTEM VARIABLES START
-                MORE INFORMATION HOW THIS WORK CHECK THE Resource/vendor/onix/js
-            */
+            CORE SYSTEM VARIABLES START
+            MORE INFORMATION HOW THIS WORK CHECK THE Resource/vendor/onix/js
+        */
         // Load the main css if you have any
         var cssPath = "{{ $cssPath ?? asset('vendor/Onix/css/app.css') }}";
+        // Load the main javascript if you have
+        var javascriptPath = "{{ $javascriptPath ?? asset('vendor/Onix/css/app.js') }}";
         // URL Image load asset manager
         var imageAssetUrlLoader = "{{ $imageAssetUrlLoader ?? route('onix.image.load') }}";
         // URL Image save asset manager
@@ -62,7 +64,10 @@
             canvas: {
                 styles: [
                     cssPath
-                ]
+                ],
+                scripts: [
+                    javascriptPath
+                ],
             },
             // YOUR CUSTOM IMAGE UPLOADER
             assetManager: {
