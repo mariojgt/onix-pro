@@ -25,7 +25,7 @@
         // Load the main css if you have any
         var cssPath = "{{ $cssPath ?? asset('vendor/Onix/css/app.css') }}";
         // Load the main javascript if you have
-        var javascriptPath = "{{ $javascriptPath ?? asset('vendor/Onix/css/app.js') }}";
+        var javascriptPath = "{{ $javascriptPath ?? asset('vendor/Onix/js/app.js') }}";
         // URL Image load asset manager
         var imageAssetUrlLoader = "{{ $imageAssetUrlLoader ?? route('onix.image.load') }}";
         // URL Image save asset manager
