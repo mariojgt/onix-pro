@@ -1,5 +1,7 @@
 # Onix v2
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D5EJZ3P)
+
 ### Getting started
 # Quick start check the link below
 https://www.youtube.com/watch?v=B86iZFu4EIE
