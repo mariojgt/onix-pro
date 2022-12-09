@@ -14,8 +14,6 @@ To install the package do the following.
 
 Notes: This package on publish will move across webpack, tailwind and package.json so make sure to backup your project files.
 
-## If you want to use a improved version please considering using Onix Pro more information:https://onixpro.net/
-
 # Demo
 
 After the setup you can access the demo page on /onix/grape and you should be able to see the package demo.
