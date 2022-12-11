@@ -1,15 +1,22 @@
-const plugin = require("tailwindcss/plugin");
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-    darkMode: "class",
-    purge: [],
+    darkMode: 'class',
+    mode: 'jit',
+    purge: [
+        // Path to my php view it will only purge stuff we going to use
+        "./resources/vendor/Onix/**/*.js",
+        "./resources/vendor/Onix/**/*.txt",
+    ],
     theme: {
-        extend: {},
+      extend: {},
     },
     variants: {
         extend: {
-            textOpacity: ["dark"],
-        },
+          textOpacity: ['dark']
+        }
     },
-    plugins: [],
-};
+    plugins: [
+        require('daisyui'),
+    ],
+  }

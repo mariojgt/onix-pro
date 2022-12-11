@@ -1,0 +1,1 @@
+footer footer-center p-10 bg-primary text-primary-content inline-block fill-current font-bold grid grid-flow-col gap-4 fill-current
