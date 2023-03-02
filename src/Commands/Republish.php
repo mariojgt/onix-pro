@@ -54,8 +54,8 @@ class Republish extends Command
         $bar->advance(); // Little Progress bar
 
         // Now we copy the webpack file
-        $targetFolderWebPack = base_path('webpack.mix.js');
-        $destitionWebPack = __DIR__.'/../../Publish/Npm/webpack.mix.js';
+        $targetFolderWebPack = base_path('vite.config.js');
+        $destitionWebPack = __DIR__.'/../../Publish/Npm/vite.config.js';
         File::copy($targetFolderWebPack, $destitionWebPack);
         $bar->advance(); // Little Progress bar
 
@@ -70,6 +70,12 @@ class Republish extends Command
         $destitionWebPack = __DIR__.'/../../Publish/Npm/package.json';
         File::copy($targetFolderWebPack, $destitionWebPack);
         $bar->advance(); // Little Progress bar
+
+         // Now copy the config file
+         $targetFolderWebPack = base_path('config/onix.php');
+         $destitionWebPack = __DIR__.'/../../Publish/Config/onix.php';
+         File::copy($targetFolderWebPack, $destitionWebPack);
+         $bar->advance(); // Little Progress bar
 
         $bar->finish(); // Finish the progress bar
         $this->newLine();

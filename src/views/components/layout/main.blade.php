@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Onix Grape js' }}</title>
-    {{-- <link href="{{ asset('vendor/Onix/css/app.css') }}" rel="stylesheet"> --}}
+    {{
+        Vite::useBuildDirectory('vendor/Onix')
+            ->withEntryPoints([
+                'resources/vendor/Onix/js/app.js',
+                'resources/vendor/Onix/css/app.css',
+            ])
+    }}
     @stack('css')
 </head>
 <body>
+    <x-onix::layout.navbar/>
 
     {{ $slot }}
     @stack('js')
