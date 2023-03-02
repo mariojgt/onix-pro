@@ -1,5 +1,7 @@
 # Onix v2
 
+## Onix v3 is comming soon, (complete rebuild from ground up, and will integrate better with the new laravel ecosystem.)
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D5EJZ3P)
 
 ### Getting started
