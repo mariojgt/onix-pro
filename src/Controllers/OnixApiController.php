@@ -22,21 +22,18 @@ class OnixApiController extends Controller
     public function savePage(Request $request)
     {
         $validatedData = $request->validate([
-          'formData.title'        => 'required',
-          'formData.slug'         => 'required|unique:onix_pages,slug',
-          'data'                  => 'required',
-          'preview'               => 'required'
+          'slug'    => 'required',
+          'data'    => 'required',
+          'preview' => 'required'
         ]);
 
-        $page                   = new OnixPage();
-        $page->title            = $validatedData['formData']['title'];
-        $page->slug             = isset($validatedData['formData']['slug']) ? Str::slug($validatedData['formData']['slug'], '-') : Str::slug($validatedData['formData']['title'], '-');
+        $page                   = OnixPage::where('slug', $validatedData['slug'])->firstOrFail();
         $page->content          = json_encode($validatedData['data']);
         $page->preview          = $validatedData['preview'];
         $page->save();
 
         return response()->json([
-            'message' => 'Page created',
+            'message' => 'Your content has been saved!',
         ], 200);
     }
 

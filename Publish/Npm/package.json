@@ -37,6 +37,7 @@
         "grapesjs-plugin-filestack": "^0.1.1",
         "grapesjs-plugin-forms": "^2.0.1",
         "grapesjs-preset-webpage": "^0.1.11",
+        "grapesjs-script-editor": "^1.0.3",
         "grapesjs-tabs": "^1.0.6",
         "sweetalert2": "^9.17.4",
         "toastify-js": "^1.9.3",

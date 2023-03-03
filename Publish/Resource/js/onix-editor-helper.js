@@ -62,43 +62,71 @@ const startCodeEditor = async (editor) => {
     }]);
 };
 
-const saveEditorData = async (editor, pageInformation) => {
-
+const saveEditorData = async (editor, silentSave = false) => {
     let loadedData = JSON.parse(localStorage.getItem("onix-data"));
     // Form that asks for page information
-    const formData = await Swal.fire({
-        title: 'Page Information',
-        html: `
-        <div class="flex flex-col gap-4 w-full items-left">
-            <input id="title-onix" type="text" placeholder="Page title" class="input input-bordered input-primary w-full max-w-xs" />
-            <input id="slug-onix" type="text" placeholder="Your page slug" class="input input-bordered input-primary w-full max-w-xs" />
-        </div>
-        `,
-        focusConfirm: false,
-        preConfirm: () => {
-            return {
-                title: document.getElementById('title-onix').value,
-                slug: document.getElementById('slug-onix').value
-            }
-        }
-    });
-    // Instance of the storage manager
+    // const formData = await Swal.fire({
+    //     title: 'Page Information',
+    //     html: `
+    //     <div class="flex flex-col gap-4 w-full items-left">
+    //         <input id="title-onix" type="text" placeholder="Page title" class="input input-bordered input-primary w-full max-w-xs" />
+    //         <input id="slug-onix" type="text" placeholder="Your page slug" class="input input-bordered input-primary w-full max-w-xs" />
+    //     </div>
+    //     `,
+    //     focusConfirm: false,
+    //     preConfirm: () => {
+    //         return {
+    //             title: document.getElementById('title-onix').value,
+    //             slug: document.getElementById('slug-onix').value
+    //         }
+    //     }
+    // });
+    // Instance of the grape js storage manager
     const storageManager = editor.Storage;
     const data = editor.getProjectData();
     let editorData = await storageManager.store(data);
+
+    let apiUrl = null;
+    switch (loadedData.mode) {
+        case 'page':
+            apiUrl = '/save/page';
+            break;
+        case 'component':
+            apiUrl = '/save/component';
+        default:
+            break;
+    }
     // Add the page information to the editor data and post it to the server
-    await onixApi.post('/save/page', {
+    await onixApi.post(apiUrl, {
+        slug: loadedData.slug,
         data: editorData,
-        // Get the edito content so we can create a full page preview
         preview: editor.getHtml(),
-        formData: formData.value,
     }).then((response) => {
-        // Display a success message
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Your content has been saved!',
-        });
+
+        if (silentSave) {
+            // Display a toast message
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.data.message,
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+        } else {
+            // Display a success message
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.data.message,
+            });
+        }
     }).catch((error) => {
         // Loop on the 422 create a array of errors and display them
         const errors = error.response.data.errors;
@@ -116,13 +144,16 @@ const saveEditorData = async (editor, pageInformation) => {
 
 const loadEditorData = async (editor, mode = 'page', slug) => {
     await onixApi.get('/load/' + mode + '/' + slug).then((response) => {
-        const editorData = JSON.parse(response.data.page.content);
+
+        if (response.data.page.content) {
+            const editorData = JSON.parse(response.data.page.content);
+            editor.loadProjectData(editorData);
+        }
         // Onix loaded Data
         localStorage.setItem("onix-data", JSON.stringify({
-            loaded_data: response.data,
+            slug: slug,
             mode: mode,
         }));
-        editor.loadProjectData(editorData);
     }).catch((error) => {
         Swal.fire({
             icon: 'error',
