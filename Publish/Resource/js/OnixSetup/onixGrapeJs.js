@@ -4,7 +4,7 @@ import grapesjs from 'grapesjs';
 import onixPreset from './webpreset/index.ts';
 import javascriptEditor from 'grapesjs-script-editor';
 import codeEditor from 'grapesjs-component-code-editor';
-import { updateEditorStyle, startCodeEditor, loadEditorData, saveEditorData } from './onix-editor-helper.js';
+import { updateEditorStyle, startCodeEditor, loadEditorData, saveEditorData, loadBlocks} from './helpers/onixEditorHelper.js';
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -31,8 +31,6 @@ const editor = grapesjs.init({
 
 // Automatically update the editor style when the page is loaded
 startCodeEditor(editor);
-// Automatically update the editor style when the page is loaded
-updateEditorStyle();
 
 // Expose to the browser the load function so we can use it in the blade file
 window.loadEditorData = function (mode = 'page', slug) {

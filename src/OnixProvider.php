@@ -4,8 +4,9 @@ namespace Mariojgt\Onix;
 
 use Mariojgt\Onix\Commands\Install;
 use Mariojgt\Onix\Commands\Republish;
-use Illuminate\Support\ServiceProvider;
 use Mariojgt\Onix\Middleware\OnixApi;
+use Illuminate\Support\ServiceProvider;
+use Mariojgt\Onix\Commands\CreateOnixBlock;
 
 class OnixProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class OnixProvider extends ServiceProvider
             $this->commands([
                 Republish::class,
                 Install::class,
+                CreateOnixBlock::class,
             ]);
         }
 

@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('onix_blocks', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('componentId');
+            $table->string('label');
+            $table->string('slug')->unique();
+            $table->mediumText('media')->nullable();
+            $table->string('category')->nullable();
             $table->longText('content')->nullable();
-            $table->longText('preview')->nullable();
+            $table->longText('block_data')->nullable();
             $table->timestamps();
         });
     }

@@ -71,11 +71,11 @@ class Republish extends Command
         File::copy($targetFolderWebPack, $destitionWebPack);
         $bar->advance(); // Little Progress bar
 
-         // Now copy the config file
-         $targetFolderWebPack = base_path('config/onix.php');
-         $destitionWebPack = __DIR__.'/../../Publish/Config/onix.php';
-         File::copy($targetFolderWebPack, $destitionWebPack);
-         $bar->advance(); // Little Progress bar
+        // Now copy the config file
+        $targetFolderWebPack = base_path('config/onix.php');
+        $destitionWebPack = __DIR__.'/../../Publish/Config/onix.php';
+        File::copy($targetFolderWebPack, $destitionWebPack);
+        $bar->advance(); // Little Progress bar
 
         $bar->finish(); // Finish the progress bar
         $this->newLine();

@@ -10,9 +10,9 @@ import {
     cmdClear,
     saveData,
     loadData
-} from "./../consts";
+} from "../consts";
 
-import { saveEditorData } from '../../onix-editor-helper.js';
+import { saveEditorData } from '../../helpers/onixEditorHelper.js';
 
 export default (editor: grapesjs.Editor, config: RequiredPluginOptions) => {
     const { Commands } = editor;

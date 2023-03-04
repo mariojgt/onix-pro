@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Onix Grape js' }}</title>
     {{ Vite::useBuildDirectory('vendor/Onix')->withEntryPoints([
-        'resources/vendor/Onix/js/app.js',
+        'resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js',
         'resources/vendor/Onix/css/app.css',
     ]) }}
     @stack('css')

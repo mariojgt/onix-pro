@@ -1,36 +1,41 @@
 {
   "node_modules/grapesjs/dist/fonts/main-fonts.eot": {
-    "file": "assets/main-fonts.1fc5d1c7.eot",
+    "file": "assets/main-fonts-1fc5d1c7.eot",
     "src": "node_modules/grapesjs/dist/fonts/main-fonts.eot"
   },
-  "node_modules/grapesjs/dist/fonts/main-fonts.woff": {
-    "file": "assets/main-fonts.c3dd9523.woff",
-    "src": "node_modules/grapesjs/dist/fonts/main-fonts.woff"
-  },
-  "node_modules/grapesjs/dist/fonts/main-fonts.ttf": {
-    "file": "assets/main-fonts.adff1e6b.ttf",
-    "src": "node_modules/grapesjs/dist/fonts/main-fonts.ttf"
-  },
   "node_modules/grapesjs/dist/fonts/main-fonts.svg": {
-    "file": "assets/main-fonts.70c17a49.svg",
+    "file": "assets/main-fonts-70c17a49.svg",
     "src": "node_modules/grapesjs/dist/fonts/main-fonts.svg"
   },
-  "resources/vendor/Onix/js/app.js": {
-    "file": "assets/app.d9a56695.js",
-    "src": "resources/vendor/Onix/js/app.js",
+  "node_modules/grapesjs/dist/fonts/main-fonts.ttf": {
+    "file": "assets/main-fonts-adff1e6b.ttf",
+    "src": "node_modules/grapesjs/dist/fonts/main-fonts.ttf"
+  },
+  "node_modules/grapesjs/dist/fonts/main-fonts.woff": {
+    "file": "assets/main-fonts-c3dd9523.woff",
+    "src": "node_modules/grapesjs/dist/fonts/main-fonts.woff"
+  },
+  "resources/vendor/Onix/css/app.css": {
+    "file": "assets/app-79f2963c.css",
     "isEntry": true,
-    "css": [
-      "assets/app.bf489803.css"
-    ],
-    "assets": [
-      "assets/main-fonts.1fc5d1c7.eot",
-      "assets/main-fonts.c3dd9523.woff",
-      "assets/main-fonts.adff1e6b.ttf",
-      "assets/main-fonts.70c17a49.svg"
-    ]
+    "src": "resources/vendor/Onix/css/app.css"
   },
   "resources/vendor/Onix/js/app.css": {
-    "file": "assets/app.bf489803.css",
+    "file": "assets/app-6b34403e.css",
     "src": "resources/vendor/Onix/js/app.css"
+  },
+  "resources/vendor/Onix/js/app.js": {
+    "assets": [
+      "assets/main-fonts-1fc5d1c7.eot",
+      "assets/main-fonts-c3dd9523.woff",
+      "assets/main-fonts-adff1e6b.ttf",
+      "assets/main-fonts-70c17a49.svg"
+    ],
+    "css": [
+      "assets/app-6b34403e.css"
+    ],
+    "file": "assets/app-51940c6d.js",
+    "isEntry": true,
+    "src": "resources/vendor/Onix/js/app.js"
   }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Mariojgt\Onix\Controllers\OnixPageController;
+use Mariojgt\Onix\Controllers\OnixBlockController;
 
 // Check if the user can see the demo
 if (config('onix.demo_enable') == true) {
@@ -18,5 +19,16 @@ if (config('onix.demo_enable') == true) {
         Route::post('/onix/pages/edit/{page}', [OnixPageController::class, 'edit'])->name('onix.pages.edit');
         Route::delete('/onix/pages/delete/{page}', [OnixPageController::class, 'delete'])->name('onix.pages.delete');
         Route::get('/onix/editor/pages/{slug?}', [OnixPageController::class, 'editor'])->name('onix.pages.editor');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Onix blocks controller
+        |--------------------------------------------------------------------------
+        */
+        Route::get('/onix/block/index', [OnixBlockController::class, 'index'])->name('onix.block.index');
+        Route::post('/onix/block/create', [OnixBlockController::class, 'store'])->name('onix.block.create');
+        Route::post('/onix/block/edit/{block}', [OnixBlockController::class, 'edit'])->name('onix.block.edit');
+        Route::delete('/onix/block/delete/{block}', [OnixBlockController::class, 'delete'])->name('onix.block.delete');
+        Route::get('/onix/editor/block/{slug?}', [OnixBlockController::class, 'editor'])->name('onix.block.editor');
     });
 }

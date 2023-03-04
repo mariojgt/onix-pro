@@ -1,4 +1,4 @@
-import onixApi from './onix-api.js';
+import onixApi from './onixApi.js';
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -62,25 +62,27 @@ const startCodeEditor = async (editor) => {
     }]);
 };
 
+const loadBlocks = async (editor) => {
+    await onixApi.get('/load/blocks').then((response) => {
+        const blocks = response.data.blocks;
+        // If we are editng a block prevent the block to add himself to the editor
+        blocks.forEach((block) => {
+            editor.BlockManager.add(block.componentId, {
+                label: block.label,
+                media: block.media,
+                category: block.category,
+                content: block.content,
+                attributes: {
+                    component_sync: block.component_sync,
+                }
+            });
+        });
+    });
+};
+
 const saveEditorData = async (editor, silentSave = false) => {
     let loadedData = JSON.parse(localStorage.getItem("onix-data"));
-    // Form that asks for page information
-    // const formData = await Swal.fire({
-    //     title: 'Page Information',
-    //     html: `
-    //     <div class="flex flex-col gap-4 w-full items-left">
-    //         <input id="title-onix" type="text" placeholder="Page title" class="input input-bordered input-primary w-full max-w-xs" />
-    //         <input id="slug-onix" type="text" placeholder="Your page slug" class="input input-bordered input-primary w-full max-w-xs" />
-    //     </div>
-    //     `,
-    //     focusConfirm: false,
-    //     preConfirm: () => {
-    //         return {
-    //             title: document.getElementById('title-onix').value,
-    //             slug: document.getElementById('slug-onix').value
-    //         }
-    //     }
-    // });
+
     // Instance of the grape js storage manager
     const storageManager = editor.Storage;
     const data = editor.getProjectData();
@@ -91,8 +93,8 @@ const saveEditorData = async (editor, silentSave = false) => {
         case 'page':
             apiUrl = '/save/page';
             break;
-        case 'component':
-            apiUrl = '/save/component';
+        case 'block':
+            apiUrl = '/save/block';
         default:
             break;
     }
@@ -101,6 +103,8 @@ const saveEditorData = async (editor, silentSave = false) => {
         slug: loadedData.slug,
         data: editorData,
         preview: editor.getHtml(),
+        // replace the body tag with the div tag and add a id ot (onix-resuable-block-slug)
+        preview_no_body: editor.getHtml().replace(/<body/g, '<div data-onix="onix-resuable-block-' + loadedData.componentId + '"').replace(/body>/g, 'div>')
     }).then((response) => {
 
         if (silentSave) {
@@ -128,31 +132,44 @@ const saveEditorData = async (editor, silentSave = false) => {
             });
         }
     }).catch((error) => {
-        // Loop on the 422 create a array of errors and display them
-        const errors = error.response.data.errors;
-        let errorArray = [];
-        for (const [key, value] of Object.entries(errors)) {
-            errorArray.push('<p>' + value + '</p>');
+        // Check if the code is 422
+        if (error.response.status === 422) {
+            const errors = error.response.data.errors;
+            let errorArray = [];
+            for (const [key, value] of Object.entries(errors)) {
+                errorArray.push('<p>' + value + '</p>');
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                html: errorArray.join(''),
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
         }
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            html: errorArray.join(''),
-        });
     });
 };
 
+// Load the page of the component we are editing
 const loadEditorData = async (editor, mode = 'page', slug) => {
-    await onixApi.get('/load/' + mode + '/' + slug).then((response) => {
+    // Clear the local storage
+    localStorage.removeItem("onix-data");
 
-        if (response.data.page.content) {
-            const editorData = JSON.parse(response.data.page.content);
-            editor.loadProjectData(editorData);
+    let editorData = null;
+    await onixApi.get('/load/' + mode + '/' + slug).then((response) => {
+        if (response.data.data.content) {
+            editorData = JSON.parse(response.data.data.content);
         }
         // Onix loaded Data
         localStorage.setItem("onix-data", JSON.stringify({
             slug: slug,
             mode: mode,
+            // Only for components
+            componentId: response.data?.data?.componentId,
         }));
     }).catch((error) => {
         Swal.fire({
@@ -161,6 +178,30 @@ const loadEditorData = async (editor, mode = 'page', slug) => {
             text: 'Something went wrong!',
         });
     });
+
+    // Load the editor data
+    editor.loadProjectData(editorData);
+    // Automatically update the editor style when the page is loaded
+    await updateEditorStyle();
+    // Load the blocks so when we load load the page the blocks are up to date
+    await loadBlocks(editor);
+
+    // Get all the blocks from the editor
+    const blocks = editor.BlockManager.getAll();
+    // Now update the project data with the loaded blocks
+    blocks.forEach((block) => {
+        const elementId = block.id;
+        // Should the component automatically sync ?
+        if (block.attributes.attributes.component_sync) {
+            // Now find the element in the editor
+            const component = editor.DomComponents.getWrapper().find(`[data-onix="onix-resuable-block-${elementId}"]`);
+            if (component.length) {
+                for (const [key, value] of Object.entries(component)) {
+                    // value.components(block.get('content'));
+                }
+            }
+        }
+    });
 }
 
-export { updateEditorStyle, startCodeEditor, saveEditorData, loadEditorData };
+export { updateEditorStyle, startCodeEditor, saveEditorData, loadEditorData, loadBlocks };

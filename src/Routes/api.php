@@ -11,7 +11,12 @@ if (config('onix.demo_enable') == true) {
     ], function () {
         // Onix controller
         Route::get('/config', [OnixApiController::class, 'config']);
+        // Save pages
         Route::post('/save/page', [OnixApiController::class, 'savePage']);
         Route::get('/load/page/{slug}', [OnixApiController::class, 'loadPage']);
+        // Saves Block
+        Route::post('/save/block', [OnixApiController::class, 'saveBlock']);
+        Route::get('/load/block/{slug}', [OnixApiController::class, 'loadBlock']);
+        Route::get('/load/blocks', [OnixApiController::class, 'loadBlocks']);
     });
 }

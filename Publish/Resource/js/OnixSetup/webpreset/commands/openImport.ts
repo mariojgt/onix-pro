@@ -1,7 +1,7 @@
 import type grapesjs from 'grapesjs';
 import { RequiredPluginOptions } from '..';
 
-import { cmdImport } from './../consts';
+import { cmdImport } from '../consts';
 
 type CommandInterface = Parameters<grapesjs.Commands["add"]>[1];
 

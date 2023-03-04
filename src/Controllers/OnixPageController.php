@@ -4,15 +4,18 @@ namespace Mariojgt\Onix\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\OnixComponents\HomePage;
 use Mariojgt\Onix\Model\OnixPage;
+use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
+use Mariojgt\Onix\Controllers\OnixApiController;
 
 class OnixPageController extends Controller
 {
     /**
      * @return [blade view]
      */
-    public function index()
+    public function index(Request $request)
     {
         $pages = OnixPage::all();
 
