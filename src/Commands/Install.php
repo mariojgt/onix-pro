@@ -53,6 +53,7 @@ class Install extends Command
         if ($onixSetting) {
             $onixSetting->delete();
         }
+
         $onixSetting                   = new OnixSetting();
         $onixSetting->color_primary    = '#000000ff';
         $onixSetting->color_secondary  = '#14213dff';

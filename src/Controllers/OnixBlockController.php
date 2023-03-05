@@ -8,7 +8,7 @@ use Mariojgt\Onix\Model\OnixPage;
 use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
 
-class OnixBlockController extends Controller
+class OnixBlockController extends OnixController
 {
     /**
      * @return [blade view]

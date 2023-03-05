@@ -9,7 +9,7 @@ use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
 use Mariojgt\Onix\Model\OnixSetting;
 
-class OnixSettingsController extends Controller
+class OnixSettingsController extends OnixController
 {
     /**
      * @return [blade view]

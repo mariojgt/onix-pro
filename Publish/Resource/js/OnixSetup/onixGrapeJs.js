@@ -4,42 +4,37 @@ import grapesjs from 'grapesjs';
 import onixPreset from './webpreset/index.ts';
 import javascriptEditor from 'grapesjs-script-editor';
 import codeEditor from 'grapesjs-component-code-editor';
-import { updateEditorStyle, startCodeEditor, loadEditorData, saveEditorData, loadBlocks} from './helpers/onixEditorHelper.js';
-// ES6 Modules or TypeScript
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import { startCodeEditor, loadEditorData, saveEditorData, getSiteStyles } from './helpers/onixEditorHelper.js';
 
-// Create the grape js editor
-const editor = grapesjs.init({
-    container: '#gjs',
-    width: 'auto',
-    height: '1000px',
-    showOffsets: true,
-    noticeOnUnload: false,
-    storageManager: false,
-    fromElement: true,
-    plugins: [onixPreset, codeEditor, javascriptEditor],
-    canvas: {
-        styles: [
-            'https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css',
-        ],
-        scripts: [
-            'https://cdn.tailwindcss.com',
-        ],
-    }
-});
+let editor = null;
 
-// Automatically update the editor style when the page is loaded
-startCodeEditor(editor);
+const startOnixEditor = async (cssStyles = [], jsScripts = []) => {
+    // Create the grape js editor
+    editor = grapesjs.init({
+        container: '#gjs',
+        width: 'auto',
+        height: '1000px',
+        showOffsets: true,
+        noticeOnUnload: false,
+        storageManager: false,
+        fromElement: true,
+        plugins: [onixPreset, codeEditor, javascriptEditor],
+        canvas: {
+            styles: cssStyles,
+            scripts: jsScripts
+        }
+    });
+    // Automatically update the editor style when the page is loaded
+    startCodeEditor(editor);
+};
 
-// Expose to the browser the load function so we can use it in the blade file
-window.loadEditorData = function (mode = 'page', slug) {
-    loadEditorData(editor, mode, slug);
+// Create a function and export to the window so we can call and start the editor from the blade file
+window.startEditor = async function (mode, slug) {
+    const styles = await getSiteStyles();
+    await startOnixEditor(styles.css, styles.js);
+    await loadEditorData(editor, mode, slug);
 }
 // Expose to the browser the save function so we can use it in the blade file
 window.saveEditorData = function () {
     saveEditorData(editor, true);
 }
-
-// Export the swetalert2 to the window object so we can use it in the blade file
-window.Swal = Swal;

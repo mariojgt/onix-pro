@@ -69,5 +69,25 @@ class OnixProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../Publish/Config/' => config_path(''),
         ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Publish the example blocks
+        |--------------------------------------------------------------------------
+        */
+        // Publish the blocks classes
+        $this->publishes([
+            __DIR__ . '/../Publish/OnixPhpBlocks/Class' => app_path('Onix/Blocks'),
+        ]);
+
+        // Publish the blocks media file
+        $this->publishes([
+            __DIR__ . '/../Publish/OnixPhpBlocks/Media' => resource_path('views/onix/media'),
+        ]);
+
+        // Publish the blocks media file
+        $this->publishes([
+            __DIR__ . '/../Publish/OnixPhpBlocks/Blocks' => resource_path('views/onix/blocks'),
+        ]);
     }
 }

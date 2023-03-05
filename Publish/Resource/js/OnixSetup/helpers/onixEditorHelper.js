@@ -44,6 +44,23 @@ const updateEditorStyle = async () => {
     });
 };
 
+/**
+ * Load the editor css and javascript files so we can use them in the editor
+ */
+const getSiteStyles = async () => {
+    try {
+        return await onixApi.get('/site-styles').then((response) => {
+            return response.data;
+        });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong loading the site styles!😭',
+        });
+    }
+};
+
 // Start the code editor plugin
 const startCodeEditor = async (editor) => {
     // Start the code editor plugin
@@ -103,7 +120,8 @@ const saveEditorData = async (editor, silentSave = false) => {
         slug: loadedData.slug,
         data: editorData,
         preview: editor.getHtml(),
-        // replace the body tag with the div tag and add a id ot (onix-resuable-block-slug)
+        // Send the data without the body tag
+        just_content: editor.getHtml().replace(/<body[^>]*>/g, '').replace(/<\/body>/g, ''),
         preview_no_body: editor.getHtml().replace(/<body/g, '<div data-onix="onix-resuable-block-' + loadedData.componentId + '"').replace(/body>/g, 'div>')
     }).then((response) => {
 
@@ -180,7 +198,9 @@ const loadEditorData = async (editor, mode = 'page', slug) => {
     });
 
     // Load the editor data
-    editor.loadProjectData(editorData);
+    if (editorData) {
+        editor.loadProjectData(editorData);
+    }
     // Automatically update the editor style when the page is loaded
     await updateEditorStyle();
     // Load the blocks so when we load load the page the blocks are up to date
@@ -204,4 +224,4 @@ const loadEditorData = async (editor, mode = 'page', slug) => {
     });
 }
 
-export { updateEditorStyle, startCodeEditor, saveEditorData, loadEditorData, loadBlocks };
+export { updateEditorStyle, startCodeEditor, saveEditorData, loadEditorData, loadBlocks, getSiteStyles };

@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: [
         laravel([
             'resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js', // Normal js files
+            'resources/vendor/Onix/js/app.js', // Normal js files
             'resources/vendor/Onix/css/app.css', // Normal css files
         ])
     ],
@@ -13,7 +14,8 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             input: {
-                app: '/resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js',
+                grape: '/resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js',
+                app: '/resources/vendor/Onix/js/app.js',
                 css: '/resources/vendor/Onix/css/app.css',
             },
         },

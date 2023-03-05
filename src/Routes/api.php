@@ -11,6 +11,7 @@ if (config('onix.demo_enable') == true) {
     ], function () {
         // Onix controller
         Route::get('/config', [OnixApiController::class, 'config']);
+        Route::get('/site-styles', [OnixApiController::class, 'getSiteStyles']);
         // Save pages
         Route::post('/save/page', [OnixApiController::class, 'savePage']);
         Route::get('/load/page/{slug}', [OnixApiController::class, 'loadPage']);

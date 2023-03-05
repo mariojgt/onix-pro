@@ -15,66 +15,29 @@
                         <x-onix::settings.color
                             fieldName="color_primary"
                             label="Primary color"
-                            :value="$settings->color_primary"
-                            :colorOptions="
-                                [
-                                    '#000000ff',
-                                    '#0d1b2aff',
-                                    '#231942ff',
-                                    '#01161eff',
-                                    '#3d5a80ff',
-                                    '#1f2041ff',
-                                ]"
+                            :value="$settings->color_primary ?? null"
+                            :colorOptions="config('onix.color_primary')"
                         />
 
                         <x-onix::settings.color
                             fieldName="color_secondary"
                             label="Secondary color"
-                            :value="$settings->color_secondary"
-                            :colorOptions="
-                                [
-                                    '#14213dff',
-                                    '#1b263bff',
-                                    '#5e548eff',
-                                    '#124559ff',
-                                    '#98c1d9ff',
-                                    '#4b3f72ff',
-                                    '#f7b267ff',
-                                    '#f79d65ff',
-                                    '#f4845fff',
-                                    '#f27059ff',
-                                    '#f25c54ff',
-                                ]"
+                            :value="$settings->color_secondary ?? null"
+                            :colorOptions="config('onix.color_secondary')"
                         />
 
                         <x-onix::settings.color
                             fieldName="color_tertiary"
-                            :value="$settings->color_tertiary"
+                            :value="$settings->color_tertiary ?? null"
                             label="Tertiary color"
-                            :colorOptions="
-                                [
-                                    '#fca311ff',
-                                    '#415a77ff',
-                                    '#9f86c0ff',
-                                    '#598392ff',
-                                    '#e0fbfcff',
-                                    '#ffc857ff',
-                                ]"
+                            :colorOptions="config('onix.color_tertiary')"
                         />
 
                         <x-onix::settings.color
                             fieldName="color_quaternary"
-                            :value="$settings->color_quaternary"
+                            :value="$settings->color_quaternary ?? null"
                             label="Quaternary color"
-                            :colorOptions="
-                                [
-                                    '#e5e5e5ff',
-                                    '#778da9ff',
-                                    '#be95c4ff',
-                                    '#aec3b0ff',
-                                    '#ee6c4dff',
-                                    '#119da4ff',
-                                ]"
+                            :colorOptions="config('onix.color_quaternary')"
                         />
                     </div>
                     <div class="pt--10 pr-0 pb-10 pl-0">

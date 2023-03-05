@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->longText('content')->nullable();
             $table->longText('preview')->nullable();
+            $table->longText('html')->nullable();
             $table->timestamps();
         });
     }

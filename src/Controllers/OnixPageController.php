@@ -10,7 +10,7 @@ use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
 use Mariojgt\Onix\Controllers\OnixApiController;
 
-class OnixPageController extends Controller
+class OnixPageController extends OnixController
 {
     /**
      * @return [blade view]
@@ -28,7 +28,6 @@ class OnixPageController extends Controller
     public function editor(Request $request, $slug = null)
     {
         $page = OnixPage::where('slug', $slug)->first();
-
         return view('onix::content.page.editor', compact('page'));
     }
 

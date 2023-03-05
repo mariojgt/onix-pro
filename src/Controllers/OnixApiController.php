@@ -9,7 +9,7 @@ use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
 use Mariojgt\Onix\Model\OnixSetting;
 
-class OnixApiController extends Controller
+class OnixApiController extends OnixController
 {
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +27,35 @@ class OnixApiController extends Controller
         ]);
     }
 
+    public function getSiteStyles()
+    {
+        $cssFiles = [];
+        $jsFiles  = [];
+        if (config('onix.use_cdn')) {
+            $cssFiles = config('onix.editor_css_cdn');
+            $jsFiles  = config('onix.editor_js_cdn');
+        } else {
+            $basePath = config('onix.editor_base_path');
+            // Find the manifest file so we can get the css and js files
+            $manifest = json_decode(file_get_contents(public_path($basePath . '/manifest.json')), true);
+            foreach ($manifest as $key => $item) {
+                // Check if the string have any of the css file from the array from config
+                if (Str::contains($key, config('onix.editor_css'))) {
+                    $cssFiles[] = url($basePath . '/' . $item['file']);
+                }
+                // Check if the string have any of the js file from the array from config
+                if (Str::contains($key, config('onix.editor_js'))) {
+                    $jsFiles[] = url($basePath . '/' . $item['file']);
+                }
+            }
+        }
+
+        return response()->json([
+            'css' => $cssFiles,
+            'js'  => $jsFiles,
+        ]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | PAGES
@@ -36,14 +65,16 @@ class OnixApiController extends Controller
     public function savePage(Request $request)
     {
         $validatedData = $request->validate([
-          'slug'    => 'required',
-          'data'    => 'required',
-          'preview' => 'required'
+          'slug'         => 'required',
+          'data'         => 'required',
+          'preview'      => 'required',
+          'just_content' => 'required'
         ]);
 
-        $page                   = OnixPage::where('slug', $validatedData['slug'])->firstOrFail();
-        $page->content          = json_encode($validatedData['data']);
-        $page->preview          = $validatedData['preview'];
+        $page          = OnixPage::where('slug', $validatedData['slug'])->firstOrFail();
+        $page->content = json_encode($validatedData['data']);
+        $page->preview = $validatedData['preview'];
+        $page->html    = $validatedData['just_content'];
         $page->save();
 
         return response()->json([
@@ -97,6 +128,7 @@ class OnixApiController extends Controller
                 'component_sync' => $item->component_sync,
             ];
         }
+
         return response()->json([
             'blocks' => $blocks,
         ], 200);
