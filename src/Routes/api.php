@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Mariojgt\Onix\Controllers\OnixApiController;
+use Mariojgt\Onix\Controllers\OnixApiDeployController;
 
 // Check if the user can see the demo
 if (config('onix.demo_enable') == true) {
@@ -19,5 +20,9 @@ if (config('onix.demo_enable') == true) {
         Route::post('/save/block', [OnixApiController::class, 'saveBlock']);
         Route::get('/load/block/{slug}', [OnixApiController::class, 'loadBlock']);
         Route::get('/load/blocks', [OnixApiController::class, 'loadBlocks']);
+
+        // Start deployment
+        Route::post('/deploy/start', [OnixApiDeployController::class, 'startDeploy']);
+        Route::get('/deploy/info', [OnixApiDeployController::class, 'readyDeployStatusFile']);
     });
 }

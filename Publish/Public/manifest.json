@@ -1,9 +1,9 @@
 {
-  "_sweetalert2-e4475c8a.js": {
+  "_sweetalert2-cf3b0484.js": {
     "css": [
       "assets/sweetalert2-e7e3a94b.css"
     ],
-    "file": "assets/sweetalert2-e4475c8a.js"
+    "file": "assets/sweetalert2-cf3b0484.js"
   },
   "node_modules/grapesjs/dist/fonts/main-fonts.eot": {
     "file": "assets/main-fonts-1fc5d1c7.eot",
@@ -22,7 +22,7 @@
     "src": "node_modules/grapesjs/dist/fonts/main-fonts.woff"
   },
   "resources/vendor/Onix/css/app.css": {
-    "file": "assets/app-4b6a58e5.css",
+    "file": "assets/app-53ba7817.css",
     "isEntry": true,
     "src": "resources/vendor/Onix/css/app.css"
   },
@@ -40,17 +40,17 @@
     "css": [
       "assets/onixGrapeJs-054b482f.css"
     ],
-    "file": "assets/grape-80c548a0.js",
+    "file": "assets/grape-221a6d16.js",
     "imports": [
-      "_sweetalert2-e4475c8a.js"
+      "_sweetalert2-cf3b0484.js"
     ],
     "isEntry": true,
     "src": "resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js"
   },
   "resources/vendor/Onix/js/app.js": {
-    "file": "assets/app-031d5ede.js",
+    "file": "assets/app-4dc72098.js",
     "imports": [
-      "_sweetalert2-e4475c8a.js"
+      "_sweetalert2-cf3b0484.js"
     ],
     "isEntry": true,
     "src": "resources/vendor/Onix/js/app.js"

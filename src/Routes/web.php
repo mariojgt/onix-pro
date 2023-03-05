@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Mariojgt\Onix\Controllers\OnixPageController;
 use Mariojgt\Onix\Controllers\OnixBlockController;
+use Mariojgt\Onix\Controllers\OnixDeployController;
 use Mariojgt\Onix\Controllers\OnixSettingsController;
 
 // Check if the user can see the demo
@@ -33,7 +34,11 @@ if (config('onix.demo_enable') == true) {
         Route::get('/onix/editor/block/{slug?}', [OnixBlockController::class, 'editor'])->name('onix.block.editor');
 
 
+        // Settings blocks
         Route::get('/onix/settings', [OnixSettingsController::class, 'index'])->name('onix.settings');
         Route::post('/onix/settings', [OnixSettingsController::class, 'update'])->name('onix.settings');
+
+        // Paged deploy page
+        Route::get('/onix/deploy', [OnixDeployController::class, 'index'])->name('onix.deploy');
     });
 }
