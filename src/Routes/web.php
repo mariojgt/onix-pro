@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Mariojgt\Onix\Controllers\OnixPageController;
 use Mariojgt\Onix\Controllers\OnixBlockController;
+use Mariojgt\Onix\Controllers\OnixSettingsController;
 
 // Check if the user can see the demo
 if (config('onix.demo_enable') == true) {
@@ -30,5 +31,9 @@ if (config('onix.demo_enable') == true) {
         Route::post('/onix/block/edit/{block}', [OnixBlockController::class, 'edit'])->name('onix.block.edit');
         Route::delete('/onix/block/delete/{block}', [OnixBlockController::class, 'delete'])->name('onix.block.delete');
         Route::get('/onix/editor/block/{slug?}', [OnixBlockController::class, 'editor'])->name('onix.block.editor');
+
+
+        Route::get('/onix/settings', [OnixSettingsController::class, 'index'])->name('onix.settings');
+        Route::post('/onix/settings', [OnixSettingsController::class, 'update'])->name('onix.settings');
     });
 }

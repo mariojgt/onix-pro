@@ -4,9 +4,10 @@ namespace Mariojgt\Onix\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Mariojgt\Onix\Model\OnixBlock;
 use Mariojgt\Onix\Model\OnixPage;
+use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
+use Mariojgt\Onix\Model\OnixSetting;
 
 class OnixApiController extends Controller
 {
@@ -17,11 +18,12 @@ class OnixApiController extends Controller
     */
     public function config()
     {
+        $settings = OnixSetting::first();
         return response()->json([
-            'primaryColor'    => '#0d3b66',
-            'secondaryColor'  => '#faf0ca',
-            'tertiaryColor'   => '#f4d35e',
-            'quaternaryColor' => '#ee964b',
+            'primaryColor'    => $settings->color_primary,
+            'secondaryColor'  => $settings->color_secondary,
+            'tertiaryColor'   => $settings->color_tertiary,
+            'quaternaryColor' => $settings->color_quaternary,
         ]);
     }
 
