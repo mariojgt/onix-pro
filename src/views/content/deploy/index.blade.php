@@ -4,12 +4,12 @@
     <div class="bg-white pt-12 pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20 rounded-lg">
         <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:px-6 lg:px-8">
-                <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
+                <div class="pt-0 pr-4 pb-10 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
                     <div>
                         <h1 class="text-xl font-bold text-gray-900">Deploy log</h1>
+                        <p class="text-xl font-bold text-gray-900">You can deploy your site in two ways, blade file or inersia js</p>
                     </div>
                 </div>
-
                 <div class="mockup-code" id="deploy-code-log" >
                 </div>
                 <div class="pt--10 pr-0 pb-10 pl-0">

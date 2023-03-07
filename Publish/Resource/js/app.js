@@ -66,8 +66,8 @@ window.deploySite = async function (deployMode, codeFeedbackId) {
             title: 'Oops...',
             text: 'Something went wrong deploying the site!😭',
         });
-        setTimeout(() => {
-            clearInterval(codeFeedbak);
-        }, 1000);
     }
+    setTimeout(() => {
+        clearInterval(codeFeedbak);
+    }, 1000);
 }

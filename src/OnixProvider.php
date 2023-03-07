@@ -89,5 +89,19 @@ class OnixProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../Publish/OnixPhpBlocks/Blocks' => resource_path('views/onix/blocks'),
         ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Publish the stubs for the pages for the deploy
+        |--------------------------------------------------------------------------
+        */
+        $this->publishes([
+            __DIR__ . '/../Publish/Stubs' => app_path('Onix/Stubs'),
+        ]);
+
+        // Publish the layout file for the blade page
+        $this->publishes([
+            __DIR__ . '/../Publish/BladeLayout/' => resource_path('views/components/layout'),
+        ]);
     }
 }

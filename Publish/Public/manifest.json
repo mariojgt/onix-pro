@@ -48,7 +48,7 @@
     "src": "resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js"
   },
   "resources/vendor/Onix/js/app.js": {
-    "file": "assets/app-4dc72098.js",
+    "file": "assets/app-1a750ca9.js",
     "imports": [
       "_sweetalert2-cf3b0484.js"
     ],

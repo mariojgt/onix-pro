@@ -6,6 +6,7 @@ module.exports = {
         "./resources/vendor/Onix/**/*.js",
         "./resources/vendor/Onix/**/*.txt",
         "./vendor/mariojgt/onix/**/*.php",
+        "./resources/views/**/*.php",
     ],
     theme: {
       extend: {},
