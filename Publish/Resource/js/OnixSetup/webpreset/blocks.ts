@@ -35,6 +35,7 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
             type: 'form',
             // content is a form with tailwind classes
             components: `
+            @csrf
             <div class="flex flex-col gap-4 w-full items-center">
                 <div class="form-control w-full">
                     <label class="label">

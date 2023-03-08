@@ -12,3 +12,11 @@ to install it you can use composer:
 - Page builder blocks
 - Blocks based in the php classes and blade templates
 
+To create a new reusable block using php class you can use the artisan command:
+
+    php artisan onix:block
+
+and follow the instructions, this will create a new block class and blade template in the `resources/onix/blocks` folder.
+and the php class will be in the `app/Onix/Blocks` folder.
+
+to acess the page builder you can use the path `onix/pages/index`

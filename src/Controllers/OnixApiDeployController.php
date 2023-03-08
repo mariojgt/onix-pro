@@ -89,6 +89,8 @@ class OnixApiDeployController extends OnixController
         // Loop the pages
         foreach ($pages as $page) {
             $pageHtml = $page->html;
+            $page->deployed = 1;
+            $page->save();
             // Save the page in to a blade file
             $replace = [
                 'variables' => [

@@ -45,11 +45,12 @@ class OnixBlockController extends OnixController
     public function store(Request $request)
     {
         $request->validate([
-            'componentId'    => 'required',
-            'label'          => 'required',
-            'media'          => 'required',
-            'category'       => 'required',
-            'slug'           => 'required|unique:onix_blocks',
+            'componentId' => 'required',
+            'label'       => 'required',
+            'media'       => 'required',
+            'category'    => 'required',
+            'slug'        => 'required|unique:onix_blocks',
+            'status'      => 'required',
         ]);
 
         $block                 = new OnixBlock();
@@ -59,6 +60,7 @@ class OnixBlockController extends OnixController
         $block->media          = $request->media;
         $block->category       = $request->category;
         $block->component_sync = $request->component_sync ?? 0;
+        $block->status         = $request->status == 'on' ? 1 : 0;
         $block->save();
 
 
@@ -73,11 +75,12 @@ class OnixBlockController extends OnixController
     public function edit(Request $request, OnixBlock $block)
     {
         $request->validate([
-            'componentId'    => 'required',
-            'label'          => 'required',
-            'media'          => 'required',
-            'category'       => 'required',
-            'slug'           => 'required|unique:onix_blocks,slug,' . $block->id,
+            'componentId' => 'required',
+            'label'       => 'required',
+            'media'       => 'required',
+            'category'    => 'required',
+            'slug'        => 'required|unique:onix_blocks,slug,' . $block->id,
+            'status'      => 'required',
         ]);
 
         $block->componentId    = $request->componentId;
@@ -86,6 +89,7 @@ class OnixBlockController extends OnixController
         $block->media          = $request->media;
         $block->category       = $request->category;
         $block->component_sync = $request->component_sync ?? 0;
+        $block->status         = $request->status == 'on' ? 1 : 0;
         $block->save();
 
         return redirect()->back()->with('info', 'Block edited');

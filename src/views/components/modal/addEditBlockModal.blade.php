@@ -4,6 +4,7 @@
     'label',
     'slug',
     'media',
+    'status' => true,
     'category',
     'sync' => false,
     'action' => 'onix.pages.create',
@@ -50,8 +51,14 @@
                     required class="input input-bordered input-primary w-full" />
                 <div class="form-control w-full">
                     <label class="label cursor-pointer">
-                        <span class="label-text">Should componet</span>
-                        <input type="checkbox" class="toggle toggle-primary" {{ $sync ? "checked" : null }} />
+                        <span class="label-text">Should component replicate?</span>
+                        <input type="checkbox" class="toggle toggle-primary" name="component_sync" {{ $sync ? "checked" : null }} />
+                    </label>
+                </div>
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Is active?</span>
+                        <input type="checkbox" class="toggle toggle-primary" name="status" {{ $status ? "checked" : null }} />
                     </label>
                 </div>
             </div>

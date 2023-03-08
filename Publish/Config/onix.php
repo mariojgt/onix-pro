@@ -1,8 +1,6 @@
 <?php
 
 return [
-    'demo_enable'         => true,   // If true users can see the demo
-
     'request_token'  => env('VITE_ONIX_API_KEY'),   // Prevent the api unwanted requests
 
     /*
@@ -61,7 +59,7 @@ return [
     |--------------------------------------------------------------------------
     */
     // Files base path (this is the location where the manifest.json file is located in the public folder)
-    'use_cdn'          => false,
+    'use_cdn'          => true,
     'editor_base_path' => 'vendor/Onix',
     // The last name of you css file used in vite
     'editor_css' => [
@@ -77,5 +75,13 @@ return [
     ],
     'editor_js_cdn' => [
         'https://cdn.tailwindcss.com',
-    ]
+    ],
+
+    // If you want to restrict the access to the editor you can add the middleware here
+    'middleware' => [
+        'web',
+    ],
+
+    // Onix blade pages route prefix
+    'route_prefix' => 'onix/',
 ];

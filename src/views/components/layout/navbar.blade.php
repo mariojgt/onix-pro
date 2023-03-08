@@ -12,14 +12,14 @@
             </div>
             {{-- Normal Logo --}}
             <div class="hidden px-2 mx-2 lg:flex">
-                <x-onix::layout.logo width="50" height="50" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                </svg>
             </div>
         </label>
     </div>
     <div class="flex-1 hidden px-2 mx-2 lg:flex">
-        <span class="text-lg font-bold">
-            3
-        </span>
+
     </div>
     <div class="flex-1 lg:flex-none">
         <div class="form-control">

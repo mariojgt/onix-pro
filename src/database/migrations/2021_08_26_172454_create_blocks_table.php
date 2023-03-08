@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->mediumText('media')->nullable();
             $table->string('category')->nullable();
+            $table->tinyInteger('component_sync')->default(1);
             $table->longText('content')->nullable();
             $table->longText('block_data')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

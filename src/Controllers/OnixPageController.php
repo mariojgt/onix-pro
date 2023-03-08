@@ -46,13 +46,15 @@ class OnixPageController extends OnixController
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'slug'  => 'required|unique:onix_pages',
+            'title'  => 'required',
+            'slug'   => 'required|unique:onix_pages',
+            'status' => 'required',
         ]);
 
-        $page        = new OnixPage();
-        $page->title = $request->title;
-        $page->slug  = Str::slug($request->slug, '-');
+        $page         = new OnixPage();
+        $page->title  = $request->title;
+        $page->slug   = Str::slug($request->slug, '-');
+        $page->status = $request->status == 'on' ? 1 : 0;
         $page->save();
 
         return redirect()->back()->with('success', 'Page created');
@@ -66,12 +68,14 @@ class OnixPageController extends OnixController
     public function edit(Request $request, OnixPage $page)
     {
         $request->validate([
-            'title' => 'required',
-            'slug'  => 'required|unique:onix_pages,slug,' . $page->id,
+            'title'  => 'required',
+            'slug'   => 'required|unique:onix_pages,slug,' . $page->id,
+            'status' => 'required',
         ]);
 
-        $page->title = $request->title;
-        $page->slug  = Str::slug($request->slug, '-');
+        $page->title  = $request->title;
+        $page->slug   = Str::slug($request->slug, '-');
+        $page->status = $request->status == 'on' ? 1 : 0;
         $page->save();
 
         return redirect()->back()->with('info', 'Page edited');

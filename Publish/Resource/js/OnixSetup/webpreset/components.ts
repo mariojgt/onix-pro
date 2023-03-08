@@ -56,11 +56,7 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
                         name: 'id',
                         placeholder: 'form-id',
                     },
-                ],
-                // Add the csrf token to the form | TODO: make it dynamic to work with vue
-                content: `
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                `,
+                ]
             },
         },
         view: {

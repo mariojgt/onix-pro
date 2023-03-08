@@ -20,6 +20,8 @@ return new class extends Migration
             $table->longText('content')->nullable();
             $table->longText('preview')->nullable();
             $table->longText('html')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('deployed')->default(0);
             $table->timestamps();
         });
     }

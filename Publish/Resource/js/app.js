@@ -2,10 +2,14 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import onixApi from './OnixSetup/helpers/onixApi.js';
+// Import axios
+import axios from 'axios';
+window.axios = axios;
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // Export the swetalert2 to the window object so we can use it in the blade file
 window.Swal = Swal;
-
 
 const getDeplyInfo = async function (codeDisplayId) {
     // Find the code display element

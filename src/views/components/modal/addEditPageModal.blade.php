@@ -1,4 +1,12 @@
-@props(['modalId' => 'create-page', 'title', 'slug', 'action' => 'onix.pages.create', 'edit' => false])
+@props([
+    'modalId' => 'create-page',
+    'title',
+    'slug',
+    'status',
+    'action' => 'onix.pages.create',
+    'edit'   => false,
+    'status' => true,
+])
 
 <!-- The button to open modal -->
 <label for="{{ $modalId }}" class="btn">
@@ -32,6 +40,12 @@
                     class="input input-bordered input-primary w-full" />
                 <input type="text" placeholder="Page Slug" name="slug" value="{{ $slug ?? null }}" required
                     class="input input-bordered input-primary w-full" />
+                <div class="form-control w-full">
+                    <label class="label cursor-pointer">
+                        <span class="label-text">Is active?</span>
+                        <input type="checkbox" class="toggle toggle-primary" name="status" {{ $status == 1 ? "checked" : null }} />
+                    </label>
+                </div>
             </div>
             <div class="modal-action">
                 <label for="{{ $modalId }}" class="btn btn-error">Close</label>
