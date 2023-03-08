@@ -26,24 +26,23 @@ import logo from 'assets/logo.png';
       <span class="text-slate-600">v<span id="version">0.0.0</span></span>
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-        onix was design to be a simple and powerful inventory system for any kind of game.
+        Onix is a page builder for laravel that allows you to create pages with a drag and drop interface.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
+      <!-- <Link
         href="#"
         href="https://www.unrealengine.com/marketplace/en-US/product/master-inventory"
         target="_blank"
         class="flex gap-1 items-center justify-center rpgButton"
         rel="noopener">
         <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
         Asset link
-      </Link>
+      </Link> -->
       <Link
         size="lg"
         style="outline"
         rel="noopener"
-        href="https://github.com/mjgt-Studios/onix/issues"
+        href="https://github.com/mariojgt/onix/issues"
         class="flex gap-1 items-center justify-center rpgButton"
         target="_blank">
         <Icon class="text-white w-5 h-5" name="bx:bxl-github" />
@@ -54,7 +53,7 @@ import logo from 'assets/logo.png';
 
   <script>
     // Get the project version from the github api
-    fetch("https://api.github.com/repos/mjgt-Studios/onix/releases/latest")
+    fetch("https://api.github.com/repos/mariojgt/onix/releases/latest")
       .then((response) => response.json())
       .then((data) => {
         document.getElementById("version").innerHTML = data.tag_name;
