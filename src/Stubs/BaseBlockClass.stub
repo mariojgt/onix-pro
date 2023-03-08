@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Onix\Blocks;
+
+use Mariojgt\Onix\Helpers\BaseOnixBlocks;
+
+class {{className}} extends BaseOnixBlocks
+{
+    public string $componentId = '{{componentId}}';
+    public string $label = '{{label}}';
+    public string $mediaPath = '{{mediaPath}}';
+    public string $contentPath = '{{contentPath}}';
+    public string $category = '{{category}}';
+}
