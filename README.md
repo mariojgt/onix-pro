@@ -22,3 +22,6 @@ and follow the instructions, this will create a new block class and blade templa
 and the php class will be in the `app/Onix/Blocks` folder.
 
 to acess the page builder you can use the path `onix/pages/index`
+
+
+Docs: https://mariojgt.github.io/onix/releases/
