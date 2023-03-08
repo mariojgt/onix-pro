@@ -1,0 +1,63 @@
+---
+import { Picture } from "@astrojs/image/components";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+import logo from 'assets/logo.png';
+
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="py-6 md:order-1 hidden md:block">
+    <Picture
+      src={logo}
+      alt="Astronaut in the air"
+      widths={[200, 400, 600]}
+      aspectRatio="4:3"
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+    />
+  </div>
+  <div>
+    <h1
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      onix
+      <span class="text-slate-600">v<span id="version">0.0.0</span></span>
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+        onix was design to be a simple and powerful inventory system for any kind of game.
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link
+        href="#"
+        href="https://www.unrealengine.com/marketplace/en-US/product/master-inventory"
+        target="_blank"
+        class="flex gap-1 items-center justify-center rpgButton"
+        rel="noopener">
+        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+
+        Asset link
+      </Link>
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://github.com/mjgt-Studios/onix/issues"
+        class="flex gap-1 items-center justify-center rpgButton"
+        target="_blank">
+        <Icon class="text-white w-5 h-5" name="bx:bxl-github" />
+        Bug and Issues
+      </Link>
+    </div>
+  </div>
+
+  <script>
+    // Get the project version from the github api
+    fetch("https://api.github.com/repos/mjgt-Studios/onix/releases/latest")
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("version").innerHTML = data.tag_name;
+      });
+  </script>
+</main>

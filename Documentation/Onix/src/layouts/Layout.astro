@@ -1,0 +1,234 @@
+---
+import { SEO } from "astro-seo";
+// import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource/inter/variable.css";
+export interface Props {
+  title: string;
+}
+// const { src } = await getImage({
+//   src: "../../assets/hero.png",
+//   width: 800,
+//   height: 742,
+//   format: "avif",
+// });
+// console.log(src);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+const { title } = Astro.props;
+const makeTitle = title
+  ? title + " | " + "onix"
+  : "onix - Untimate rpg inventory";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <SEO
+      title={makeTitle}
+      description="onix is a unreal engine rpg inventory system. It is a complete inventory system with all the features you need to create a rpg game."
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@surjithctly",
+        site: "@web3templates",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `onix - ${title}`,
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "onix Homepage Screenshot",
+        },
+      }}
+    />
+  </head>
+  <body class="bg-master-100" >
+      <Navbar />
+    <slot />
+    <footer class="my-20">
+        <p class="text-center text-sm text-slate-500">
+          Copyright © {new Date().getFullYear()} onix. All rights reserved.
+        </p>
+    </footer>
+    <!-- <Footer /> -->
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+
+        h1 {
+            @apply text-yellow-200 !important;
+            @apply text-5xl font-bold !important;
+        }
+        h1:hover {
+            @apply text-yellow-500 !important;
+            @apply text-5xl font-bold !important;
+            @apply transform !important;
+            @apply scale-105 !important;
+            @apply transition-all !important;
+            @apply duration-500 !important;
+        }
+        h2:hover {
+            @apply text-yellow-300 !important;
+            @apply font-bold !important;
+            @apply transform !important;
+            @apply scale-105 !important;
+            @apply transition-all !important;
+            @apply duration-500 !important;
+        }
+        h3:hover {
+            @apply text-yellow-400 !important;
+            @apply font-bold !important;
+            @apply transform !important;
+            @apply scale-105 !important;
+            @apply transition-all !important;
+            @apply duration-500 !important;
+        }
+
+
+        h2 {
+            @apply text-yellow-300 !important;
+            @apply font-bold !important;
+        }
+
+        h3 {
+            @apply text-yellow-400 !important;
+            @apply font-bold !important;
+        }
+        span {
+            @apply text-rarity-artifact;
+        }
+        li {
+            @apply text-master-text-100;
+        }
+        time {
+            @apply text-rarity-epic;
+        }
+        p {
+            @apply text-master-text-100;
+        }
+        a {
+            @apply text-yellow-500 !important;
+        }
+
+        img {
+            @apply rounded !important;
+            @apply border-yellow-500 !important;
+            @apply border-2 !important;
+            @apply hover:shadow-2xl !important;
+            @apply hover:scale-105 !important;
+            @apply transition-all !important;
+            @apply duration-500 !important;
+        }
+
+        .img-modal {
+            @apply border-rarity-epic !important;
+        }
+
+        ::selection {
+            @apply bg-yellow-500 !important;
+            @apply text-master-100 !important;
+        }
+
+        table {
+            @apply border-collapse !important;
+            @apply border-2 !important;
+            @apply border-yellow-500 !important;
+            @apply rounded !important;
+            @apply text-center !important;
+            @apply text-xl !important;
+            @apply text-master-text-100 !important;
+            @apply bg-master-200 !important;
+        }
+        /* Add a cell divider yellow border */
+        td {
+            @apply border-2 !important;
+            @apply border-rarity-epic !important;
+        }
+
+        th {
+            @apply border-2 !important;
+            @apply border-yellow-500 !important;
+            @apply bg-yellow-500 !important;
+            @apply text-master-100 !important;
+            @apply text-xl !important;
+        }
+
+        tr:hover {
+            @apply bg-yellow-500 !important;
+            @apply text-master-100 !important;
+            @apply transform !important;
+            @apply scale-105 !important;
+            @apply transition-all !important;
+            @apply duration-500 !important;
+            @apply border-2 !important;
+            @apply border-yellow-500 !important;
+            @apply rounded !important;
+        }
+        code {
+            @apply bg-master-200 !important;
+            @apply text-rarity-wow !important;
+            @apply p-1 !important;
+            @apply rounded !important;
+        }
+        strong {
+            @apply text-yellow-500 !important;
+        }
+        /* For all the link we are goin to add a yellow border */
+        .rpgButton {
+            @apply border-yellow-500;
+            @apply border-2;
+            @apply rounded;
+            @apply p-2;
+            @apply text-yellow-500;
+            @apply bg-master-200;
+        }
+        .rpgButton:hover {
+            @apply transform;
+            @apply scale-105;
+            @apply transition-all;
+            @apply duration-500;
+        }
+    </style>
+
+    <script>
+        // When the user lcick in any image we are goin to show a modal with the image
+        const images = document.querySelectorAll("img");
+        images.forEach((image) => {
+            image.addEventListener("click", () => {
+                const modal = document.createElement("div");
+                modal.classList.add("fixed");
+                modal.classList.add("top-0");
+                modal.classList.add("left-0");
+                modal.classList.add("w-full");
+                modal.classList.add("h-full");
+                modal.classList.add("bg-black");
+                modal.classList.add("bg-opacity-80");
+                modal.classList.add("z-50");
+                modal.innerHTML = `
+                    <img src="${image.src}" alt="${image.alt}" class="max-w-full max-h-full mx-auto my-auto rounded img-modal" />
+                `;
+                document.body.appendChild(modal);
+                modal.addEventListener("click", () => {
+                    modal.remove();
+                });
+            });
+        });
+    </script>
+  </body>
+</html>
