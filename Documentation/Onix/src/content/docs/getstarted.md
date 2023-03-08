@@ -3,7 +3,7 @@ draft: false
 title: Onix - Get started
 snippet: "Learn the basics of onix CoGet started"
 image: {
-    src: "https://raw.githubusercontent.com/mjgt-Studios/onix/main/imgs/PostImgs/Controls.png",
+    src: "https://raw.githubusercontent.com/mariojgt/onix/main/Documentation/Onix/imgs/Started.png",
     alt: "full stack web development"
 }
 publishDate: "2022-11-08 11:39"
