@@ -47,8 +47,7 @@ class OnixPageController extends OnixController
     {
         $request->validate([
             'title'  => 'required',
-            'slug'   => 'required|unique:onix_pages',
-            'status' => 'required',
+            'slug'   => 'required|unique:onix_pages'
         ]);
 
         $page         = new OnixPage();
@@ -69,8 +68,7 @@ class OnixPageController extends OnixController
     {
         $request->validate([
             'title'  => 'required',
-            'slug'   => 'required|unique:onix_pages,slug,' . $page->id,
-            'status' => 'required',
+            'slug'   => 'required|unique:onix_pages,slug,' . $page->id
         ]);
 
         $page->title  = $request->title;

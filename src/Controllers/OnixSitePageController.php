@@ -18,7 +18,9 @@ class OnixSitePageController extends OnixController
     public function index(Request $request, $slug = null)
     {
         $page = OnixPage::where('slug', $slug)->firstOrFail();
-
+        if ($page->status == 0) {
+            abort(404);
+        }
         return view('pages.onix.' . $page->slug);
     }
 }

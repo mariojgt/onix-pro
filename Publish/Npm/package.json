@@ -39,7 +39,7 @@
         "grapesjs-preset-webpage": "^1.0.2",
         "grapesjs-script-editor": "^1.0.3",
         "grapesjs-tabs": "^1.0.6",
-        "sweetalert2": "^11.7.3",
+        "sweetalert2": "^11.4.8",
         "toastify-js": "^1.9.3",
         "vue": "^3.0.5"
     }

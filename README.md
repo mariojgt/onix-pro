@@ -6,6 +6,8 @@ to install it you can use composer:
 
     composer require onix/laravel
     php artisan install:onix
+    // add the following line to the .env file
+    VITE_ONIX_API_KEY=any_value // this is to avoid unwanted requests to the api
 
 ## Features
 - Page builder

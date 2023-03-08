@@ -49,8 +49,7 @@ class OnixBlockController extends OnixController
             'label'       => 'required',
             'media'       => 'required',
             'category'    => 'required',
-            'slug'        => 'required|unique:onix_blocks',
-            'status'      => 'required',
+            'slug'        => 'required|unique:onix_blocks'
         ]);
 
         $block                 = new OnixBlock();
@@ -79,8 +78,7 @@ class OnixBlockController extends OnixController
             'label'       => 'required',
             'media'       => 'required',
             'category'    => 'required',
-            'slug'        => 'required|unique:onix_blocks,slug,' . $block->id,
-            'status'      => 'required',
+            'slug'        => 'required|unique:onix_blocks,slug,' . $block->id
         ]);
 
         $block->componentId    = $request->componentId;
