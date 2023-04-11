@@ -18,7 +18,7 @@ Onix is a page builder that integrates with laravel, the new version 3 is a comp
 
 To start run the following command:
 
-    'composer require onix/laravel'
+    'composer require mariojgt/onix'
 
     'php artisan install:onix'
     // add the following line to the .env file
