@@ -19,7 +19,7 @@
             {{-- Id used to toogle the side menu --}}
             <input id="nav-drawer" type="checkbox" class="drawer-toggle">
             {{-- Website content --}}
-            <div class="flex flex-col drawer-content">
+            <div class="drawer-content">
                 <x-onix::layout.navbar />
                 <x-onix::layout.flash />
                 <div class="px-6 py-8">

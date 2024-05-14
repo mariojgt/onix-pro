@@ -21,7 +21,7 @@
     <div class="flex-1 hidden px-2 mx-2 lg:flex">
 
     </div>
-    <div class="flex-1 lg:flex-none">
+    {{-- <div class="flex-1 lg:flex-none">
         <div class="form-control">
             <div class="relative">
                 <input type="text" placeholder="Search" class="w-full pr-16 input input-primary input-bordered">
@@ -34,12 +34,12 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="flex-none">
         <x-onix::layout.theme />
     </div>
     <div class="flex-none">
-        <div class="dropdown dropdown-end">
+        {{-- <div class="dropdown dropdown-end">
             <div tabindex="0">
                 <div class="avatar">
                     <div class="rounded-full w-10 h-10 m-1">
@@ -71,7 +71,7 @@
                         Logout</a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
 
     </div>
 </div>

@@ -19,5 +19,11 @@ export default defineConfig({
                 css: '/resources/vendor/Onix/css/app.css',
             },
         },
-    }
+    },
+    server: {
+        host: '0.0.0.0',
+        hmr: {
+            host: 'localhost'
+        }
+    },
 });

@@ -102,7 +102,7 @@ class OnixApiController extends OnixController
     {
         // First we going to scan the path App\OnixComponents and get all the components to array
         $blocks = [];
-        $path       = app_path('Onix\Blocks');
+        $path       = app_path('Onix/Blocks');
         // Scan the classed files adn get the block data
         foreach (scandir($path) as $file) {
             if (in_array($file, ['.', '..'])) {

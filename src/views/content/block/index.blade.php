@@ -16,11 +16,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="shadow-xl bg-base-300 mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2 border-purple-400">
+                <div class="shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2 border-purple-400">
                     <div class="pt--10 pr-0 pb-10 pl-0">
-                        @foreach ($block as $item)
-                            <x-onix::table.row :item="$item" :mode="'block'" />
-                        @endforeach
+                        @if (count($block) >= 1)
+                            @foreach ($block as $item)
+                                <x-onix::table.row :item="$item" :mode="'block'" />
+                            @endforeach
+                        @else
+                            <div class="text-center">
+                                <p class="text-lg font-bold text-gray-900">No pages found</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
