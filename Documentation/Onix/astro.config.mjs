@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://mariojgt.github.io",
-  base: '/onix',
+  base: '/onix-pro',
   integrations: [
     tailwind(),
     image({
