@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +26,9 @@
                 <div class="px-6 py-8">
                     {{ $slot }}
                 </div>
-                {{-- Footer --}}
-                <x-onix::layout.footer />
+                @if ($footer ?? true)
+                    <x-onix::layout.footer />
+                @endif
             </div>
             {{-- Side Menu Drawer Start here --}}
             <div class="drawer-side">

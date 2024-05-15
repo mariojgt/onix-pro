@@ -1,5 +1,5 @@
-<x-onix::layout.main>
-    <x-onix::onix.main/>
+<x-onix::layout.main :footer="false" >
+    <x-onix::onix.main />
     @if (!empty($page))
         <script>
             setTimeout(() => {

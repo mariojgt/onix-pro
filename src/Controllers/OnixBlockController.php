@@ -58,7 +58,7 @@ class OnixBlockController extends OnixController
         $block->slug           = Str::slug($request->slug, '-');
         $block->media          = $request->media;
         $block->category       = $request->category;
-        $block->component_sync = $request->component_sync ?? 0;
+        $block->component_sync = $request->component_sync == 'on' ? 1 : 0;
         $block->status         = $request->status == 'on' ? 1 : 0;
         $block->save();
 
@@ -86,7 +86,7 @@ class OnixBlockController extends OnixController
         $block->slug           = Str::slug($request->slug, '-');
         $block->media          = $request->media;
         $block->category       = $request->category;
-        $block->component_sync = $request->component_sync ?? 0;
+        $block->component_sync = $request->component_sync == 'on' ? 1 : 0;
         $block->status         = $request->status == 'on' ? 1 : 0;
         $block->save();
 

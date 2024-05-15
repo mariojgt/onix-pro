@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center h-screen bg-slate-700">
     <div class="bg-white rounded-3xl border shadow-xl p-3 w-11/12">
         <div class="justify-between items-center mb-4">
-            <div id="gjs"></div>
+            <div id="gjs" style="z-index: 99999;"></div>
         </div>
         <div>
             <h1 class="font-semibold text-xl text-gray-700">Enable Auto Save</h1>
