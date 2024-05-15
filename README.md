@@ -35,6 +35,7 @@ This will create a new block class and blade template in the `resources/onix/blo
 ### Accessing the Page Builder Settings
 
 To access the page builder, navigate to the path `onix/settings` in your application.
+You can protect the acess using the config `onix.middleware` by default its web(public)
 
 ## Commands
 
