@@ -32,9 +32,9 @@ php artisan onix:block
 
 This will create a new block class and blade template in the `resources/onix/blocks` folder. The PHP class will be located in the `app/Onix/Blocks` folder.
 
-### Accessing the Page Builder
+### Accessing the Page Builder Settings
 
-To access the page builder, navigate to the path `onix/pages/index` in your application.
+To access the page builder, navigate to the path `onix/settings` in your application.
 
 ## Commands
 
