@@ -1,6 +1,7 @@
 @props([
     'item',
     'mode' => 'page', // block, page
+    'templates'
 ])
 
 <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
@@ -64,7 +65,7 @@
                     </svg>
                 </a>
                 <x-onix::modal.addEditPageModal :modalId="'edit-' . $item->id" :title="$item->title" :slug="$item->slug" :status="$item->status"
-                    :action="route('onix.pages.edit', $item->id)" :edit="true" />
+                    :action="route('onix.pages.edit', $item->id)" :templates="$templates" :edit="true" />
                 <x-onix::modal.modalDelete :modalId="'delete-' . $item->id" :action="route('onix.pages.delete', $item->id)" />
             @elseif ($mode == 'block')
                 <a class="btn btn-square" href="{{ route('onix.block.editor', $item->slug) }}">
@@ -76,7 +77,7 @@
                 </a>
                 <x-onix::modal.addEditBlockModal :modalId="'edit-' . $item->id" :action="route('onix.block.edit', $item->id)" :componentId="$item->componentId"
                     :label="$item->label" :slug="$item->slug" :media="$item->media" :status="$item->status" :category="$item->category"
-                    :sync="$item->component_sync" :edit="true" />
+                    :sync="$item->component_sync" :edit="true" :templates="$templates" />
                 <x-onix::modal.modalDelete :modalId="'delete-' . $item->id" :action="route('onix.block.delete', $item->id)" />
             @endif
         </div>

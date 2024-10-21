@@ -6,6 +6,7 @@ use Mariojgt\Onix\Helpers\BaseOnixBlocks;
 
 class Footer extends BaseOnixBlocks
 {
+    public string $template = 'starter';
     public string $componentId = 'footer';
     public string $label = 'footer';
     public string $mediaPath = 'footer-media';

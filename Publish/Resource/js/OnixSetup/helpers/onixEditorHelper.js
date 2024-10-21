@@ -47,9 +47,9 @@ const updateEditorStyle = async () => {
 /**
  * Load the editor css and javascript files so we can use them in the editor
  */
-const getSiteStyles = async () => {
+const getSiteStyles = async (template) => {
     try {
-        return await onixApi.get('/site-styles').then((response) => {
+        return await onixApi.get('/site-styles?template=' + template).then((response) => {
             return response.data;
         });
     } catch (error) {
@@ -79,8 +79,8 @@ const startCodeEditor = async (editor) => {
     }]);
 };
 
-const loadBlocks = async (editor) => {
-    await onixApi.get('/load/blocks').then((response) => {
+const loadBlocks = async (editor, template) => {
+    await onixApi.get('/load/blocks?template=' + template).then((response) => {
         const blocks = response.data.blocks;
         // If we are editng a block prevent the block to add himself to the editor
         blocks.forEach((block) => {
@@ -173,7 +173,7 @@ const saveEditorData = async (editor, silentSave = false) => {
 };
 
 // Load the page of the component we are editing
-const loadEditorData = async (editor, mode = 'page', slug) => {
+const loadEditorData = async (editor, mode = 'page', slug, template) => {
     // Clear the local storage
     localStorage.removeItem("onix-data");
 
@@ -204,7 +204,7 @@ const loadEditorData = async (editor, mode = 'page', slug) => {
     // Automatically update the editor style when the page is loaded
     await updateEditorStyle();
     // Load the blocks so when we load load the page the blocks are up to date
-    await loadBlocks(editor);
+    await loadBlocks(editor, template);
 
     // Get all the blocks from the editor
     const blocks = editor.BlockManager.getAll();

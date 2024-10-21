@@ -8,6 +8,7 @@ use App\OnixComponents\HomePage;
 use Mariojgt\Onix\Model\OnixPage;
 use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
+use Mariojgt\Onix\Model\OnixTemplate;
 use Mariojgt\Onix\Controllers\OnixApiController;
 
 class OnixPageController extends OnixController
@@ -18,8 +19,8 @@ class OnixPageController extends OnixController
     public function index(Request $request)
     {
         $pages = OnixPage::all();
-
-        return view('onix::content.page.index', compact('pages'));
+        $templates = OnixTemplate::all()->pluck('name', 'id');
+        return view('onix::content.page.index', compact('pages', 'templates'));
     }
 
     /**
@@ -28,7 +29,8 @@ class OnixPageController extends OnixController
     public function editor(Request $request, $slug = null)
     {
         $page = OnixPage::where('slug', $slug)->first();
-        return view('onix::content.page.editor', compact('page'));
+        $template = $page->template;
+        return view('onix::content.page.editor', compact('page', 'template'));
     }
 
     public function delete(Request $request, OnixPage $page)
@@ -47,6 +49,7 @@ class OnixPageController extends OnixController
     {
         $request->validate([
             'title'  => 'required',
+            'template_id'  => 'required',
             'slug'   => 'required|unique:onix_pages'
         ]);
 
@@ -54,6 +57,7 @@ class OnixPageController extends OnixController
         $page->title  = $request->title;
         $page->slug   = Str::slug($request->slug, '-');
         $page->status = $request->status == 'on' ? 1 : 0;
+        $page->template_id = $request->template_id;
         $page->save();
 
         return redirect()->back()->with('success', 'Page created');

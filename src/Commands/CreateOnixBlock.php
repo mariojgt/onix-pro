@@ -40,6 +40,8 @@ class CreateOnixBlock extends Command
      */
     public function handle()
     {
+        // Ask for the template name
+        $templateName = $this->ask('What is the name of the template? example: starter');
         // Ask for the block id
         $componentId = $this->ask('What is the id of the block?');
         // Ask for the block name
@@ -61,6 +63,7 @@ class CreateOnixBlock extends Command
                 '{{contentPath}}',
                 '{{category}}',
                 '{{className}}',
+                '{{templateName}}'
             ],
             'values' => [
                 $componentId,
@@ -69,6 +72,7 @@ class CreateOnixBlock extends Command
                 $contentPath,
                 $category,
                 $className,
+                $templateName
             ]
         ];
 

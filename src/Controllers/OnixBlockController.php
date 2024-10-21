@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Mariojgt\Onix\Model\OnixPage;
 use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
+use Mariojgt\Onix\Model\OnixTemplate;
 
 class OnixBlockController extends OnixController
 {
@@ -16,8 +17,9 @@ class OnixBlockController extends OnixController
     public function index(Request $request)
     {
         $block = OnixBlock::all();
+        $templates = OnixTemplate::all()->pluck('name', 'id');
 
-        return view('onix::content.block.index', compact('block'));
+        return view('onix::content.block.index', compact('block', 'templates'));
     }
 
     /**
@@ -49,10 +51,12 @@ class OnixBlockController extends OnixController
             'label'       => 'required',
             'media'       => 'required',
             'category'    => 'required',
-            'slug'        => 'required|unique:onix_blocks'
+            'slug'        => 'required|unique:onix_blocks',
+            'template_id'  => 'required',
         ]);
 
         $block                 = new OnixBlock();
+        $block->template_id    = $request->template_id;
         $block->componentId    = $request->componentId;
         $block->label          = $request->label;
         $block->slug           = Str::slug($request->slug, '-');

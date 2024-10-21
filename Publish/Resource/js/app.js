@@ -65,11 +65,12 @@ window.deploySite = async function (deployMode, codeFeedbackId) {
             }, 1000);
         });
     } catch (error) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong deploying the site!😭',
-        });
+        console.log(error);
+        // Swal.fire({
+        //     icon: 'error',
+        //     title: 'Oops...',
+        //     text: 'Something went wrong deploying the site!😭',
+        // });
     }
     setTimeout(() => {
         clearInterval(codeFeedbak);

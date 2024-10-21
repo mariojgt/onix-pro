@@ -6,6 +6,7 @@ use Mariojgt\Onix\Helpers\BaseOnixBlocks;
 
 class TodoList extends BaseOnixBlocks
 {
+    public string $template = 'starter';
     public string $componentId = 'todo-list';
     public string $label = 'Todo List';
     public string $mediaPath = 'todo-list-media';

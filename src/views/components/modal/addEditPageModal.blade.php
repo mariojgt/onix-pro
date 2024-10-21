@@ -6,6 +6,7 @@
     'action' => 'onix.pages.create',
     'edit'   => false,
     'status' => true,
+    'templates'
 ])
 
 <!-- The button to open modal -->
@@ -40,6 +41,14 @@
                     class="input input-bordered input-primary w-full" />
                 <input type="text" placeholder="Page Slug" name="slug" value="{{ $slug ?? null }}" required
                     class="input input-bordered input-primary w-full" />
+                <div class="form-control w-full">
+                    <label class="label">Select you template</label>
+                    <select class="select select-bordered w-full" name="template_id">
+                        @foreach ($templates as $key => $item)
+                            <option value="{{ $key }}">{{ $item }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-control w-full">
                     <label class="label cursor-pointer">
                         <span class="label-text">Is active?</span>

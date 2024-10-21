@@ -7,7 +7,7 @@
                 <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
                     <div>
                         <p class="text-xl font-bold text-gray-900">Block</p>
-                        <x-onix::modal.addEditBlockModal :action="route('onix.block.create')" />
+                        <x-onix::modal.addEditBlockModal :templates="$templates" :action="route('onix.block.create')" />
                     </div>
                     <div class="mt-4 mr-0 mb-0 ml-0 sm:mt-0">
                         <div class="relative">
@@ -20,7 +20,7 @@
                     <div class="pt--10 pr-0 pb-10 pl-0">
                         @if (count($block) >= 1)
                             @foreach ($block as $item)
-                                <x-onix::table.row :item="$item" :mode="'block'" />
+                                <x-onix::table.row :templates="$templates" :item="$item" :mode="'block'" />
                             @endforeach
                         @else
                             <div class="text-center">

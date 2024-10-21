@@ -21,6 +21,7 @@ class OnixSitePageController extends OnixController
         if ($page->status == 0) {
             abort(404);
         }
+        session(['template' => $page->template->slug]);
         return view('pages.onix.' . $page->slug);
     }
 }

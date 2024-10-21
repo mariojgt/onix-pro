@@ -9,6 +9,7 @@
     'sync' => false,
     'action' => 'onix.pages.create',
     'edit' => false,
+    'templates'
 ])
 
 <!-- The button to open modal -->
@@ -54,6 +55,14 @@
                         <span class="label-text">Should component replicate?</span>
                         <input type="checkbox" class="toggle toggle-primary" name="component_sync" {{ $sync ? "checked" : null }} />
                     </label>
+                </div>
+                <div class="form-control w-full">
+                    <label class="label">Select you template</label>
+                    <select class="select select-bordered w-full" name="template_id">
+                        @foreach ($templates as $key => $item)
+                            <option value="{{ $key }}">{{ $item }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-control w-full">
                     <label class="label cursor-pointer">

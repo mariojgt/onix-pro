@@ -10,7 +10,7 @@ export default defineConfig({
         ])
     ],
     build: {
-        outDir: 'public/vendor/Onix',
+        outDir: 'public/vendor/Onix/starter',
         emptyOutDir: true,
         rollupOptions: {
             input: {

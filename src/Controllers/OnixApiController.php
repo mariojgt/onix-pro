@@ -8,6 +8,8 @@ use Mariojgt\Onix\Model\OnixPage;
 use Mariojgt\Onix\Model\OnixBlock;
 use App\Http\Controllers\Controller;
 use Mariojgt\Onix\Model\OnixSetting;
+use Mariojgt\Onix\Model\OnixTemplate;
+use SebastianBergmann\Template\Template;
 
 class OnixApiController extends OnixController
 {
@@ -27,15 +29,15 @@ class OnixApiController extends OnixController
         ]);
     }
 
-    public function getSiteStyles()
+    public function getSiteStyles(Request $request)
     {
         $cssFiles = [];
         $jsFiles  = [];
-        if (config('onix.use_cdn')) {
-            $cssFiles = config('onix.editor_css_cdn');
-            $jsFiles  = config('onix.editor_js_cdn');
-        } else {
-            $basePath = config('onix.editor_base_path');
+
+        $template = OnixTemplate::where('slug', $request->template)->firstOrFail();
+        $basePath = config('onix.editor_base_path') . '/' . $template->slug;
+
+        if ($template->use_manifest) {
             // Find the manifest file so we can get the css and js files
             $manifest = json_decode(file_get_contents(public_path($basePath . '/manifest.json')), true);
             foreach ($manifest as $key => $item) {
@@ -48,6 +50,10 @@ class OnixApiController extends OnixController
                     $jsFiles[] = url($basePath . '/' . $item['file']);
                 }
             }
+        } else {
+            // If the template is not using the manifest file we going to get the css and js files from the database
+            $cssFiles[] = url($basePath . '/' . $template->css_file);
+            $jsFiles[]  = url($basePath . '/' . $template->js_file);
         }
 
         return response()->json([
@@ -112,7 +118,9 @@ class OnixApiController extends OnixController
             $className = pathinfo($file, PATHINFO_FILENAME);
             $class     = 'App\\Onix\\Blocks\\' . $className;
             $instance  = new $class();
-            $blocks[] = $instance->getBlock();
+            if ($instance->template === $request->template) {
+                $blocks[] = $instance->getBlock();
+            }
         }
 
         $onixDataBaseBlocks = OnixBlock::all();

@@ -4,7 +4,8 @@ namespace Mariojgt\Onix\Commands;
 
 use Artisan;
 use Illuminate\Console\Command;
-use Mariojgt\Onix\Model\OnixSetting;
+use Mariojgt\Onix\Database\Seeders\OnixSettingsSeeder;
+use Mariojgt\Onix\Database\Seeders\OnixTemplateSeeder;
 
 class Install extends Command
 {
@@ -48,18 +49,16 @@ class Install extends Command
         // Migrate
         Artisan::call('migrate');
 
-        // Create the settings or update them
-        $onixSetting = OnixSetting::first();
-        if ($onixSetting) {
-            $onixSetting->delete();
-        }
+        // Call the seeder for the onix settings
+        Artisan::call('db:seed', [
+            '--class' => OnixSettingsSeeder::class,
+            '--force' => true,
+        ]);
 
-        $onixSetting                   = new OnixSetting();
-        $onixSetting->color_primary    = '#000000ff';
-        $onixSetting->color_secondary  = '#14213dff';
-        $onixSetting->color_tertiary   = '#fca311ff';
-        $onixSetting->color_quaternary = '#e5e5e5ff';
-        $onixSetting->save();
+        Artisan::call('db:seed', [
+            '--class' => OnixTemplateSeeder::class,
+            '--force' => true,
+        ]);
 
         $this->newLine();
         $this->info('The command was successful!');

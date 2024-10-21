@@ -29,10 +29,10 @@ const startOnixEditor = async (cssStyles = [], jsScripts = []) => {
 };
 
 // Create a function and export to the window so we can call and start the editor from the blade file
-window.startEditor = async function (mode, slug) {
-    const styles = await getSiteStyles();
+window.startEditor = async function (mode, slug, template) {
+    const styles = await getSiteStyles(template);
     await startOnixEditor(styles.css, styles.js);
-    await loadEditorData(editor, mode, slug);
+    await loadEditorData(editor, mode, slug, template);
 }
 // Expose to the browser the save function so we can use it in the blade file
 window.saveEditorData = function () {

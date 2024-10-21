@@ -3,7 +3,7 @@
     @if (!empty($block))
         <script>
             setTimeout(() => {
-                window.startEditor('block', "{{ $block->slug }}");
+                window.startEditor('block', "{{ $block->slug }}", "{{ $block->template->slug }}");
             }, 500);
         </script>
     @endif

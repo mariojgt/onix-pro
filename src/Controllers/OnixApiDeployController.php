@@ -23,11 +23,11 @@ class OnixApiDeployController extends OnixController
 
     public function startDeploy(Request $request)
     {
-        $request->validate([
+        $validation = $request->validate([
             'mode' => 'required|in:blade, inersia',
         ]);
 
-        switch ($request->mode) {
+        switch ($validation['mode']) {
             case 'blade':
                 $this->bladeFilesDeploy($request);
                 break;
@@ -82,7 +82,7 @@ class OnixApiDeployController extends OnixController
         }
     }
 
-    public function bladeFilesDeploy(Request $request)
+    public function bladeFilesDeploy(Request $request): bool
     {
         // Get all the pages
         $pages = OnixPage::all();
@@ -110,6 +110,8 @@ class OnixApiDeployController extends OnixController
                 $replace
             );
         }
+
+        return true;
     }
 
     /**
@@ -141,14 +143,15 @@ class OnixApiDeployController extends OnixController
         fclose($file);
     }
 
-    private function loadStubFileAndSave($stubFile, $saveFilePath, $fileName, $fileExtension = '.php', $replace = null)
+    private function loadStubFileAndSave($stubFile, $saveFilePath, $fileName, $fileExtension = '.php', $replace = null) : void
     {
         File::isDirectory($saveFilePath) or File::makeDirectory($saveFilePath, 0777, true, true);
-
         $stub = file_get_contents(app_path('Onix/Stubs/' . $stubFile . '.stub'));
         if (!empty($replace)) {
             $stub = str_replace($replace['variables'], $replace['values'], $stub);
         }
         file_put_contents($saveFilePath . '/' . $fileName . $fileExtension, $stub);
+
+        return;
     }
 }

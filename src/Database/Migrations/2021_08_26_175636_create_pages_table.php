@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('onix_pages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('template_id')->nullable();
+            $table->foreign('template_id')->references('id')->on('onix_templates')->onDelete('cascade');
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->longText('content')->nullable();

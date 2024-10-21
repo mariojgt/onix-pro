@@ -33,7 +33,7 @@ class OnixProvider extends ServiceProvider
         // Load api routes
         $this->loadRoutesFrom(__DIR__ . '/Routes/api.php');
         // Load Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
 
         $this->app['router']->aliasMiddleware('onix-api', OnixApi::class);
     }

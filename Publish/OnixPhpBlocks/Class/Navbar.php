@@ -6,6 +6,7 @@ use Mariojgt\Onix\Helpers\BaseOnixBlocks;
 
 class Navbar extends BaseOnixBlocks
 {
+    public string $template = 'starter';
     public string $componentId = 'navbar';
     public string $label = 'navbar';
     public string $mediaPath = 'mavbar-media';

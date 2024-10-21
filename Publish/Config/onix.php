@@ -58,8 +58,6 @@ return [
     | Onix editor css and js files
     |--------------------------------------------------------------------------
     */
-    // Files base path (this is the location where the manifest.json file is located in the public folder)
-    'use_cdn'          => true,
     'editor_base_path' => 'vendor/Onix',
     // The last name of you css file used in vite
     'editor_css' => [
@@ -68,13 +66,6 @@ return [
     // The last name of you js file used in vite
     'editor_js' => [
         'app.js',
-    ],
-    // If you want to use cdn instead of the local files you can add the cdn url here dont forget to change the use_cdn to true
-    'editor_css_cdn' => [
-        'https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css',
-    ],
-    'editor_js_cdn' => [
-        'https://cdn.tailwindcss.com',
     ],
 
     // If you want to restrict the access to the editor you can add the middleware here

@@ -18,7 +18,7 @@
     "css": [
       "assets/onixGrapeJs-328607b6.css"
     ],
-    "file": "assets/grape-3d252b9a.js",
+    "file": "assets/grape-b02a3bd2.js",
     "imports": [
       "_sweetalert2-7c60aed3.js"
     ],
@@ -26,7 +26,7 @@
     "src": "resources/vendor/Onix/js/OnixSetup/onixGrapeJs.js"
   },
   "resources/vendor/Onix/js/app.js": {
-    "file": "assets/app-de8ff430.js",
+    "file": "assets/app-339814be.js",
     "imports": [
       "_sweetalert2-7c60aed3.js"
     ],
