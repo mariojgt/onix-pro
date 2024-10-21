@@ -7,6 +7,7 @@ use Mariojgt\Onix\Commands\Republish;
 use Mariojgt\Onix\Middleware\OnixApi;
 use Illuminate\Support\ServiceProvider;
 use Mariojgt\Onix\Commands\CreateOnixBlock;
+use Mariojgt\Onix\Commands\InstallTemplate;
 
 class OnixProvider extends ServiceProvider
 {
@@ -23,6 +24,7 @@ class OnixProvider extends ServiceProvider
                 Republish::class,
                 Install::class,
                 CreateOnixBlock::class,
+                InstallTemplate::class,
             ]);
         }
 
@@ -102,6 +104,11 @@ class OnixProvider extends ServiceProvider
         // Publish the layout file for the blade page
         $this->publishes([
             __DIR__ . '/../Publish/BladeLayout/' => resource_path('views/components/layout'),
+        ]);
+
+        // publish the templates
+        $this->publishes([
+            __DIR__ . '/../Publish/Templates/' => public_path('templates/'),
         ]);
     }
 }

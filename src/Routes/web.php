@@ -6,10 +6,22 @@ use Mariojgt\Onix\Controllers\OnixBlockController;
 use Mariojgt\Onix\Controllers\OnixDeployController;
 use Mariojgt\Onix\Controllers\OnixSettingsController;
 use Mariojgt\Onix\Controllers\OnixSitePageController;
+use Mariojgt\Onix\Controllers\OnixTemplateController;
 
 Route::group([
     'middleware' => config('onix.middleware'),
 ], function () {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Onix template controller
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/onix/templates/index', [OnixTemplateController::class, 'index'])->name('onix.templates.index');
+    Route::delete('/onix/templates/edit/{template}', [OnixTemplateController::class, 'delete'])->name('onix.templates.delete');
+    Route::post('/onix/templates/edit/{template}', [OnixTemplateController::class, 'edit'])->name('onix.templates.edit');
+    Route::post('/onix/templates/create', [OnixTemplateController::class, 'create'])->name('onix.templates.create');
+
     /*
     |--------------------------------------------------------------------------
     | Onix pages controller

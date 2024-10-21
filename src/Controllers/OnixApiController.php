@@ -51,9 +51,8 @@ class OnixApiController extends OnixController
                 }
             }
         } else {
-            // If the template is not using the manifest file we going to get the css and js files from the database
-            $cssFiles[] = url($basePath . '/' . $template->css_file);
-            $jsFiles[]  = url($basePath . '/' . $template->js_file);
+            $cssFiles = $template->getCssFiles();
+            $jsFiles = $template->getJsFiles();
         }
 
         return response()->json([

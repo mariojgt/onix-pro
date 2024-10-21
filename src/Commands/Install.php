@@ -60,6 +60,8 @@ class Install extends Command
             '--force' => true,
         ]);
 
+        Artisan::call('install:template luxgamers');
+
         $this->newLine();
         $this->info('The command was successful!');
     }

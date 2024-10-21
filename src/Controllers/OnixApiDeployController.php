@@ -91,19 +91,25 @@ class OnixApiDeployController extends OnixController
             $pageHtml = $page->html;
             $page->deployed = 1;
             $page->save();
+
+            $tags = $page->template->getCssAndJsTag();
             // Save the page in to a blade file
             $replace = [
                 'variables' => [
-                    '{{html}}'
+                    '{{html}}',
+                    '{{styles}}',
+                    '{{scripts}}',
                 ],
                 'values' => [
-                    $pageHtml
+                    $pageHtml,
+                    $tags['styles'],
+                    $tags['scripts'],
                 ]
             ];
 
             // Create the default media file
             $this->loadStubFileAndSave(
-                'BaseBladePage',
+                'BaseHtmlPage',
                 resource_path('views/pages/onix'),
                 $page->slug,
                 '.blade.php',

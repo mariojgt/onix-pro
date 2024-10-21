@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('css_file')->nullable();
             $table->string('js_file')->nullable();
-            $table->boolean('use_manifest')->default(1);
+            $table->boolean('use_manifest')->default(0);
             $table->string('preview_image')->nullable();
             $table->timestamps();
         });
